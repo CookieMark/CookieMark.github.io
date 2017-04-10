@@ -15,17 +15,20 @@
 
 
 
-<meta name="description" content="ping  (ping带WWW、和ping不带www)    （不一样则存在CDN） 采集二级域名（子域名）（URL采集工具）URL采集(子域名挖掘)→域名批量查询（http://ip.chinaz.com/ipbatch）→找非节点（CDN）IP→">
+<meta name="description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息收集之真实IP查询">
-<meta property="og:url" content="http://yoursite.com/2017/04/08/信息探测之真实IP查询/index.html">
+<meta property="og:title" content="XSS">
+<meta property="og:url" content="http://yoursite.com/2017/04/10/XSS/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ping  (ping带WWW、和ping不带www)    （不一样则存在CDN） 采集二级域名（子域名）（URL采集工具）URL采集(子域名挖掘)→域名批量查询（http://ip.chinaz.com/ipbatch）→找非节点（CDN）IP→">
-<meta property="og:updated_time" content="2017-04-10T03:16:07.163Z">
+<meta property="og:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
+<meta property="og:image" content="http://i.imgur.com/IaYq4Ao.png">
+<meta property="og:image" content="http://i.imgur.com/d67sv4O.png">
+<meta property="og:updated_time" content="2017-04-10T08:35:42.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="信息收集之真实IP查询">
-<meta name="twitter:description" content="ping  (ping带WWW、和ping不带www)    （不一样则存在CDN） 采集二级域名（子域名）（URL采集工具）URL采集(子域名挖掘)→域名批量查询（http://ip.chinaz.com/ipbatch）→找非节点（CDN）IP→">
+<meta name="twitter:title" content="XSS">
+<meta name="twitter:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
+<meta name="twitter:image" content="http://i.imgur.com/IaYq4Ao.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>信息收集之真实IP查询 | Hexo</title>
+<title>XSS | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -257,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-信息探测之真实IP查询" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-XSS" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/08/信息探测之真实IP查询/" class="article-date">
-      <time datetime="2017-04-08T08:40:20.963Z" itemprop="datePublished">2017-04-08</time>
+      <a href="/2017/04/10/XSS/" class="article-date">
+      <time datetime="2017-04-10T08:11:39.110Z" itemprop="datePublished">2017-04-10</time>
 </a>
 
 
@@ -276,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      信息收集之真实IP查询
+      XSS
     </h1>
   
 
@@ -293,19 +296,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li>ping  (ping带WWW、和ping不带www)    （不一样则存在CDN）</li>
-<li>采集二级域名（子域名）（URL采集工具）<br>URL采集(子域名挖掘)→<br>域名批量查询（<a href="http://ip.chinaz.com/ipbatch）→" target="_blank" rel="external">http://ip.chinaz.com/ipbatch）→</a><br>找非节点（CDN）IP→<a id="more"></a></li>
-<li>查看接受收的邮件，显示原文，看IP</li>
-<li>基本上所有的大站都有一个段（C段），这个段可能会有几个系统，且ip很接近 </li>
-<li>通过威胁情报平台<br>360: <a href="https://ti.360.com/#" target="_blank" rel="external">https://ti.360.com/#</a><br>ThreatBook: <a href="https://x.threatbook.cn" target="_blank" rel="external">https://x.threatbook.cn</a></li>
-<li>查域名历史IP(在历史解析里面一般存在真实IP段)<br><a href="http://viewdns.info/iphistory/?domain=" target="_blank" rel="external">http://viewdns.info/iphistory/?domain=</a><br><a href="https://www.zoomeye.org" target="_blank" rel="external">https://www.zoomeye.org</a><br>www.shodan.io</li>
-<li>全网扫描<br><a href="http://www.evil0x.com/posts/6547.html" target="_blank" rel="external">http://www.evil0x.com/posts/6547.html</a></li>
-<li>查防护软件等信息（出现防护警告时）<br>查看元素→网络→消息头→X-Safe-Firewall<br>搜索 防护提示符</li>
-</ol>
+        <p>Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。<br>反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL<br>存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。<br>DOM型：没怎么了解，后续了解了再补充。<br>javascript可以用来获取用户的Cookie、改变页面内容\URL跳转等。<br><a id="more"></a><br>Xss测试语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;alert(document.domain)&lt;/script&gt;</div><div class="line"><span class="string">"/&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"</span>（闭合Input标签）</div><div class="line">‘”()%26%25&lt;acx&gt;&lt;ScRiPt &gt;alert(9528)&lt;/ScRiPt&gt;（大小写绕过）</div><div class="line"><span class="string">" onmouseover=alert(document.domain) align="</span>left（需移动鼠标）</div><div class="line"> “onclick=”alert(‘1’)      （需要点击框才弹）</div><div class="line"> &lt;img src=x onerror=alert(‘1’)&gt; </div><div class="line">&lt;body onload=alert(‘XSS’)&gt;</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <hr>
-<p>找真实IP的作用：运用DDOS攻击（分布式拒绝服务攻击）/直接尝试连接服务器配合<br>DDOS作用：造成防火墙处理错误锁死、服务器瘫痪<br>CDN作用：实时的根据网络流量和个节点的接连、负载情况以及用户的距离和相信时间将用户的请求重新导向离用户最近的服务器节点上。内容服务基于缓存服务器，也称为代理缓存。</p>
-
+<p>XSS例子:<br><img src="http://i.imgur.com/IaYq4Ao.png" alt=""><br>ARRAY_KEY_EXISTS():判断函数，如果name变量有值&amp;&amp;（与）不为空，则输出 “  Hello+&amp;_GET[‘name’]  “。<br><strong>思路：无过滤，直接XSS代码可执行。</strong></p>
+<hr>
+<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():判断是否存在 <script>,存在则把<script>替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有<script>的Javascript语言去运行XSS代码，或者把<script>大小写。</strong></p>
+<hr>
+<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这<script>这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
+<hr>
+<p><img src="http://i.imgur.com/4wY5s6k.png" alt=""><br>checkToken：用来检查session_token是否过期。<br>Htmlspecialchars()：把预定义字符（&amp;、”、&lt;、&gt;）转为HTML实体化的的函数（只有设置了：quotestyle 选项为ENT_QUOTES才会过滤单引号）。</p>
+<p><strong>思路：1.因为没有过滤单引号，所以可以用 ‘onmouseover=alert’(1)’语句来弹窗<br>但是然并卵，<br>2.跳出Htmlspecialchars()函数重新赋值给$name，例POC：<br><img src="http://i.imgur.com/G6ZKw4k.png" alt=""><br>但还是然并卵，因为你在构造的时候就已经被实体化了，后面的语句根本无法有效运行。
+</strong></p>
+<h2 id="所以没办法了，等有想法再补充。。"><a href="#所以没办法了，等有想法再补充。。" class="headerlink" title="所以没办法了，等有想法再补充。。"></a>所以没办法了，等有想法再补充。。</h2><p>XSS绕过：<br>1.利用空格或者回车<br>2.对标签属性进行编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascrip&amp;<span class="comment">#116&amp;#58alert('xss')&gt;</span></div></pre></td></tr></table></figure></p>
+<p>3.大小写<br>4.用eval函数进行十六进制和十进制的编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"javascript:eval(string.formCharCode(97,98,99.....))"</span>&gt;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>注：1.输入的东西是否被转移，看源代码即可<br>2.对website有http-only、crossdomian.xml没有用<br>3.可以明面上输入&lt; “ &gt; ‘ 等字符测试，看看有哪些没被转义就用哪些。</p>
+<h2 id="4-需要测试（闭合标签）"><a href="#4-需要测试（闭合标签）" class="headerlink" title="4.需要测试（闭合标签）"></a>4.需要测试（闭合标签）</h2><p>经典：<a href="http://www.freebuf.com/articles/web/40520.html">http://www.freebuf.com/articles/web/40520.html</a></p>
+</script></p>
       
     </div>
     
@@ -313,13 +320,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/10/XSS/">XSS</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-08, 16:40:20</p>
-        <p><span>最后更新:</span>2017-04-10, 11:16:07</p>
+        <p><span>发布时间:</span>2017-04-10, 16:11:39</p>
+        <p><span>最后更新:</span>2017-04-10, 16:35:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/08/信息探测之真实IP查询/" title="信息收集之真实IP查询">http://yoursite.com/2017/04/08/信息探测之真实IP查询/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/信息探测之真实IP查询/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/10/XSS/" title="XSS">http://yoursite.com/2017/04/10/XSS/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/XSS/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -332,15 +339,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/信息探测_端口篇/">
-                    信息探测之nmap的使用（端口）
+                <a href="/2017/04/08/代码注入之XPath篇/">
+                    代码注入之XPath篇
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/08/信息收集之CMS/">
-                    信息收集之CMS
+                <a href="/2017/04/10/CSRF/">
+                    CSRF
                 </a>
             </div>
         
@@ -388,7 +395,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"信息收集之真实IP查询　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"XSS　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -408,7 +415,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/信息探测_端口篇/" title="上一篇: 信息探测之nmap的使用（端口）">
+            <a href="/2017/04/08/代码注入之XPath篇/" title="上一篇: 代码注入之XPath篇">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -416,7 +423,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/08/信息收集之CMS/" title="下一篇: 信息收集之CMS">
+            <a href="/2017/04/10/CSRF/" title="下一篇: CSRF">
                 <i class="fa fa-angle-right"></i>
             </a>
         
