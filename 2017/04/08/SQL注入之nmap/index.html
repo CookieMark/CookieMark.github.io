@@ -15,22 +15,22 @@
 
 
 
-<meta name="description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）  以下为Mys">
+<meta name="description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。） –r    利">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入之nmap">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/SQL注入之nmap/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）  以下为Mys">
+<meta property="og:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。） –r    利">
 <meta property="og:image" content="http://i.imgur.com/hXYJAAk.png">
 <meta property="og:image" content="http://i.imgur.com/qUdI66I.png">
 <meta property="og:image" content="http://i.imgur.com/GNePxTp.png">
 <meta property="og:image" content="http://i.imgur.com/r8WPdQL.png">
 <meta property="og:image" content="http://i.imgur.com/lmnaBaL.png">
-<meta property="og:updated_time" content="2017-04-08T15:08:51.310Z">
+<meta property="og:updated_time" content="2017-04-10T02:30:12.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入之nmap">
-<meta name="twitter:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）  以下为Mys">
+<meta name="twitter:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。） –r    利">
 <meta name="twitter:image" content="http://i.imgur.com/hXYJAAk.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -300,8 +300,7 @@
       
           
         <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）</p>
-<hr>
-<p>以下为Mysql数据注入：</p>
+<h2 id="–r-利用文本（接编码转换文本或HTTP协议包）"><a href="#–r-利用文本（接编码转换文本或HTTP协议包）" class="headerlink" title="–r    利用文本（接编码转换文本或HTTP协议包）"></a>–r    利用文本（接编码转换文本或HTTP协议包）</h2><p>以下为Mysql数据注入：</p>
 <ol>
 <li>-u www.xxx.com/qqq.php?id=1  存在注入，则爆出(网页信息)↓<br><img src="http://i.imgur.com/hXYJAAk.png" alt=""><a id="more"></a></li>
 <li><p>-u www.xxx.com/qqq.php?id=1 –dbs  爆出所有数据库<br><img src="http://i.imgur.com/qUdI66I.png" alt=""></p>
@@ -329,7 +328,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:34:11</p>
-        <p><span>最后更新:</span>2017-04-08, 23:08:51</p>
+        <p><span>最后更新:</span>2017-04-10, 10:30:12</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL注入之nmap/" title="SQL注入之nmap">http://yoursite.com/2017/04/08/SQL注入之nmap/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL注入之nmap/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -365,7 +364,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#因为Access没有内置的数据库，而且只有一只，所以直接跑表"><span class="toc-number">1.</span> <span class="toc-text">因为Access没有内置的数据库，而且只有一只，所以直接跑表</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#–r-利用文本（接编码转换文本或HTTP协议包）"><span class="toc-number">1.</span> <span class="toc-text">–r    利用文本（接编码转换文本或HTTP协议包）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#因为Access没有内置的数据库，而且只有一只，所以直接跑表"><span class="toc-number">2.</span> <span class="toc-text">因为Access没有内置的数据库，而且只有一只，所以直接跑表</span></a></li></ol>
         
     </div>
     <style>

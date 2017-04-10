@@ -444,8 +444,7 @@ userDao.save(userdata);
       
           
               <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）</p>
-<hr>
-<p>以下为Mysql数据注入：</p>
+<h2 id="–r-利用文本（接编码转换文本或HTTP协议包）"><a href="#–r-利用文本（接编码转换文本或HTTP协议包）" class="headerlink" title="–r    利用文本（接编码转换文本或HTTP协议包）"></a>–r    利用文本（接编码转换文本或HTTP协议包）</h2><p>以下为Mysql数据注入：</p>
 <ol>
 <li>-u www.xxx.com/qqq.php?id=1  存在注入，则爆出(网页信息)↓<br><img src="http://i.imgur.com/hXYJAAk.png" alt="">
           

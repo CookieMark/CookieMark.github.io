@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/08/代码注入之XML篇/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）  报错语句: ‘ or (payload) or ‘‘ and (payload) and ‘‘ or (payload) and ‘‘ or (payload) and ‘=’‘(payloa">
-<meta property="og:updated_time" content="2017-04-08T15:12:49.573Z">
+<meta property="og:updated_time" content="2017-04-10T02:32:54.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码注入之XML篇">
 <meta name="twitter:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）  报错语句: ‘ or (payload) or ‘‘ and (payload) and ‘‘ or (payload) and ‘‘ or (payload) and ‘=’‘(payloa">
@@ -321,7 +321,10 @@ userDao.save(userdata);
 &lt;/USER&gt;
 </code></pre>
 <p>但攻击者注册时如果这样注册，构造利用代码如下：</p>
-<h2 id="user1-a-comtestuser2-a-com"><a href="#user1-a-comtestuser2-a-com" class="headerlink" title=" user1@a.comtestuser2@a.com"></a> user1@a.com<user role="admin_role"><name>test</name><email>user2@a.com</email></user></h2><p>最终用户注册后，数据就变成了↓：</p>
+<pre><code class="bash">user1@a.com&lt;/email&gt;&lt;/USER&gt;&lt;USER role=<span class="string">"admin_role"</span>&gt;&lt;name&gt;<span class="built_in">test</span>&lt;/name&gt;&lt;email&gt;user2@a.com
+</code></pre>
+<hr>
+<p>最终用户注册后，数据就变成了↓：</p>
 <pre><code class="bash">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;
 &lt;USER role=<span class="string">"guest_role"</span>&gt;
     &lt;name&gt;user1
@@ -358,7 +361,7 @@ userDao.save(userdata);
         <p><span>本文标题:</span><a href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:38:42</p>
-        <p><span>最后更新:</span>2017-04-08, 23:12:49</p>
+        <p><span>最后更新:</span>2017-04-10, 10:32:54</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/代码注入之XML篇/" title="代码注入之XML篇">http://yoursite.com/2017/04/08/代码注入之XML篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/代码注入之XML篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -394,7 +397,7 @@ userDao.save(userdata);
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#user1-a-comtestuser2-a-com"><span class="toc-number">2.</span> <span class="toc-text"> user1@a.comtestuser2@a.com</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
         
     </div>
     <style>
