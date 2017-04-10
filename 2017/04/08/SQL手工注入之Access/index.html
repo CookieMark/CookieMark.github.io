@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
 <meta property="og:image" content="http://i.imgur.com/36xkh4X.png">
-<meta property="og:updated_time" content="2017-04-10T03:14:05.048Z">
+<meta property="og:updated_time" content="2017-04-10T10:00:44.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL手工注入之Access">
 <meta name="twitter:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
@@ -296,8 +296,9 @@
       
           
         <p>Access（数据库后缀名为：.mdb）</p>
-<p>数据库结构：<br><img src="http://i.imgur.com/36xkh4X.png" alt=""></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><ol>
+<p>数据库结构：<br><a id="more"></a><br><img src="http://i.imgur.com/36xkh4X.png" alt=""></p>
+<hr>
+<ol>
 <li>判断是否存在注入（报错，“*”and/or;在网址最后输入（’；）,返回不正常的时候,说明是access类型的。反之，则是mssql类型）</li>
 <li>判断数据库表名：and exists(select * from [表名])</li>
 <li>判断数据库列名：and exists(select [列名] from [表名])</li>
@@ -335,7 +336,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:11:27</p>
-        <p><span>最后更新:</span>2017-04-10, 11:14:05</p>
+        <p><span>最后更新:</span>2017-04-10, 18:00:44</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL手工注入之Access/" title="SQL手工注入之Access">http://yoursite.com/2017/04/08/SQL手工注入之Access/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL手工注入之Access/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -371,7 +372,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
+            
         
     </div>
     <style>
