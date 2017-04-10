@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="XPath：XML的路径语言（选取XML节点的一门语言） –（和XML注入类似）例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
+<meta name="description" content="XPath：XML的路径语言（选取XML节点的一门语言）（和XML注入类似）  例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码注入之XPath篇">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/代码注入之XPath篇/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="XPath：XML的路径语言（选取XML节点的一门语言） –（和XML注入类似）例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
-<meta property="og:updated_time" content="2017-04-08T14:48:34.522Z">
+<meta property="og:description" content="XPath：XML的路径语言（选取XML节点的一门语言）（和XML注入类似）  例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
+<meta property="og:updated_time" content="2017-04-10T03:18:10.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码注入之XPath篇">
-<meta name="twitter:description" content="XPath：XML的路径语言（选取XML节点的一门语言） –（和XML注入类似）例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
+<meta name="twitter:description" content="XPath：XML的路径语言（选取XML节点的一门语言）（和XML注入类似）  例如 user.xml文件是这么写的： &amp;lt;users&amp;gt;      &amp;lt;user&amp;gt;          &amp;lt;firstname&amp;gt;Ben&amp;lt;/firstname&amp;gt;          &amp;lt;lastname&amp;gt;Elmore&amp;lt;/lastname&amp;gt;          &amp;l">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -293,8 +293,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>XPath：XML的路径语言（选取XML节点的一门语言）</p>
-<p>–<br>（和XML注入类似）<br>例如 user.xml文件是这么写的：</p>
+        <p>XPath：XML的路径语言（选取XML节点的一门语言）<br>（和XML注入类似）</p>
+<hr>
+<p>例如 user.xml文件是这么写的：</p>
 <pre><code class="bash">&lt;users&gt;
      &lt;user&gt;
          &lt;firstname&gt;Ben&lt;/firstname&gt;
@@ -309,7 +310,7 @@
          &lt;password&gt;123<span class="built_in">test</span>&lt;/password&gt;
      &lt;/user&gt;
 </code></pre>
-<p>那XPath的一般查询语句是这样写的：</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>那XPath的一般查询语句是这样写的：</p>
 <p>  //users/user[loginID/text()=’xyz’and password/text()=’123test’]</p>
 <p>但是，可以采用如下的方法实施注入攻击，绕过身份验证。<br>如果用 户传入一个 login 和 password，例如 loginID = ‘xyz’ 和 password = ‘123test’，则该查询语句将返回 true。<br>但如果用户传入类似 ‘ or 1=1 or ‘’=’ 的值，那么该查询语句也会得到 true 返回值，因为 XPath 查询语句最终会变成如下代码：<br>//users/user[loginID/text()=’’or 1=1 or ‘’=’’ and password/text()=’’ or 1=1 or ‘’=’’]</p>
 <p>这个字符串会在逻辑上使查询一直返回 true 并将一直允许攻击者访问系统。攻击者可以利用 XPath 在应用程序中动态地操作 XML 文档。攻击完成登录可以再通过XPath盲入技术获取最高权限帐号和其它重要文档信息。</p>
@@ -326,7 +327,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:39:58</p>
-        <p><span>最后更新:</span>2017-04-08, 22:48:34</p>
+        <p><span>最后更新:</span>2017-04-10, 11:18:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/代码注入之XPath篇/" title="代码注入之XPath篇">http://yoursite.com/2017/04/08/代码注入之XPath篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/代码注入之XPath篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -356,7 +357,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
         
     </div>
     <style>
@@ -424,7 +425,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

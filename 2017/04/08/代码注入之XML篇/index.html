@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）  报错语句: ‘ or (payload) or ‘‘ and (payload) and ‘‘ or (payload) and ‘‘ or (payload) and ‘=’‘(payloa">
+<meta name="description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码注入之XML篇">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/代码注入之XML篇/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）  报错语句: ‘ or (payload) or ‘‘ and (payload) and ‘‘ or (payload) and ‘‘ or (payload) and ‘=’‘(payloa">
-<meta property="og:updated_time" content="2017-04-10T02:32:54.990Z">
+<meta property="og:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）">
+<meta property="og:updated_time" content="2017-04-10T03:05:09.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码注入之XML篇">
-<meta name="twitter:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）  报错语句: ‘ or (payload) or ‘‘ and (payload) and ‘‘ or (payload) and ‘‘ or (payload) and ‘=’‘(payloa">
+<meta name="twitter:description" content="XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质） （这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -295,13 +295,16 @@
           
         <p>XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质）</p>
 <p>（这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）</p>
-<hr>
-<p>报错语句:</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>报错语句:</p>
 <p>‘ or (payload) or ‘<br>‘ and (payload) and ‘<br>‘ or (payload) and ‘<br>‘ or (payload) and ‘=’<br>‘(payload)’<br>‘ or (payload) and ‘</p>
 <hr>
 <p>下面是一个保存注册用户信息为XML格式的例子：</p>
-<p>   final String GUESTROLE = “guest_role”;<br>…<br>//userdata是准备保存的xml数据，接收了name和email两个用户提交来的数据。</p>
-<pre><code class="bash">String userdata = <span class="string">"&lt;USER role="</span>+
+<pre><code class="bash">   final String GUESTROLE = <span class="string">"guest_role"</span>;
+   ...
+//userdata是准备保存的xml数据，接收了name和email两个用户提交来的数据。
+
+
+String userdata = <span class="string">"&lt;USER role="</span>+
                 GUESTROLE+
                 <span class="string">"&gt;&lt;name&gt;"</span>+
                 request.getParameter(<span class="string">"name"</span>)+
@@ -311,7 +314,8 @@
 //保存xml
 userDao.save(userdata);
 </code></pre>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>当上面这段代码没有任何过滤时，一个普通用户注册会是这样的↓</p>
+<hr>
+<p>当上面这段代码没有任何过滤时，一个普通用户注册会是这样的↓</p>
 <pre><code class="bash">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;
 &lt;USER role=<span class="string">"guest_role"</span>&gt;
      &lt;name&gt;user1
@@ -361,7 +365,7 @@ userDao.save(userdata);
         <p><span>本文标题:</span><a href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:38:42</p>
-        <p><span>最后更新:</span>2017-04-10, 10:32:54</p>
+        <p><span>最后更新:</span>2017-04-10, 11:05:09</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/代码注入之XML篇/" title="代码注入之XML篇">http://yoursite.com/2017/04/08/代码注入之XML篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/代码注入之XML篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -467,7 +471,7 @@ userDao.save(userdata);
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

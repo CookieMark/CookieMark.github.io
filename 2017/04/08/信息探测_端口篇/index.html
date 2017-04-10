@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/08/信息探测_端口篇/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等 Nmap参数的使用：              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）">
-<meta property="og:updated_time" content="2017-04-08T08:42:57.358Z">
+<meta property="og:updated_time" content="2017-04-10T03:20:38.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信息探测之nmap的使用（端口）">
 <meta name="twitter:description" content="Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等 Nmap参数的使用：              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）">
@@ -295,11 +295,10 @@
           
         <p>Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等</p>
 <p>Nmap参数的使用：<br>              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）<br>             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记<br>             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）<br>             -sP  ping扫描  （测试一个段的主机存活IP）<br>             -sU  UDP扫描  （因为不可靠，所以一般不用）<br>             -sA  穿过防火墙的规律集<br>             -sV  探测端口服务版本<br>             -P0  当被禁止Ping时可用此选项扫描<br>             -v   显示扫描过程<br>             -p   指定端口扫描（只扫描3389和80   -p “3389、80”）</p>
-<hr>
-<p>利用方法：<br>扫描www.baidu.com   的C段存活主机<br>    Nmap –sP  www.baidu.com/24<br>    注：假如扫描为IP （222.332.186.121），<br>    应为 222.332.186.0/24</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>利用方法：<br>扫描www.baidu.com   的C段存活主机<br>    Nmap –sP  www.baidu.com/24<br>    注：假如扫描为IP （222.332.186.121），<br>    应为 222.332.186.0/24</p>
 <p>指定端口扫描：<br>    Nmap  www.baidu.com(或填服务器IP)  –p 80，3389，1433，（或1~X）</p>
 <p>检查主机系统：<br>   Nmap –o www.baidu.com(或填服务器IP)   </p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>端口：<br>    8080（Apache/Tomcat/Nginx/Axis2）,<br>    21（控制端口）； 20（数据端口）；69（tftp小型文件传输协议）[FTP]<br>    3306(MySQL数据库)<br>    1433（Server 数据库服务）、1434（Monitor 数据库监控）  (MSSQL数据库)<br>    1521（数据库端口）、210（Oracle XDB FTP服务） (Oracle数据库)<br>    25（smtp）、465（smtps）(SMTP协议)<br>    53(DNS服务)<br>    67&amp;68、546（DHCP服务）<br>    22(SSH服务)<br>    80/81/443(IIS服务)<br>    7001(WebLogic)<br>    1098/1099/4444/4445/8080/8009/8083/8093(Jboss)<br>    908*；第一个应用就是9080，第二个就是9081；控制台9090(Websphere)</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><!-- more --></h2><p>端口：<br>    8080（Apache/Tomcat/Nginx/Axis2）,<br>    21（控制端口）； 20（数据端口）；69（tftp小型文件传输协议）[FTP]<br>    3306(MySQL数据库)<br>    1433（Server 数据库服务）、1434（Monitor 数据库监控）  (MSSQL数据库)<br>    1521（数据库端口）、210（Oracle XDB FTP服务） (Oracle数据库)<br>    25（smtp）、465（smtps）(SMTP协议)<br>    53(DNS服务)<br>    67&amp;68、546（DHCP服务）<br>    22(SSH服务)<br>    80/81/443(IIS服务)<br>    7001(WebLogic)<br>    1098/1099/4444/4445/8080/8009/8083/8093(Jboss)<br>    908*；第一个应用就是9080，第二个就是9081；控制台9090(Websphere)</p>
 
       
     </div>
@@ -311,7 +310,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 16:40:20</p>
-        <p><span>最后更新:</span>2017-04-08, 16:42:57</p>
+        <p><span>最后更新:</span>2017-04-10, 11:20:38</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/信息探测_端口篇/" title="信息探测之nmap的使用（端口）">http://yoursite.com/2017/04/08/信息探测_端口篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/信息探测_端口篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -347,7 +346,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
         
     </div>
     <style>
@@ -417,7 +416,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

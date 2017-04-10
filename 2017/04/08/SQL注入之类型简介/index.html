@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）  SQL分类：1.数字型注入         2.字符型注入 3.搜索型注入  数字型:参数为数字。">
+<meta name="description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入之类型简介">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/SQL注入之类型简介/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）  SQL分类：1.数字型注入         2.字符型注入 3.搜索型注入  数字型:参数为数字。">
+<meta property="og:description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）">
 <meta property="og:image" content="http://i.imgur.com/eUlJs65.png">
 <meta property="og:image" content="http://i.imgur.com/pgskScI.png">
-<meta property="og:updated_time" content="2017-04-08T15:11:59.572Z">
+<meta property="og:updated_time" content="2017-04-10T03:14:18.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入之类型简介">
-<meta name="twitter:description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）  SQL分类：1.数字型注入         2.字符型注入 3.搜索型注入  数字型:参数为数字。">
+<meta name="twitter:description" content="SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（数据库语句没有进行严密的过滤，致使执行非法查询）">
 <meta name="twitter:image" content="http://i.imgur.com/eUlJs65.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -297,13 +297,13 @@
       
           
         <p>SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。<br>（数据库语句没有进行严密的过滤，致使执行非法查询）</p>
-<hr>
-<p>SQL分类：1.数字型注入<br>         2.字符型注入</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>SQL分类：1.数字型注入<br>         2.字符型注入</p>
 <pre><code>3.搜索型注入
 </code></pre><hr>
 <p>数字型:参数为数字。<br>       例：www.test.com/test.php?id=123<br>字符型：参数为字符（英文字符串）<br>       例：www.test.com/test.php?id=asd<br>搜索型：注入位置为搜索框<br>例：</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i.imgur.com/eUlJs65.png" alt=""></h2><p>区别：SQL查询语句不相同。<br>数字型：$sql=”select <em> from A where id=$id”;<br>字符型：$sql=”select </em> from B where id=’$user ‘“;<br>搜索型：$sql=”select * from user where username like ‘%$name%’ order by username”;</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><a id="more"></a></h2><p>注入方式：GET，（请求头，URL位置）<br>Post，（表单提交的注入，例：登陆框）<br>Cookies,（利用Cookie 注入中转/手工编辑新的Cookies也可，即把参数写道Cookie里面（firebug里有编辑Cookie的插件））</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://i.imgur.com/eUlJs65.png" alt=""></h2><p>区别：SQL查询语句不相同。<br>数字型：$sql=”select <em> from A where id=$id”;<br>字符型：$sql=”select </em> from B where id=’$user ‘“;<br>搜索型：$sql=”select * from user where username like ‘%$name%’ order by username”;</p>
+<hr>
+<p>注入方式：GET，（请求头，URL位置）<br>Post，（表单提交的注入，例：登陆框）<br>Cookies,（利用Cookie 注入中转/手工编辑新的Cookies也可，即把参数写道Cookie里面（firebug里有编辑Cookie的插件））</p>
 <h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="http://i.imgur.com/pgskScI.png" alt=""></h2><p>数据库分类：<br>1). SQL Server （别名：mssql）<br>2). Access<br>3). Oracle<br>4). MySql<br>5). Sysbase<br>6). Informix<br>7). FoxPro<br>8). PostgreSQL<br>9). IBM 的DB2</p>
 <p>前面四种是常见的，包含了大多数的中小企业，所以暂时先讲这四种，等哪天我成为大神再补充。后面的五种。。。就这样。</p>
 <hr>
@@ -326,7 +326,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 16:59:30</p>
-        <p><span>最后更新:</span>2017-04-08, 23:11:59</p>
+        <p><span>最后更新:</span>2017-04-10, 11:14:18</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL注入之类型简介/" title="SQL注入之类型简介">http://yoursite.com/2017/04/08/SQL注入之类型简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL注入之类型简介/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -432,7 +432,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

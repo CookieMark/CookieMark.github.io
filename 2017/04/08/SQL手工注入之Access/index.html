@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="Access（数据库后缀名为：.mdb） 数据库结构：  判断是否存在注入（报错，“*”and/or） 判断数据库表名：and exists(select * from [表名]) 判断数据库列名：and exists(select [列名] from [表名]) 判断字节长度：order by 数字 联合查询注入：union select 1,2,… from [表名] 根据数字位置爆数据。">
+<meta name="description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL手工注入之Access">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/SQL手工注入之Access/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Access（数据库后缀名为：.mdb） 数据库结构：  判断是否存在注入（报错，“*”and/or） 判断数据库表名：and exists(select * from [表名]) 判断数据库列名：and exists(select [列名] from [表名]) 判断字节长度：order by 数字 联合查询注入：union select 1,2,… from [表名] 根据数字位置爆数据。">
+<meta property="og:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
 <meta property="og:image" content="http://i.imgur.com/36xkh4X.png">
-<meta property="og:updated_time" content="2017-04-08T15:10:21.802Z">
+<meta property="og:updated_time" content="2017-04-10T03:14:05.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL手工注入之Access">
-<meta name="twitter:description" content="Access（数据库后缀名为：.mdb） 数据库结构：  判断是否存在注入（报错，“*”and/or） 判断数据库表名：and exists(select * from [表名]) 判断数据库列名：and exists(select [列名] from [表名]) 判断字节长度：order by 数字 联合查询注入：union select 1,2,… from [表名] 根据数字位置爆数据。">
+<meta name="twitter:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
 <meta name="twitter:image" content="http://i.imgur.com/36xkh4X.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -296,9 +296,9 @@
       
           
         <p>Access（数据库后缀名为：.mdb）</p>
-<p>数据库结构：</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i.imgur.com/36xkh4X.png" alt=""></h2><ol>
-<li>判断是否存在注入（报错，“*”and/or）</li>
+<p>数据库结构：<br><img src="http://i.imgur.com/36xkh4X.png" alt=""></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><ol>
+<li>判断是否存在注入（报错，“*”and/or;在网址最后输入（’；）,返回不正常的时候,说明是access类型的。反之，则是mssql类型）</li>
 <li>判断数据库表名：and exists(select * from [表名])</li>
 <li>判断数据库列名：and exists(select [列名] from [表名])</li>
 <li>判断字节长度：order by 数字</li>
@@ -306,7 +306,7 @@
 <li>根据数字位置爆数据。</li>
 </ol>
 <hr>
-<p>偏移注入（知道表名却不知道列名的情况下使用）：<br>假设表名为admin。初始字段数为12<br><a id="more"></a></p>
+<p>偏移注入（知道表名却不知道列名的情况下使用）：<br>假设表名为admin。初始字段数为12</p>
 <ol>
 <li>判断字段数（order by ）</li>
 <li>爆显示位</li>
@@ -335,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:11:27</p>
-        <p><span>最后更新:</span>2017-04-08, 23:10:21</p>
+        <p><span>最后更新:</span>2017-04-10, 11:14:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL手工注入之Access/" title="SQL手工注入之Access">http://yoursite.com/2017/04/08/SQL手工注入之Access/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL手工注入之Access/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -441,7 +441,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

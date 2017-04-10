@@ -290,10 +290,6 @@
           
               <p>Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等</p>
 <p>Nmap参数的使用：<br>              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）<br>             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记<br>             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）<br>             -sP  ping扫描  （测试一个段的主机存活IP）<br>             -sU  UDP扫描  （因为不可靠，所以一般不用）<br>             -sA  穿过防火墙的规律集<br>             -sV  探测端口服务版本<br>             -P0  当被禁止Ping时可用此选项扫描<br>             -v   显示扫描过程<br>             -p   指定端口扫描（只扫描3389和80   -p “3389、80”）</p>
-<hr>
-<p>利用方法：<br>扫描www.baidu.com   的C段存活主机<br>    Nmap –sP  www.baidu.com/24<br>    注：假如扫描为IP （222.332.186.121），<br>    应为 222.332.186.0/24</p>
-<p>指定端口扫描：<br>    Nmap  www.baidu.com(或填服务器IP)  –p 80，3389，1433，（或1~X）</p>
-<p>检查主机系统：<br>   Nmap –o www.baidu.com(或填服务器IP)   </p>
 <h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
@@ -354,13 +350,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Google Hack:<br>（大部分语法也可用于百度）</p>
-<p>主要语法：<br>Site：找到与指定网站有联系的URL。 （用于搜索子域名）<br>Intext：正文存在关键字的网页  （搜索重要信息）<br>Intitle：标题中存在关键字的网页 （搜索后台等具有关键字的URL）<br>Inurl：url中存在关键字的网页 （寻找伪静态持有的网页类型）<br>Filetype:指定文件类型</p>
-<p>Site和inurl区别：<br>Site:把搜索范围限定在特定站点中<br>Inurl:吧搜索范围限定在url链接中</p>
-<p>多种组合能达到意想不到的效果：<br>例如：inurl:baidu.com   intext:后台管理<br>      如果存在，则返回百度网页的后台界面URL地址<br>      inurl:baidu.com    Intitle:上传<br>      如果存在，则返回百度网页带有上传页面的地址<br>      Intitle:后台管理   filetype:asp<br>      如果存在，则返回带有后台管理且为ASP类型的URL。</p>
-<hr>
-<p>利用：<br>1.假如攻击者拥有的一个0day漏洞，则可以用此语法配合0day指纹进行批量的入侵。<br>2.寻找网页后台（admin/login）、敏感文件（robots.txt/db.mdb）、敏感路径（upload）</p>
-
+              <p>Google Hack:<br>（大部分语法也可用于百度）</p>
+<p>主要语法：<br>Site：找到与指定网站有联系的URL。 （用于搜索子域名）<br>Intext：正文存在关键字的网页  （搜索重要信息）<br>Intitle：标题中存在关键字的网页 （搜索后台等具有关键字的URL）<br>Inurl：url中存在关键字的网页 （寻找伪静态持有的网页类型）<br>Filetype:指定文件类型<br>
+          
       
     </div>
     
@@ -369,6 +361,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/信息探测_谷歌语法/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -497,70 +493,6 @@
         <p class="article-more-link">
           <a href="/2017/04/08/HTTP协议/#more">阅读全文 >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/07/hello-world/" class="article-date">
-      <time datetime="2017-04-07T02:58:06.247Z" itemprop="datePublished">2017-04-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
       
       <div class="clearfix"></div>
     </div>

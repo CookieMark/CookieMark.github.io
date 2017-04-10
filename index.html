@@ -288,8 +288,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>XPath：XML的路径语言（选取XML节点的一门语言）</p>
-<p>–<br>（和XML注入类似）<br>例如 user.xml文件是这么写的：</p>
+              <p>XPath：XML的路径语言（选取XML节点的一门语言）<br>（和XML注入类似）</p>
+<hr>
+<p>例如 user.xml文件是这么写的：</p>
 <pre><code class="bash">&lt;users&gt;
      &lt;user&gt;
          &lt;firstname&gt;Ben&lt;/firstname&gt;
@@ -304,13 +305,8 @@
          &lt;password&gt;123<span class="built_in">test</span>&lt;/password&gt;
      &lt;/user&gt;
 </code></pre>
-<p>那XPath的一般查询语句是这样写的：</p>
-<p>  //users/user[loginID/text()=’xyz’and password/text()=’123test’]</p>
-<p>但是，可以采用如下的方法实施注入攻击，绕过身份验证。<br>如果用 户传入一个 login 和 password，例如 loginID = ‘xyz’ 和 password = ‘123test’，则该查询语句将返回 true。<br>但如果用户传入类似 ‘ or 1=1 or ‘’=’ 的值，那么该查询语句也会得到 true 返回值，因为 XPath 查询语句最终会变成如下代码：<br>//users/user[loginID/text()=’’or 1=1 or ‘’=’’ and password/text()=’’ or 1=1 or ‘’=’’]</p>
-<p>这个字符串会在逻辑上使查询一直返回 true 并将一直允许攻击者访问系统。攻击者可以利用 XPath 在应用程序中动态地操作 XML 文档。攻击完成登录可以再通过XPath盲入技术获取最高权限帐号和其它重要文档信息。</p>
-<hr>
-<p>利用手段：和SQL+XSS注入类似，闭合符合，然后构造POC<br>利用位置：查询口</p>
-
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          
       
     </div>
     
@@ -319,6 +315,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/代码注入之XPath篇/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -367,22 +367,6 @@
           
               <p>XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质）</p>
 <p>（这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）</p>
-<hr>
-<p>报错语句:</p>
-<p>‘ or (payload) or ‘<br>‘ and (payload) and ‘<br>‘ or (payload) and ‘<br>‘ or (payload) and ‘=’<br>‘(payload)’<br>‘ or (payload) and ‘</p>
-<hr>
-<p>下面是一个保存注册用户信息为XML格式的例子：</p>
-<p>   final String GUESTROLE = “guest_role”;<br>…<br>//userdata是准备保存的xml数据，接收了name和email两个用户提交来的数据。</p>
-<pre><code class="bash">String userdata = <span class="string">"&lt;USER role="</span>+
-                GUESTROLE+
-                <span class="string">"&gt;&lt;name&gt;"</span>+
-                request.getParameter(<span class="string">"name"</span>)+
-                <span class="string">"&lt;/name&gt;&lt;email&gt;"</span>+
-                request.getParameter(<span class="string">"email"</span>)+
-                <span class="string">"&lt;/email&gt;&lt;/USER&gt;"</span>;
-//保存xml
-userDao.save(userdata);
-</code></pre>
 <h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
@@ -443,10 +427,8 @@ userDao.save(userdata);
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）</p>
-<h2 id="–r-利用文本（接编码转换文本或HTTP协议包）"><a href="#–r-利用文本（接编码转换文本或HTTP协议包）" class="headerlink" title="–r    利用文本（接编码转换文本或HTTP协议包）"></a>–r    利用文本（接编码转换文本或HTTP协议包）</h2><p>以下为Mysql数据注入：</p>
-<ol>
-<li>-u www.xxx.com/qqq.php?id=1  存在注入，则爆出(网页信息)↓<br><img src="http://i.imgur.com/hXYJAAk.png" alt="">
+              <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>–r    利用文本（接编码转换文本或HTTP协议包）</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
     </div>
@@ -506,22 +488,11 @@ userDao.save(userdata);
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>mysql数据库</p>
+              <p>mysql数据库</p>
 <ul>
-<li>版本5.0↑，具有内置特定数据库。</li>
-<li>最高权限为root</li>
-</ul>
-<hr>
-<p>注入过程：</p>
-<ol>
-<li>判断字段数 （order by）</li>
-<li>匹配字段数：union select 1,2,3,4,5…….  </li>
-<li>利用内置函数暴数据库信息<br>system_user() 系统用户名<br>user() 用户名<br>current_user() 当前用户名<br>session_user() 链接数据库的用户名<br>database() 数据库库名<br>version() mysql数据库版本信息<br>load_file() 转换成16或10进制 读取本地文件<br>@@datadir 读取数据库路径<br>@@basedir MYSQL安装路径<br>@@version_compile_os 操作系统</li>
-<li>查表：<br>Union  selec  1,group_concat(table_name) ,3 from<br>information_schema.tables where table_schema= 数据库名的hex编码</li>
-<li>表里面的列<br>union select 1,group_concat(column_name),3  from<br>information_schema.columns  where<br>table_name=表的HEX值</li>
-<li>Union select 1,group_concat(列名),3 from 表名</li>
-</ol>
-
+<li>版本5.0↑，具有内置特定数据库（information_schema）。</li>
+<li>最高权限为root
+          
       
     </div>
     
@@ -530,6 +501,10 @@ userDao.save(userdata);
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/SQL手工注入之mysql/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -635,17 +610,8 @@ userDao.save(userdata);
       
           
               <p>Access（数据库后缀名为：.mdb）</p>
-<p>数据库结构：</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i.imgur.com/36xkh4X.png" alt=""></h2><ol>
-<li>判断是否存在注入（报错，“*”and/or）</li>
-<li>判断数据库表名：and exists(select * from [表名])</li>
-<li>判断数据库列名：and exists(select [列名] from [表名])</li>
-<li>判断字节长度：order by 数字</li>
-<li>联合查询注入：union select 1,2,… from [表名]</li>
-<li>根据数字位置爆数据。</li>
-</ol>
-<hr>
-<p>偏移注入（知道表名却不知道列名的情况下使用）：<br>假设表名为admin。初始字段数为12<br>
+<p>数据库结构：<br><img src="http://i.imgur.com/36xkh4X.png" alt=""></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
     </div>
@@ -709,13 +675,7 @@ userDao.save(userdata);
 <li>SQL  Server（mssql）（一般搭配asp/asp.net(aspx)+mssql）</li>
 </ol>
 <p>数据库结构：<br><img src="http://i.imgur.com/91xXxPj.png" alt=""></p>
-<hr>
-<p>权限：1.最高：sa（任何操作：文件管理/数据库操作/命令执行等）<br>2.普通：db（文件管理，数据库操作等）<br>3.最菜：public（数据库操作）</p>
-<hr>
-<p>注入（手工判断）：</p>
-<ol>
-<li>And 1=1和and 1=2 组合判断 （用永真和永假判断）</li>
-</ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
     </div>
@@ -776,13 +736,7 @@ userDao.save(userdata);
       
           
               <p>SQL注入原理：SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。<br>（数据库语句没有进行严密的过滤，致使执行非法查询）</p>
-<hr>
-<p>SQL分类：1.数字型注入<br>         2.字符型注入</p>
-<pre><code>3.搜索型注入
-</code></pre><hr>
-<p>数字型:参数为数字。<br>       例：www.test.com/test.php?id=123<br>字符型：参数为字符（英文字符串）<br>       例：www.test.com/test.php?id=asd<br>搜索型：注入位置为搜索框<br>例：</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i.imgur.com/eUlJs65.png" alt=""></h2><p>区别：SQL查询语句不相同。<br>数字型：$sql=”select <em> from A where id=$id”;<br>字符型：$sql=”select </em> from B where id=’$user ‘“;<br>搜索型：$sql=”select * from user where username like ‘%$name%’ order by username”;</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
           
       
     </div>
@@ -842,7 +796,7 @@ userDao.save(userdata);
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>主要CMD：<br>discuz ,dedecms（织梦）,wordpress,phpcms,jeecms,joomla,动易，</p>
+              <p>主要CMD：<br>discuz ,dedecms（织梦）,wordpress,phpcms,jeecms,joomla,动易，</p>
 <hr>
 <ol>
 <li>查看robots.txt</li>
@@ -850,17 +804,8 @@ userDao.save(userdata);
 <li>主页最下面的一栏信息</li>
 <li>通过站长工具的Whois或者zoomeye.org…</li>
 <li>后台</li>
-<li>工具（椰树，m7lrv）</li>
-</ol>
-<p>拿shell:</p>
-<ol>
-<li>在配置里插一句话</li>
-<li>双文件上传</li>
-<li>数据库备份</li>
-<li>利用解析漏洞</li>
-</ol>
-<p>作用：方便上网查询相关CMS漏洞、后台位置、默认密码等</p>
-
+<li>工具（椰树，m7lrv）
+          
       
     </div>
     
@@ -869,6 +814,10 @@ userDao.save(userdata);
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/信息收集之CMS/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -915,21 +864,10 @@ userDao.save(userdata);
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
+              <ol>
 <li>ping  (ping带WWW、和ping不带www)    （不一样则存在CDN）</li>
-<li><p>采集二级域名（子域名）（URL采集工具）<br>URL采集(子域名挖掘)→<br>域名批量查询（<a href="http://ip.chinaz.com/ipbatch）→" target="_blank" rel="external">http://ip.chinaz.com/ipbatch）→</a><br>找非节点（CDN）IP→</p>
-</li>
-<li><p>查看接受收的邮件，显示原文，看IP</p>
-</li>
-<li>基本上所有的大站都有一个段（C段），这个段可能会有几个系统，且ip很接近 </li>
-<li>通过威胁情报平台<br>360: <a href="https://ti.360.com/#" target="_blank" rel="external">https://ti.360.com/#</a><br>ThreatBook: <a href="https://x.threatbook.cn" target="_blank" rel="external">https://x.threatbook.cn</a></li>
-<li>查域名历史IP(在历史解析里面一般存在真实IP段)<br><a href="http://viewdns.info/iphistory/?domain=" target="_blank" rel="external">http://viewdns.info/iphistory/?domain=</a><br><a href="https://www.zoomeye.org" target="_blank" rel="external">https://www.zoomeye.org</a><br>www.shodan.io</li>
-<li>全网扫描<br><a href="http://www.evil0x.com/posts/6547.html" target="_blank" rel="external">http://www.evil0x.com/posts/6547.html</a></li>
-<li>查防护软件等信息（出现防护警告时）<br>查看元素→网络→消息头→X-Safe-Firewall<br>搜索 防护提示符</li>
-</ol>
-<hr>
-<p>找真实IP的作用：运用DDOS攻击（分布式拒绝服务攻击）/直接尝试连接服务器配合<br>DDOS作用：造成防火墙处理错误锁死、服务器瘫痪<br>CDN作用：实时的根据网络流量和个节点的接连、负载情况以及用户的距离和相信时间将用户的请求重新导向离用户最近的服务器节点上。内容服务基于缓存服务器，也称为代理缓存。</p>
-
+<li>采集二级域名（子域名）（URL采集工具）<br>URL采集(子域名挖掘)→<br>域名批量查询（<a href="http://ip.chinaz.com/ipbatch）→">http://ip.chinaz.com/ipbatch）→</a><br>找非节点（CDN）IP→
+          
       
     </div>
     
@@ -938,6 +876,10 @@ userDao.save(userdata);
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/信息探测之真实IP查询/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
