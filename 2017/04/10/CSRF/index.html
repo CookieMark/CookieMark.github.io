@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="CSRF（跨站请求伪造）：也被称为XSRF，感觉和CSS被称为XSS差不多。CSRF与XSS区别：XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站（个人理解：是否需要直接获取用户权限。）">
-<meta name="keywords">
+<meta name="keywords" content="Web安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSRF">
 <meta property="og:url" content="http://yoursite.com/2017/04/10/CSRF/index.html">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://i.imgur.com/6PuQrij.png">
 <meta property="og:image" content="http://i.imgur.com/7A84RE2.png">
 <meta property="og:image" content="http://i.imgur.com/b1hCUrx.png">
-<meta property="og:updated_time" content="2017-04-10T08:53:07.906Z">
+<meta property="og:updated_time" content="2017-04-12T09:38:33.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSRF">
 <meta name="twitter:description" content="CSRF（跨站请求伪造）：也被称为XSRF，感觉和CSS被称为XSS差不多。CSRF与XSS区别：XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站（个人理解：是否需要直接获取用户权限。）">
@@ -189,7 +189,7 @@
                             
                                 <a class="fa GitHub" href="#" title="GitHub"></a>
                             
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 知乎" href="#" title="知乎"></a>
                             
                         </ul>
                     </nav>
@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li></ul>
                     </div>
                 </section>
                 
@@ -267,7 +267,7 @@
                             
                                 <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 知乎" target="_blank" href="#" title="知乎"></a>
                             
                         </ul>
             </nav>
@@ -304,6 +304,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -334,7 +338,7 @@
         <p><span>本文标题:</span><a href="/2017/04/10/CSRF/">CSRF</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-10, 16:52:49</p>
-        <p><span>最后更新:</span>2017-04-10, 16:53:07</p>
+        <p><span>最后更新:</span>2017-04-12, 17:38:33</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/10/CSRF/" title="CSRF">http://yoursite.com/2017/04/10/CSRF/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/CSRF/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -494,7 +498,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 6;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }

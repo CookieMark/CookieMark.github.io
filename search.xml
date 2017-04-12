@@ -14,7 +14,7 @@
 <p>URL转发例子：<br>    当前URL为：www.xxoo.com/ppp.php<br>    点击“登陆”按钮后<br>URL还是  ：www.xxoo.com/ppp.php （没变化）</p>
 <hr>
 <p>不是所有的跳转都和上面有关，而是直接向服务器发送请求，例如：</p>
-<p>例如：<a href="”http://www.xxoo.com/new.jsp”">新闻30分</a><br>点击新闻30分按钮，跳到<a href="http://www.xxoo.com/new.jsp" target="_blank" rel="external">http://www.xxoo.com/new.jsp</a> 页面。</p>
+<p>例如：<code>&lt;a href=”http://www.xxoo.com/new.jsp”&gt;新闻30分&lt;/a&gt;</code><br>点击新闻30分按钮，跳到<a href="http://www.xxoo.com/new.jsp" target="_blank" rel="external">http://www.xxoo.com/new.jsp</a> 页面。</p>
 <p>和URL重定向区别：是直接向服务器发送请求，而不用间接的发送302状态码来跳转。（个人理解。。）</p>
 <hr>
 <p>钓鱼：<br>钓鱼网站：域名和某个页面做的非常相似，而且域名也相差无几。当受害者打开此网页，粗略的看了一下域名，发现页面也做的很像，然后输入账号密码，就被钓鱼了。</p>
@@ -82,6 +82,14 @@
 ]]></content>
       
         
+        <tags>
+            
+            <tag> Web安全 </tag>
+            
+            <tag> 上传文件 </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -134,6 +142,12 @@
 <p>当然，，管理员对于未知文件怎么可能会轻易点开呢，<br>所以我们还有个XSS+CSRF的利用方法（不知是不是这就是大佬们说的绝配。）<br>前提：存在个XSS点。且熟悉ajax操作。<br>因为不熟悉，所以。。</p>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> Web安全 </tag>
+            
+        </tags>
         
     </entry>
     
@@ -534,6 +548,12 @@ userDao.save(userdata);
 <p>利用截取的协议包，可进行任意的更改操作。从而达到相关测试的目的。<br>例如：1．修改/伪造的Cookies值  从而达到登陆的目的<br>      2．无限重放协议包，从而达到自动化暴力破解登陆账号的目的<br>      3．修改请求的上传文件类型。从而绕过本地/远程白名单限制。<br>      4．查看上传地址，从而获取上次文件的URL位置<br>      5．简单获取服务器信息</p>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> Web安全 </tag>
+            
+        </tags>
         
     </entry>
     
