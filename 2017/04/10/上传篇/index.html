@@ -20,10 +20,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="上传篇">
 <meta property="og:url" content="http://yoursite.com/2017/04/10/上传篇/index.html">
-<meta property="og:site_name" content="大佬要我改个名。">
+<meta property="og:site_name" content="大佬要我改个名">
 <meta property="og:description" content="上传：管理员用来管理网页，编辑网页的一个功能。也是攻击者用来上传Webshell的一个功能，没什么特殊情况一般存在于后台。当然也是有特殊的，例如注入上传，截包修改内容上传，修改个人头像时上传等。">
 <meta property="og:image" content="http://i.imgur.com/L63jUg6.png">
-<meta property="og:updated_time" content="2017-04-10T09:41:24.391Z">
+<meta property="og:updated_time" content="2017-04-12T05:58:14.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传篇">
 <meta name="twitter:description" content="上传：管理员用来管理网页，编辑网页的一个功能。也是攻击者用来上传Webshell的一个功能，没什么特殊情况一般存在于后台。当然也是有特殊的，例如注入上传，截包修改内容上传，修改个人头像时上传等。">
@@ -32,11 +32,11 @@
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="大佬要我改个名。" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="大佬要我改个名" type="application/atom+xml">
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/img/TiddlyWiki.png">
 
 
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>上传篇 | 大佬要我改个名。</title>
+<title>上传篇 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -75,7 +75,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -106,9 +106,16 @@
         </hgroup>
 
         
-        <p class="header-subtitle">今年的目标是先泡个女朋友。</p>
+        <p class="header-subtitle">今年的目标是先泡个女朋友</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -173,7 +180,7 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:1172136081@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" href="#" title="GitHub"></a>
                             
@@ -232,7 +239,7 @@
               <h1 class="header-author"><a href="/" title="回到主页">Mark</a></h1>
             </hgroup>
             
-            <p class="header-subtitle">今年的目标是先泡个女朋友。</p>
+            <p class="header-subtitle">今年的目标是先泡个女朋友</p>
             
             <nav class="header-menu">
                 <ul>
@@ -251,7 +258,7 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:1172136081@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
                             
@@ -316,7 +323,7 @@
 <p><img src="http://i.imgur.com/L63jUg6.png" alt=""><br>Apacher解析漏洞（与IIS有所不同）：<br>①    ：假如有个1.php.rar文件内容为&lt;?php  phpinfo();  ?&gt;<br>那么打开1.php.rar文件时并不是下载，而是现在phpinfo文件。<br>②    ：Apache解析扩展名时从后面解析，直至遇到认识的扩展名为止。（绕过上传）</p>
 <p>PHP CGI解析漏洞（Nginx服务器漏洞）：<br>   例如：当访问URL=www.baidu.com/1.jpg时显示的是一张图片，但是当加上/.php时就以Php形式去解析这张图片了。</p>
 <hr>
-<p>绕过上传漏洞：<br>   客户端使用javascript对扩展名验证：<br>1.本地构造上传HTML提交突破JS验证<br>2.查看元素，删除onsubmit事件。<br>3.先上传JPG后缀名，然后抓包再修改后缀名。<br>如果本地检查的是MIME:则同理，抓包修改mime类型。<br>注意修改类型的同时，修改Content-Length长度。</p>
+<p>绕过上传漏洞：<br>   客户端使用javascript对扩展名验证：<br>1.本地构造上传HTML提交突破JS验证<br>2.查看元素，删除onsubmit事件。<br>3.先上传JPG后缀名，然后抓包再修改后缀名。<br>如果本地检查的是MIME:则同理，抓包修改mime类型。<br>注意修改类型的同时，修改Content-Length长度。<br>4.利用空格（windows 会把空格给过滤。）</p>
 <hr>
 <p>服务端扩展名检测：<br>白盒：<br>1.如果IIS可利用上述的IIS漏洞，<br>2.cgi漏洞，<br>3.%00截断上传，<br>4.MIME验证：抓包修改<br>gif    image/gif<br>jpg    image/jpeg<br>php    application/octet-stream<br>asp  application/x-asap<br>png    image/png<br>7z    application/octet-stream<br>txt    text/plain<br>rar    application/octet-stream</p>
 <p>黑盒：<br>1.这类比较容易绕过，尝试一切后缀名，总有漏鱼之网。。例如cer，，asa<br>2.尝试错误后缀名上传，例如“asp. （点）”  “asp (空格)” 上传成功后windows系统自动剔除非法扩展名字符。然后剩下asp</p>
@@ -352,7 +359,7 @@
         <p><span>本文标题:</span><a href="/2017/04/10/上传篇/">上传篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-10, 17:41:32</p>
-        <p><span>最后更新:</span>2017-04-10, 17:41:24</p>
+        <p><span>最后更新:</span>2017-04-12, 13:58:14</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/10/上传篇/" title="上传篇">http://yoursite.com/2017/04/10/上传篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/上传篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -424,7 +431,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"上传篇　| 大佬要我改个名。　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"上传篇　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
