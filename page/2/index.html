@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息收集/">信息收集</a></li></ul>
                     </div>
                 </section>
                 
@@ -272,6 +272,188 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-SQL注入之nmap" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/SQL注入之nmap/" class="article-date">
+      <time datetime="2017-04-08T09:34:11.167Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>–r    利用文本（接编码转换文本或HTTP协议包）</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/SQL注入之nmap/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SQL手工注入之mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/SQL手工注入之mysql/" class="article-date">
+      <time datetime="2017-04-08T09:17:21.383Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>mysql数据库</p>
+<ul>
+<li>版本5.0↑，具有内置特定数据库（information_schema）。</li>
+<li>最高权限为root
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/SQL手工注入之mysql/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SQL手工注入之Oracle" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/SQL手工注入之Oracle/" class="article-date">
+      <time datetime="2017-04-08T09:14:16.455Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>文章：<a href="http://www.2cto.com/article/201301/186345.html" target="_blank" rel="external">http://www.2cto.com/article/201301/186345.html</a></p>
+<hr>
+<p>注：字段位置应写为null..不可以用数字，因为Oracle是强类型数据库。必须表明类型，null就可避免类型限制。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-SQL手工注入之Access" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -710,137 +892,9 @@
 
 
   
-    <article id="post-漏洞扫描之工具篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/漏洞扫描之工具篇/" class="article-date">
-      <time datetime="2017-04-08T08:24:16.651Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>常用工具：AWVS/Appscna/Netsparker工具的使用</p>
-<p>AWVS功能：<br>Tools（工具）<br>Web scanner  网站漏洞扫描<br>           Site Crawler    网站爬行<br>           Target Finder   扫描自定网段，开放指定端口的服务器<br>           Subdomain Scanner  子域名扫描<br>           Blind SQL injection  Sql盲注手工测试<br>           HTTP Editor  HTTP信息查看编辑<br>           HTTP  Sniffer      HTTP监听嗅探<br>           HTTP  fuzzer       HTTP模糊测试<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/漏洞扫描之工具篇/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTTP协议" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/HTTP协议/" class="article-date">
-      <time datetime="2017-04-08T04:38:10.917Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/HTTP协议/">HTTP协议</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>HTTP协议（超文本传输协议）：<br>  URL：网页地址。例：<a href="http://www.xxx.com/abc/bcd.html">http://www.xxx.com/abc/bcd.html</a><br>                     <a href="http://www.xxx.com/index.asp">http://www.xxx.com/index.asp</a><br>             <a href="http://www.xxx.com">http://www.xxx.com</a><br>                     等都是URL。</p>
-<hr>
-<p>HTTP遵循：请求（request）、相应（respsonse）  两部分</p>
-<p>http请求（request）：<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/HTTP协议/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>

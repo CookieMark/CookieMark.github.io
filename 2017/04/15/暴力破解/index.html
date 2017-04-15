@@ -15,20 +15,19 @@
 
 
 
-<meta name="description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta name="keywords">
+<meta name="description" content="暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。">
+<meta name="keywords" content="Web安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逻辑错误漏洞">
-<meta property="og:url" content="http://yoursite.com/2017/04/10/逻辑错误漏洞/index.html">
+<meta property="og:title" content="暴力破解">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/暴力破解/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta property="og:image" content="http://i.imgur.com/oJ1XwAo.png">
-<meta property="og:image" content="http://i.imgur.com/sLlMFno.png">
-<meta property="og:updated_time" content="2017-04-14T16:10:04.527Z">
+<meta property="og:description" content="暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。">
+<meta property="og:image" content="http://i.imgur.com/F5zbrG9.png">
+<meta property="og:updated_time" content="2017-04-15T04:00:56.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逻辑错误漏洞">
-<meta name="twitter:description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta name="twitter:image" content="http://i.imgur.com/oJ1XwAo.png">
+<meta name="twitter:title" content="暴力破解">
+<meta name="twitter:description" content="暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。">
+<meta name="twitter:image" content="http://i.imgur.com/F5zbrG9.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>逻辑错误漏洞 | 大佬要我改个名</title>
+<title>暴力破解 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +270,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-逻辑错误漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-暴力破解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/10/逻辑错误漏洞/" class="article-date">
-      <time datetime="2017-04-10T08:57:07.994Z" itemprop="datePublished">2017-04-10</time>
+      <a href="/2017/04/15/暴力破解/" class="article-date">
+      <time datetime="2017-04-15T03:51:14.415Z" itemprop="datePublished">2017-04-15</time>
 </a>
 
 
@@ -290,7 +289,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      逻辑错误漏洞
+      暴力破解
     </h1>
   
 
@@ -300,6 +299,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -307,32 +310,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)<br><a id="more"></a><br>例如：这件在本地验证时值10元，传到服务端也是10元，那么问题来了，假如一件10元的物品被修改成1元传到服务器，服务端没有验证，是不是也是用1元来解析物品价格呢，逻辑漏洞就是这种。</p>
-<p>出现地方：业务流程上。所以一般工具都无法识别。<br>   例如：修改密码，找回密码，修改个人资料，物品购买时资金提交等。</p>
-<p>绕过授权验证：<br>   水平越权：相同级别用户之间的信息访问或修改<br>   垂直越权：不同级别直接的用户的信息访问或修改（例如：用户和管理员）</p>
-<p>  例子：<br>当访问我的个人信息时（假设我的账号为123456），<br>URL为：www.qwerdf.com/user/Information?id=123456.php<br>但当我把<br>URL改为：www.qwerdf.com/user/Information?id=456.php<br>也访问了账号456的人的信息，<br>就称为水平越权。</p>
-<p>当我把user改成admin,（假设某一位管理员ID=1）<br>URL为：www.qwerdf.com/admin/Information?id=1.php时<br>我也访问了管理员信息<br>就称为垂直越权</p>
-<p>当然，除了查看信息，删除，修改，增加等非正常操作都是越权。</p>
+        <p>暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。<br><a id="more"></a><br>弱口令字典在线生成网站：<a href="http://pass.cnseay.com/" target="_blank" rel="external">http://pass.cnseay.com/</a><br><img src="http://i.imgur.com/F5zbrG9.png" alt=""></p>
 <hr>
-<p>密码找回逻辑漏洞：<br>假设：www.xxoo.com/mima/back.asp 为一个密码找回页面<br><img src="http://i.imgur.com/oJ1XwAo.png" alt=""><br>当我填写找回密码的账号时，跳到身份验证这一步，获取验证码，填写正确后，就会跳到设置新密码那一步，然后完成。</p>
-<p>但是如果身份验证那一步没设置好，就会出现密码找回的逻辑漏洞。</p>
-<p>假设我在身份验证的时候抓包，发现包里有个验证手机号码为：186<strong><em>**</em></strong>。<br>然后我把包里的号码修改为其它手机号，发现其它手机号接收到了验证码，<br>我就可以凭借这验证码修改密码了。</p>
-<p>这就是逻辑漏洞。</p>
-<p>利用过程：<br>1.输入其它账号，<br>2.到身份验证时修改原本的验证号码的信息。<br>3.得到返回的验证码后<br>4.加以利用就可以做出修改了。</p>
-<hr>
-<p>支付逻辑漏洞：<br>原理同上。。<br>都是在发送服务器端支付信息时修改里面的内容即可。</p>
-<p>利用地方：<br>1.商品数量<br>2.商品价格<br>3.商品折扣<br>4.商品运费<br>5.商品信息的中转、跳转、到支付接口时的参数。 </p>
-<p>（当类型判断不正确时，例如加入数量应该为整型，但是强行修改为字符型或其它不相关的类型时，有可能会导致系统崩毁或报错）</p>
-<hr>
-<p>账户的恶意攻击：<br>   假入A账户要冻结B账户的银行卡。操作如下：</p>
+<p>利用Burpsuit破解：</p>
 <ol>
-<li>A账户输入B账户的银行卡信息，然后故意输错密码</li>
-<li>当系统的安全机制（防爆破）提示还可输错4次时</li>
-<li>A再进行输错的操作</li>
-<li>B账户冻结</li>
-<li>账户的恶意攻击成功实施。</li>
+<li>抓包</li>
+<li>发送包到Intruder</li>
+<li>选择变量<br>Sniper：对变量一次进行破解（依照变量数进行所有字典的组合）<br>Battering ram：对变量同时进行破解（密码和账号是同一个，直至轮完字典）<br>Pitchfork：每个变量对应一个字典（组合为最小字典的数量）<br>Cluster bomb：每个变量对应一个字典，并交集破解（A字典*B字典）</li>
+<li>选择Payload type（这个看字典类型来选）</li>
+<li>Payload options  选择字典并导入，或者自己添加</li>
+<li>点击Start attack 开始破解。</li>
+<li>在弹出的Intruder attack 查看Length 的返回值，不一样长度则表现出返回的内容不同，所以字段不同，所以有可能是破解成功的Payload<br>（其实相同也是有可能成功了的，，因为刚刚在破解DWVA时发现返回的页面为成功的数据，但是Length却相同。。）</li>
 </ol>
-<p><img src="http://i.imgur.com/sLlMFno.png" alt=""></p>
+<p>其它工具还有PKAV等。<br><strong>PKAV：适用于爆破带有图片验证码的。但是本身不抓爆，需配合抓包工具导请求包。</strong></p>
+<hr>
+<p>遇到特殊情况：<br>1.假如存在验证Token值时：<a href="https://my.oschina.net/oby/blog/847522" target="_blank" rel="external">https://my.oschina.net/oby/blog/847522</a><br>2.存在验证码时：<br>   验证码固定：输入正确验证码后抓包，爆破登录账号和密码<br>   验证码不点击确定时不重新获取：输入正确验证码后抓包，爆破登录账号和密码</p>
+<p>3.验证码：不为图片（为数据时）<br>  抓取网页源代码读取验证码位置。<br>4.带有登录时效：设置线程爆破<br>5.带有IP登陆次数限制：<br>6.登陆的密码和账号进行过加密：需要知道加密的JS文件<br><a href="http://www.myhack58.com/Article/60/61/2017/83932.htm" target="_blank" rel="external">http://www.myhack58.com/Article/60/61/2017/83932.htm</a></p>
+<hr>
 
       
     </div>
@@ -341,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/15/暴力破解/">暴力破解</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-10, 16:57:07</p>
-        <p><span>最后更新:</span>2017-04-15, 00:10:04</p>
+        <p><span>发布时间:</span>2017-04-15, 11:51:14</p>
+        <p><span>最后更新:</span>2017-04-15, 12:00:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/10/逻辑错误漏洞/" title="逻辑错误漏洞">http://yoursite.com/2017/04/10/逻辑错误漏洞/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/逻辑错误漏洞/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/15/暴力破解/" title="暴力破解">http://yoursite.com/2017/04/15/暴力破解/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/15/暴力破解/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -360,15 +354,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/10/CSRF/">
-                    CSRF
+                <a href="/2017/04/10/URL跳转与钓鱼/">
+                    URL跳转与钓鱼
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/10/上传篇/">
-                    上传篇
+                <a href="/2017/04/15/社会工程学/">
+                    社会工程学
                 </a>
             </div>
         
@@ -416,7 +410,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"逻辑错误漏洞　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"暴力破解　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -436,7 +430,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/10/CSRF/" title="上一篇: CSRF">
+            <a href="/2017/04/10/URL跳转与钓鱼/" title="上一篇: URL跳转与钓鱼">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -444,7 +438,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/10/上传篇/" title="下一篇: 上传篇">
+            <a href="/2017/04/15/社会工程学/" title="下一篇: 社会工程学">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="大佬要我改个名">
 <meta property="og:description" content="上传：管理员用来管理网页，编辑网页的一个功能。也是攻击者用来上传Webshell的一个功能，没什么特殊情况一般存在于后台。当然也是有特殊的，例如注入上传，截包修改内容上传，修改个人头像时上传等。">
 <meta property="og:image" content="http://i.imgur.com/L63jUg6.png">
-<meta property="og:updated_time" content="2017-04-12T09:40:16.935Z">
+<meta property="og:updated_time" content="2017-04-14T16:22:05.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传篇">
 <meta name="twitter:description" content="上传：管理员用来管理网页，编辑网页的一个功能。也是攻击者用来上传Webshell的一个功能，没什么特殊情况一般存在于后台。当然也是有特殊的，例如注入上传，截包修改内容上传，修改个人头像时上传等。">
@@ -193,7 +193,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息收集/">信息收集</a></li></ul>
                     </div>
                 </section>
                 
@@ -314,9 +314,10 @@
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>其中上传漏洞一般为以下几种：</p>
 <ol>
 <li>任意文件上传（无类型限制）</li>
-<li>IIS文件解析漏洞上次图片等文件（ma.asp;.jpg我也当是图片了。。）</li>
+<li>IIS文件解析漏洞上传图片等文件（ma.asp;.jpg我也当是图片了。。）</li>
 <li>利用文件编辑器的漏洞上传</li>
 <li>抓包，构造文件上传漏洞。</li>
+<li>如果是本地的JS验证，可关闭JS上传或者中间人攻击。</li>
 </ol>
 <hr>
 <p>任意文件上传：看好上传类型即可。解析asp的就上传asp,其它同理。</p>
@@ -329,7 +330,18 @@
 <hr>
 <p>绕过上传漏洞：<br>   客户端使用javascript对扩展名验证：<br>1.本地构造上传HTML提交突破JS验证<br>2.查看元素，删除onsubmit事件。<br>3.先上传JPG后缀名，然后抓包再修改后缀名。<br>如果本地检查的是MIME:则同理，抓包修改mime类型。<br>注意修改类型的同时，修改Content-Length长度。<br>4.利用空格（windows 会把空格给过滤。）</p>
 <hr>
-<p>服务端扩展名检测：<br>白盒：<br>1.如果IIS可利用上述的IIS漏洞，<br>2.cgi漏洞，<br>3.%00截断上传，<br>4.MIME验证：抓包修改<br>gif    image/gif<br>jpg    image/jpeg<br>php    application/octet-stream<br>asp  application/x-asap<br>png    image/png<br>7z    application/octet-stream<br>txt    text/plain<br>rar    application/octet-stream</p>
+<p>服务端扩展名检测：<br>白盒：<br>1.如果IIS可利用上述的IIS漏洞，<br>2.cgi漏洞，<br>3.%00截断上传，<br>4.MIME验证：抓包修改</p>
+<ul>
+<li>gif    image/gif</li>
+<li>jpg    image/jpeg</li>
+<li>php    application/octet-stream</li>
+<li>asp  application/x-asap</li>
+<li>png    image/png</li>
+<li>7z    application/octet-stream</li>
+<li>txt    text/plain</li>
+<li>rar    application/octet-stream</li>
+</ul>
+<p>5.运用::$DATA数据流上传，具体我也忘了，上次比赛GET到的。<br>用法：如filename=1.php  修改为:filename=1.php::$DATA</p>
 <p>黑盒：<br>1.这类比较容易绕过，尝试一切后缀名，总有漏鱼之网。。例如cer，，asa<br>2.尝试错误后缀名上传，例如“asp. （点）”  “asp (空格)” 上传成功后windows系统自动剔除非法扩展名字符。然后剩下asp</p>
 <p>目录验证：抓包时，如果看到路径，可尝试修改路径名，因为如果不存在路径文件名，系统一般会创建，然后利用IIS解析漏洞进行解析。</p>
 <p>服务端使用重命名：<br>1.抓包查看返回包<br>2.查看源代码。</p>
@@ -363,7 +375,7 @@
         <p><span>本文标题:</span><a href="/2017/04/10/上传篇/">上传篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-10, 17:41:32</p>
-        <p><span>最后更新:</span>2017-04-12, 17:40:16</p>
+        <p><span>最后更新:</span>2017-04-15, 00:22:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/10/上传篇/" title="上传篇">http://yoursite.com/2017/04/10/上传篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/上传篇/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -469,7 +481,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

