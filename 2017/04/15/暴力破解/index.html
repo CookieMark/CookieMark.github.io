@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="大佬要我改个名">
 <meta property="og:description" content="暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。">
 <meta property="og:image" content="http://i.imgur.com/F5zbrG9.png">
-<meta property="og:updated_time" content="2017-04-15T04:00:56.105Z">
+<meta property="og:updated_time" content="2017-04-15T07:16:48.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暴力破解">
 <meta name="twitter:description" content="暴力破解：也可称为弱口令猜解，通常和社工（社会工程学）挂钩，过程需要有强大的字典。特殊情况不用，例如admin、admin123、admin888、adminadmin等若口令可手工猜解。">
@@ -320,9 +320,9 @@
 <li>选择Payload type（这个看字典类型来选）</li>
 <li>Payload options  选择字典并导入，或者自己添加</li>
 <li>点击Start attack 开始破解。</li>
-<li>在弹出的Intruder attack 查看Length 的返回值，不一样长度则表现出返回的内容不同，所以字段不同，所以有可能是破解成功的Payload<br>（其实相同也是有可能成功了的，，因为刚刚在破解DWVA时发现返回的页面为成功的数据，但是Length却相同。。）</li>
+<li>在弹出的Intruder attack 查看Length 的返回值，不一样长度则表现出返回的内容不同，所以字段不同，所以有可能是破解成功的Payload</li>
 </ol>
-<p>其它工具还有PKAV等。<br><strong>PKAV：适用于爆破带有图片验证码的。但是本身不抓爆，需配合抓包工具导请求包。</strong></p>
+<p>其它工具还有PKAV等。<br><strong>PKAV：适用于爆破带有图片验证码的。但是本身不抓包，需配合抓包工具导请求包。</strong></p>
 <hr>
 <p>遇到特殊情况：<br>1.假如存在验证Token值时：<a href="https://my.oschina.net/oby/blog/847522" target="_blank" rel="external">https://my.oschina.net/oby/blog/847522</a><br>2.存在验证码时：<br>   验证码固定：输入正确验证码后抓包，爆破登录账号和密码<br>   验证码不点击确定时不重新获取：输入正确验证码后抓包，爆破登录账号和密码</p>
 <p>3.验证码：不为图片（为数据时）<br>  抓取网页源代码读取验证码位置。<br>4.带有登录时效：设置线程爆破<br>5.带有IP登陆次数限制：<br>6.登陆的密码和账号进行过加密：需要知道加密的JS文件<br><a href="http://www.myhack58.com/Article/60/61/2017/83932.htm" target="_blank" rel="external">http://www.myhack58.com/Article/60/61/2017/83932.htm</a></p>
@@ -338,7 +338,7 @@
         <p><span>本文标题:</span><a href="/2017/04/15/暴力破解/">暴力破解</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-15, 11:51:14</p>
-        <p><span>最后更新:</span>2017-04-15, 12:00:56</p>
+        <p><span>最后更新:</span>2017-04-15, 15:16:48</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/15/暴力破解/" title="暴力破解">http://yoursite.com/2017/04/15/暴力破解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/15/暴力破解/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -498,7 +498,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 6;
+                var backgroundnum = 7;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }

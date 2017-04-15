@@ -20,10 +20,7 @@
 <hr>
 <p>远程包含：www.xxoo.com/action/n=<a href="http://www.bbb.com/2/n=robots.txt" target="_blank" rel="external">http://www.bbb.com/2/n=robots.txt</a><br>        则输入 <a href="http://www.bbb.com网站的robots.txt文件" target="_blank" rel="external">http://www.bbb.com网站的robots.txt文件</a><br>  前提：都有包含漏洞。都开启了allow_url_include=on</p>
 <hr>
-<p>注：1.其实有些版本还支持%00截断，例如www.xxoo.com/action/n=file.php%00.jpg。但是解析是以php解析（绕过后缀必须为指定后缀）。</p>
-<ol>
-<li>str_replace（）：将”http:// ”、”<a href="https://”、" target="_blank" rel="external">https://”、</a> ” ../”、”..\”替换为空字符<br>绕过：双写绕过替换规则如page=ht<a href="http://tp://192.168.1.1/robots.txt" target="_blank" rel="external">http://tp://192.168.1.1/robots.txt</a> (应用于远程包含)<br>3.当运用个别包含函数时，输入错误文件可爆出绝对路径</li>
-</ol>
+<p>注：<br>1.其实有些版本还支持%00截断，例如www.xxoo.com/action/n=file.php%00.jpg。但是解析是以php解析（绕过后缀必须为指定后缀）。<br>2.str_replace（）：将”http:// ”、”<a href="https://”、" target="_blank" rel="external">https://”、</a> ” ../”、”..\”替换为空字符<br>  绕过：双写绕过替换规则如page=ht<a href="http://tp://192.168.1.1/robots.txt" target="_blank" rel="external">http://tp://192.168.1.1/robots.txt</a> (应用于远程包含)<br>3.当运用个别包含函数时，输入错误文件可爆出绝对路径</p>
 ]]></content>
       
         
@@ -70,9 +67,9 @@
 <li>选择Payload type（这个看字典类型来选）</li>
 <li>Payload options  选择字典并导入，或者自己添加</li>
 <li>点击Start attack 开始破解。</li>
-<li>在弹出的Intruder attack 查看Length 的返回值，不一样长度则表现出返回的内容不同，所以字段不同，所以有可能是破解成功的Payload<br>（其实相同也是有可能成功了的，，因为刚刚在破解DWVA时发现返回的页面为成功的数据，但是Length却相同。。）</li>
+<li>在弹出的Intruder attack 查看Length 的返回值，不一样长度则表现出返回的内容不同，所以字段不同，所以有可能是破解成功的Payload</li>
 </ol>
-<p>其它工具还有PKAV等。<br><strong>PKAV：适用于爆破带有图片验证码的。但是本身不抓爆，需配合抓包工具导请求包。</strong></p>
+<p>其它工具还有PKAV等。<br><strong>PKAV：适用于爆破带有图片验证码的。但是本身不抓包，需配合抓包工具导请求包。</strong></p>
 <hr>
 <p>遇到特殊情况：<br>1.假如存在验证Token值时：<a href="https://my.oschina.net/oby/blog/847522" target="_blank" rel="external">https://my.oschina.net/oby/blog/847522</a><br>2.存在验证码时：<br>   验证码固定：输入正确验证码后抓包，爆破登录账号和密码<br>   验证码不点击确定时不重新获取：输入正确验证码后抓包，爆破登录账号和密码</p>
 <p>3.验证码：不为图片（为数据时）<br>  抓取网页源代码读取验证码位置。<br>4.带有登录时效：设置线程爆破<br>5.带有IP登陆次数限制：<br>6.登陆的密码和账号进行过加密：需要知道加密的JS文件<br><a href="http://www.myhack58.com/Article/60/61/2017/83932.htm" target="_blank" rel="external">http://www.myhack58.com/Article/60/61/2017/83932.htm</a></p>

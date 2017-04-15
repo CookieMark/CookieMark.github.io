@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/15/文件包含漏洞/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
 <meta property="og:description" content="文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）">
-<meta property="og:updated_time" content="2017-04-15T03:42:45.662Z">
+<meta property="og:updated_time" content="2017-04-15T07:13:53.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件包含漏洞">
 <meta name="twitter:description" content="文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）">
@@ -323,10 +323,7 @@
 <hr>
 <p>远程包含：www.xxoo.com/action/n=<a href="http://www.bbb.com/2/n=robots.txt" target="_blank" rel="external">http://www.bbb.com/2/n=robots.txt</a><br>        则输入 <a href="http://www.bbb.com网站的robots.txt文件" target="_blank" rel="external">http://www.bbb.com网站的robots.txt文件</a><br>  前提：都有包含漏洞。都开启了allow_url_include=on</p>
 <hr>
-<p>注：1.其实有些版本还支持%00截断，例如www.xxoo.com/action/n=file.php%00.jpg。但是解析是以php解析（绕过后缀必须为指定后缀）。</p>
-<ol>
-<li>str_replace（）：将”http:// ”、”<a href="https://”、" target="_blank" rel="external">https://”、</a> ” ../”、”..\”替换为空字符<br>绕过：双写绕过替换规则如page=ht<a href="http://tp://192.168.1.1/robots.txt" target="_blank" rel="external">http://tp://192.168.1.1/robots.txt</a> (应用于远程包含)<br>3.当运用个别包含函数时，输入错误文件可爆出绝对路径</li>
-</ol>
+<p>注：<br>1.其实有些版本还支持%00截断，例如www.xxoo.com/action/n=file.php%00.jpg。但是解析是以php解析（绕过后缀必须为指定后缀）。<br>2.str_replace（）：将”http:// ”、”<a href="https://”、" target="_blank" rel="external">https://”、</a> ” ../”、”..\”替换为空字符<br>  绕过：双写绕过替换规则如page=ht<a href="http://tp://192.168.1.1/robots.txt" target="_blank" rel="external">http://tp://192.168.1.1/robots.txt</a> (应用于远程包含)<br>3.当运用个别包含函数时，输入错误文件可爆出绝对路径</p>
 
       
     </div>
@@ -338,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-15, 11:51:16</p>
-        <p><span>最后更新:</span>2017-04-15, 11:42:45</p>
+        <p><span>最后更新:</span>2017-04-15, 15:13:53</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/15/文件包含漏洞/" title="文件包含漏洞">http://yoursite.com/2017/04/15/文件包含漏洞/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/15/文件包含漏洞/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -490,7 +487,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 6;
+                var backgroundnum = 7;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
