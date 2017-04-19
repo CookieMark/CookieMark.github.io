@@ -48,7 +48,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-minimal.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -273,6 +273,128 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-信息探测_端口篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/信息探测_端口篇/" class="article-date">
+      <time datetime="2017-04-08T08:40:20.962Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等</p>
+<p>Nmap参数的使用：<br>              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）<br>             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记<br>             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）<br>             -sP  ping扫描  （测试一个段的主机存活IP）<br>             -sU  UDP扫描  （因为不可靠，所以一般不用）<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/信息探测_端口篇/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-信息探测_谷歌语法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/信息探测_谷歌语法/" class="article-date">
+      <time datetime="2017-04-08T08:40:20.960Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>Google Hack:<br>（大部分语法也可用于百度）</p>
+<p>主要语法：<br>Site：找到与指定网站有联系的URL。 （用于搜索子域名）<br>Intext：正文存在关键字的网页  （搜索重要信息）<br>Intitle：标题中存在关键字的网页 （搜索后台等具有关键字的URL）<br>Inurl：url中存在关键字的网页 （寻找伪静态持有的网页类型）<br>Filetype:指定文件类型<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/信息探测_谷歌语法/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-漏洞扫描之工具篇" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -452,7 +574,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 7;
+                var backgroundnum = 6;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }

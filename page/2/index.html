@@ -48,7 +48,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-minimal.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -272,6 +272,145 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-代码注入之XPath篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/代码注入之XPath篇/" class="article-date">
+      <time datetime="2017-04-08T09:39:58.589Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>XPath：XML的路径语言（选取XML节点的一门语言）<br>（和XML注入类似）</p>
+<hr>
+<p>例如 user.xml文件是这么写的：</p>
+<pre><code class="bash">&lt;users&gt;
+     &lt;user&gt;
+         &lt;firstname&gt;Ben&lt;/firstname&gt;
+         &lt;lastname&gt;Elmore&lt;/lastname&gt;
+         &lt;loginID&gt;abc&lt;/loginID&gt;
+         &lt;password&gt;<span class="built_in">test</span>123&lt;/password&gt;
+     &lt;/user&gt;
+     &lt;user&gt;
+         &lt;firstname&gt;Shlomy&lt;/firstname&gt;
+         &lt;lastname&gt;Gantz&lt;/lastname&gt;
+         &lt;loginID&gt;xyz&lt;/loginID&gt;
+         &lt;password&gt;123<span class="built_in">test</span>&lt;/password&gt;
+     &lt;/user&gt;
+</code></pre>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/代码注入之XPath篇/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-代码注入之XML篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/代码注入之XML篇/" class="article-date">
+      <time datetime="2017-04-08T09:38:42.897Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质）</p>
+<p>（这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/08/代码注入之XML篇/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-SQL注入之nmap" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -676,7 +815,7 @@
 <li>网页图标</li>
 <li>主页最下面的一栏信息</li>
 <li>通过站长工具的Whois或者zoomeye.org…</li>
-<li>后台</li>
+<li>后台模板</li>
 <li>工具（椰树，m7lrv）
           
       
@@ -770,128 +909,6 @@
 
 
   
-    <article id="post-信息探测_端口篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/信息探测_端口篇/" class="article-date">
-      <time datetime="2017-04-08T08:40:20.962Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Nmap:可用于端口扫描/指纹识别/检测SQL注射/网页爬行/数据库密码检查等</p>
-<p>Nmap参数的使用：<br>              -sT  TCP连接扫描  （被扫描的系统会产生大量连接信息并写入日记）<br>             -sS  半开扫描  (即TCP SYN扫描) 很少系统把他写入系统日记<br>             -sN/sF  Fin数据包扫描  （即使SYN扫描都无法确定的情况下使用）<br>             -sP  ping扫描  （测试一个段的主机存活IP）<br>             -sU  UDP扫描  （因为不可靠，所以一般不用）<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/信息探测_端口篇/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-信息探测_谷歌语法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/信息探测_谷歌语法/" class="article-date">
-      <time datetime="2017-04-08T08:40:20.960Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Google Hack:<br>（大部分语法也可用于百度）</p>
-<p>主要语法：<br>Site：找到与指定网站有联系的URL。 （用于搜索子域名）<br>Intext：正文存在关键字的网页  （搜索重要信息）<br>Intitle：标题中存在关键字的网页 （搜索后台等具有关键字的URL）<br>Inurl：url中存在关键字的网页 （寻找伪静态持有的网页类型）<br>Filetype:指定文件类型<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/信息探测_谷歌语法/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -943,7 +960,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 7;
+                var backgroundnum = 6;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }

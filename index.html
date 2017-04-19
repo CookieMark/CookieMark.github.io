@@ -48,7 +48,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-minimal.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -272,6 +272,130 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Http参数污染" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/18/Http参数污染/" class="article-date">
+      <time datetime="2017-04-18T02:06:23.435Z" itemprop="datePublished">2017-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/Http参数污染/">HTTP参数污染</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/04/18/Http参数污染/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-旁注攻击" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/15/旁注攻击/" class="article-date">
+      <time datetime="2017-04-15T09:42:25.351Z" itemprop="datePublished">2017-04-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/15/旁注攻击/">旁注攻击</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>旁注攻击：同一台服务器上有多个网站。<br>当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/04/15/旁注攻击/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-文件包含漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -777,145 +901,6 @@
 
 
   
-    <article id="post-代码注入之XPath篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/代码注入之XPath篇/" class="article-date">
-      <time datetime="2017-04-08T09:39:58.589Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>XPath：XML的路径语言（选取XML节点的一门语言）<br>（和XML注入类似）</p>
-<hr>
-<p>例如 user.xml文件是这么写的：</p>
-<pre><code class="bash">&lt;users&gt;
-     &lt;user&gt;
-         &lt;firstname&gt;Ben&lt;/firstname&gt;
-         &lt;lastname&gt;Elmore&lt;/lastname&gt;
-         &lt;loginID&gt;abc&lt;/loginID&gt;
-         &lt;password&gt;<span class="built_in">test</span>123&lt;/password&gt;
-     &lt;/user&gt;
-     &lt;user&gt;
-         &lt;firstname&gt;Shlomy&lt;/firstname&gt;
-         &lt;lastname&gt;Gantz&lt;/lastname&gt;
-         &lt;loginID&gt;xyz&lt;/loginID&gt;
-         &lt;password&gt;123<span class="built_in">test</span>&lt;/password&gt;
-     &lt;/user&gt;
-</code></pre>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/代码注入之XPath篇/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-代码注入之XML篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/代码注入之XML篇/" class="article-date">
-      <time datetime="2017-04-08T09:38:42.897Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>XML：可扩展标识语言（和超文本标记语言有点类似，不过标签是带有自定义性质的，带有补充超文本语言的性质）</p>
-<p>（这个注入就是改写XML文件来利用。都需要闭合标签，然后插入数据，形式和SQL注入+XSS差不多）</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2017/04/08/代码注入之XML篇/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -967,7 +952,7 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 7;
+                var backgroundnum = 6;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }

