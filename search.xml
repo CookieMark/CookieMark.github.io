@@ -3,10 +3,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[cookie 欺骗进后台]]></title>
       <url>/2017/04/21/Cookie%E6%AC%BA%E9%AA%97%E8%BF%9B%E5%90%8E%E5%8F%B0/</url>
-      <content type="html"><![CDATA[<hr>
-<h2 id="title-cookie-欺骗进后台"><a href="#title-cookie-欺骗进后台" class="headerlink" title="title:cookie 欺骗进后台"></a>title:cookie 欺骗进后台</h2><p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
+      <content type="html"><![CDATA[<p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
 <hr>
 <p>phpecms1.3/admin/cms_check.php文件有一段代码</p>
@@ -16,7 +15,7 @@
         };
 ?&gt;
 </code></pre>
-<p>这代码意思是如果cookie是admin_name 则跳转成功，如果是其它则非法登陆。</p>
+<p><strong>这代码意思是如果cookie是admin_name 则跳转成功，如果是其它则非法登陆。</strong></p>
 <hr>
 <p>/phpecms1.3/admin/cms_welcome.php文件：</p>
 <pre><code class="bash">&lt;?php
@@ -56,11 +55,11 @@ include(<span class="string">'cms_check.php'</span>);
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>后台文件没有任何判断，直接包含进去</p>
+<p><strong>后台文件没有任何判断，直接包含进去</strong></p>
 <hr>
 <p>如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
-<p>刷新修改过的URL，成功进入后台</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></h2>]]></content>
+<p>刷新修改过的URL，成功进入后台<br><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></p>
+]]></content>
       
         
     </entry>
