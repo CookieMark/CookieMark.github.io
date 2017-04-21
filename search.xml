@@ -218,9 +218,10 @@ include(<span class="string">'cms_check.php'</span>);
     <entry>
       <title><![CDATA[URL跳转与钓鱼]]></title>
       <url>/2017/04/10/URL%E8%B7%B3%E8%BD%AC%E4%B8%8E%E9%92%93%E9%B1%BC/</url>
-      <content type="html"><![CDATA[<p>URL跳转：<br>分为客户端跳转和服务端跳转。但是结果都是一样，跳到另外一个页面。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>客户端跳转称为：URL重定向 </p>
-<h2 id="服务端跳转称为：URL转发"><a href="#服务端跳转称为：URL转发" class="headerlink" title="服务端跳转称为：URL转发"></a>服务端跳转称为：URL转发</h2><p>URL重定向例子：<br>   当前URL为：www.xxoo.com/ppp.php<br>   点击“登陆”按钮后<br>   URL变为 ：www.xxoo.com/login.php</p>
+      <content type="html"><![CDATA[<p>URL跳转：分为客户端跳转和服务端跳转。但是结果都是一样，跳到另外一个页面。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>客户端跳转称为：URL重定向<br>服务端跳转称为：URL转发</p>
+<hr>
+<p>URL重定向例子：<br>   当前URL为：www.xxoo.com/ppp.php<br>   点击“登陆”按钮后<br>   URL变为 ：www.xxoo.com/login.php</p>
 <p>注：重定向状态码为：302</p>
 <hr>
 <p>URL转发例子：<br>    当前URL为：www.xxoo.com/ppp.php<br>    点击“登陆”按钮后<br>URL还是  ：www.xxoo.com/ppp.php （没变化）</p>
