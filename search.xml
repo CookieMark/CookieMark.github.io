@@ -3,6 +3,69 @@
   
     
     <entry>
+      <title></title>
+      <url>/2017/04/21/Cookie%E6%AC%BA%E9%AA%97%E8%BF%9B%E5%90%8E%E5%8F%B0/</url>
+      <content type="html"><![CDATA[<hr>
+<h2 id="title-cookie-欺骗进后台"><a href="#title-cookie-欺骗进后台" class="headerlink" title="title:cookie 欺骗进后台"></a>title:cookie 欺骗进后台</h2><p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
+<hr>
+<p>phpecms1.3/admin/cms_check.php文件有一段代码</p>
+<pre><code class="bash">&lt;?php
+        <span class="keyword">if</span>(!isset(<span class="variable">$_COOKIE</span>[<span class="string">'admin_name'</span>])){
+                alert_href(<span class="string">'非法登录'</span>,<span class="string">'cms_login.php'</span>);
+        };
+?&gt;
+</code></pre>
+<p>这代码意思是如果cookie是admin_name 则跳转成功，如果是其它则非法登陆。</p>
+<hr>
+<p>/phpecms1.3/admin/cms_welcome.php文件：</p>
+<pre><code class="bash">&lt;?php
+include(<span class="string">'../system/inc.php'</span>);
+include(<span class="string">'cms_check.php'</span>); 
+
+?&gt;
+&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;
+&lt;html xmlns=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;
+&lt;head&gt;
+&lt;?php include(<span class="string">'inc_head.php'</span>) ?&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php include(<span class="string">'inc_header.php'</span>) ?&gt;
+&lt;div id=<span class="string">"content"</span>&gt;
+        &lt;div class=<span class="string">"container"</span>&gt;
+                &lt;div class=<span class="string">"line-big"</span>&gt;
+                        &lt;?php include(<span class="string">'inc_left.php'</span>) ?&gt;
+                        &lt;div class=<span class="string">"xx105"</span>&gt;
+                                &lt;div class=<span class="string">"hd-1"</span>&gt;使用声明&lt;/div&gt;
+                                &lt;div class=<span class="string">"bd-1"</span>&gt;
+                                &lt;p&gt;一、遵守中中华人民共和国相关法律，合法使用。&lt;/p&gt;
+                                &lt;p&gt;二、此程序为免费版，无使用时间限制。&lt;/p&gt;
+                                &lt;p&gt;三、商业使用建议使用收费版，获取更多功能和技术服务。&lt;/p&gt;
+                                &lt;p class=<span class="string">"fb color-red"</span>&gt;免费版和收费版的主要差异&lt;/p&gt;
+                                &lt;p&gt;一、支持手机版&lt;/p&gt;
+                                &lt;p&gt;二、多套模板后后台切换&lt;/p&gt;
+                                &lt;p&gt;三、更多的频道类型和详情类型选择&lt;/p&gt;
+                                &lt;p&gt;四、支持伪静态&lt;/p&gt;
+                                &lt;p&gt;四、咨询QQ：&lt;a href=<span class="string">"http://wpa.qq.com/msgrd?v=3&amp;uin=5474131&amp;site=qq&amp;menu=yes"</span>&gt;5474131&lt;/a&gt; 电话：13400472755 网址：&lt;a href=<span class="string">"http://www.pcfinal.cn"</span> target=<span class="string">"_blank"</span>&gt;[url=http://www.pcfinal.cn]www.pcfinal.cn[/url]&lt;/a&gt;&lt;/p&gt;
+                                &lt;/div&gt;
+                        &lt;/div&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+&lt;/div&gt;
+&lt;?php include(<span class="string">'inc_footer.php'</span>) ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>后台文件没有任何判断，直接包含进去</p>
+<hr>
+<p>如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
+<p>刷新修改过的URL，成功进入后台</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></h2>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[解析漏洞总结]]></title>
       <url>/2017/04/21/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/</url>
       <content type="html"><![CDATA[<p>解析漏洞:解析就是把代码用指定语言运行出来,解析漏洞就是在运行的过程中没按照原先设定的计划去把语言运行出来,而是运行了另一种过程。</p>
