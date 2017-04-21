@@ -24,7 +24,10 @@
 <meta property="og:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
 <meta property="og:image" content="http://i.imgur.com/IaYq4Ao.png">
 <meta property="og:image" content="http://i.imgur.com/d67sv4O.png">
-<meta property="og:updated_time" content="2017-04-15T15:39:54.695Z">
+<meta property="og:image" content="http://i.imgur.com/5xVlDW1.png">
+<meta property="og:image" content="http://i.imgur.com/4wY5s6k.png">
+<meta property="og:image" content="http://i.imgur.com/G6ZKw4k.png">
+<meta property="og:updated_time" content="2017-04-21T04:59:08.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS">
 <meta name="twitter:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
@@ -194,7 +197,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息收集/">信息收集</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息收集/">信息收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件解析/">文件解析</a></li></ul>
                     </div>
                 </section>
                 
@@ -311,20 +314,22 @@
 <hr>
 <p>XSS例子:<br><img src="http://i.imgur.com/IaYq4Ao.png" alt=""><br>ARRAY_KEY_EXISTS():判断函数，如果name变量有值&amp;&amp;（与）不为空，则输出 “  Hello+&amp;_GET[‘name’]  “。<br><strong>思路：无过滤，直接XSS代码可执行。</strong></p>
 <hr>
-<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():判断是否存在 <script>,存在则把<script>替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有<script>的Javascript语言去运行XSS代码，或者把<script>大小写。</strong></p>
+<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():<br>判断是否存在&lt; script&gt;,存在则把&lt; script&gt;替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有&lt; script&gt;的Javascript语言去运行XSS代码，或者把&lt; script&gt;大小写。</strong></p>
 <hr>
-<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这<script>这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
+<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这&lt; script&gt;这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
 <hr>
 <p><img src="http://i.imgur.com/4wY5s6k.png" alt=""><br>checkToken：用来检查session_token是否过期。<br>Htmlspecialchars()：把预定义字符（&amp;、”、&lt;、&gt;）转为HTML实体化的的函数（只有设置了：quotestyle 选项为ENT_QUOTES才会过滤单引号）。</p>
-<p><strong>思路：1.因为没有过滤单引号，所以可以用 ‘onmouseover=alert’(1)’语句来弹窗<br>但是然并卵，<br>2.跳出Htmlspecialchars()函数重新赋值给$name，例POC：<br><img src="http://i.imgur.com/G6ZKw4k.png" alt=""><br>但还是然并卵，因为你在构造的时候就已经被实体化了，后面的语句根本无法有效运行。
-</strong></p>
-<h2 id="所以没办法了，等有想法再补充。。"><a href="#所以没办法了，等有想法再补充。。" class="headerlink" title="所以没办法了，等有想法再补充。。"></a>所以没办法了，等有想法再补充。。</h2><p>XSS绕过：<br>1.利用空格或者回车<br>2.对标签属性进行编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascrip&amp;<span class="comment">#116&amp;#58alert('xss')&gt;</span></div></pre></td></tr></table></figure></p>
+<p>**思路：1.因为没有过滤单引号，所以可以用 ‘onmouseover=alert’(1)’语句来弹窗，但是然并卵，，</p>
+<p>2.跳出Htmlspecialchars()函数重新赋值给$name，例POC：<br><img src="http://i.imgur.com/G6ZKw4k.png" alt=""><br>但还是不行，因为你在构造的时候就已经被实体化了，后面的语句根本无法有效运行。</p>
+<p>思路暂时没有，，等有想法再补充。</p>
+<hr>
+<p>XSS绕过：<br>1.利用空格或者回车<br>2.对标签属性进行编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascrip&amp;<span class="comment">#116&amp;#58alert('xss')&gt;</span></div></pre></td></tr></table></figure></p>
 <p>3.大小写<br>4.用eval函数进行十六进制和十进制的编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"javascript:eval(string.formCharCode(97,98,99.....))"</span>&gt;</div></pre></td></tr></table></figure></p>
 <hr>
 <p>注：<br>1.输入的东西是否被转移，看源代码即可<br>2.对website有http-only、crossdomian.xml没有用<br>3.可以明面上输入&lt; “ &gt; ‘ 等字符测试，看源代码有哪些没被转义就用哪些。<br>4.需要大量测试（测试闭合标签）</p>
 <hr>
-<p>经典：<a href="http://www.freebuf.com/articles/web/40520.html">http://www.freebuf.com/articles/web/40520.html</a></p>
-</script></p>
+<p>经典：<a href="http://www.freebuf.com/articles/web/40520.html" target="_blank" rel="external">http://www.freebuf.com/articles/web/40520.html</a></p>
+
       
     </div>
     
@@ -335,7 +340,7 @@
         <p><span>本文标题:</span><a href="/2017/04/10/XSS/">XSS</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-10, 16:11:39</p>
-        <p><span>最后更新:</span>2017-04-15, 23:39:54</p>
+        <p><span>最后更新:</span>2017-04-21, 12:59:08</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/10/XSS/" title="XSS">http://yoursite.com/2017/04/10/XSS/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/XSS/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -441,7 +446,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/解析漏洞/">解析漏洞总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 

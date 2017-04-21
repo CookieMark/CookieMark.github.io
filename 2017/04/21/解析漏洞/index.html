@@ -15,17 +15,19 @@
 
 
 
-<meta name="description" content="mysql数据库  版本5.0↑，具有内置特定数据库（information_schema）。 最高权限为root">
-<meta name="keywords">
+<meta name="description" content="解析漏洞:解析就是把代码用指定语言运行出来,解析漏洞就是在运行的过程中没按照原先设定的计划去把语言运行出来,而是运行了另一种过程。">
+<meta name="keywords" content="Web安全,文件解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL手工注入之mysql">
-<meta property="og:url" content="http://yoursite.com/2017/04/08/SQL手工注入之mysql/index.html">
+<meta property="og:title" content="解析漏洞总结">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/解析漏洞/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="mysql数据库  版本5.0↑，具有内置特定数据库（information_schema）。 最高权限为root">
-<meta property="og:updated_time" content="2017-04-10T03:18:37.674Z">
+<meta property="og:description" content="解析漏洞:解析就是把代码用指定语言运行出来,解析漏洞就是在运行的过程中没按照原先设定的计划去把语言运行出来,而是运行了另一种过程。">
+<meta property="og:image" content="http://i.imgur.com/L63jUg6.png">
+<meta property="og:updated_time" content="2017-04-21T04:54:07.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL手工注入之mysql">
-<meta name="twitter:description" content="mysql数据库  版本5.0↑，具有内置特定数据库（information_schema）。 最高权限为root">
+<meta name="twitter:title" content="解析漏洞总结">
+<meta name="twitter:description" content="解析漏洞:解析就是把代码用指定语言运行出来,解析漏洞就是在运行的过程中没按照原先设定的计划去把语言运行出来,而是运行了另一种过程。">
+<meta name="twitter:image" content="http://i.imgur.com/L63jUg6.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SQL手工注入之mysql | 大佬要我改个名</title>
+<title>解析漏洞总结 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -268,11 +270,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-SQL手工注入之mysql" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-解析漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/08/SQL手工注入之mysql/" class="article-date">
-      <time datetime="2017-04-08T09:17:21.383Z" itemprop="datePublished">2017-04-08</time>
+      <a href="/2017/04/21/解析漏洞/" class="article-date">
+      <time datetime="2017-04-21T00:53:30.382Z" itemprop="datePublished">2017-04-21</time>
 </a>
 
 
@@ -287,7 +289,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SQL手工注入之mysql
+      解析漏洞总结
     </h1>
   
 
@@ -297,6 +299,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件解析/">文件解析</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -304,22 +310,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>mysql数据库</p>
-<ul>
-<li>版本5.0↑，具有内置特定数据库（information_schema）。</li>
-<li>最高权限为root<a id="more"></a>
-</li>
-</ul>
+        <p>解析漏洞:解析就是把代码用指定语言运行出来,解析漏洞就是在运行的过程中没按照原先设定的计划去把语言运行出来,而是运行了另一种过程。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>IIS文件解析漏洞：<br>  ①：当建立<em>.asa  、</em>.asp 的格式文件夹时，其目录下的任意文件都以asp的文件来解析。<br>   例子：在asp文件夹下新建一个txt文件，但是访问该TXT文件时，如果有代码为函数，将以asp的方式去解析，去利用该文件<br>  ②：当文件为*.asp;1.jpg时，IIS同时会以asp脚本来执行（分号后面内容不被解析。貌似该漏洞只存在于6.0版本）<br>  ③：WebDav扩展漏洞：<br>   此扩展支持：PUT/Move/Copy/Delete等方法</p>
+<p>   其中PUT方法可用于服务器上传脚本文件（工具有桂林老兵PUT）<br>   Move：移动文件<br>   Copy:改动文件，例如改动后缀名使文件变为shell。</p>
 <hr>
-<p>注入过程：</p>
-<ol>
-<li>判断字段数 （order by）</li>
-<li>匹配字段数：union select 1,2,3,4,5…….  </li>
-<li>利用内置函数暴数据库信息<br>system_user() 系统用户名<br>user() 用户名<br>current_user() 当前用户名<br>session_user() 链接数据库的用户名<br>database() 数据库库名<br>version() mysql数据库版本信息<br>load_file() 转换成16或10进制 读取本地文件<br>@@datadir 读取数据库路径<br>@@basedir MYSQL安装路径<br>@@version_compile_os 操作系统</li>
-<li>查表：<br>Union  selec  1,group_concat(table_name) ,3 from<br>information_schema.tables where table_schema= 数据库名的hex编码</li>
-<li>表里面的列<br>union select 1,group_concat(column_name),3  from<br>information_schema.columns  where<br>table_name=表的HEX值</li>
-<li>Union select 1,group_concat(列名),3 from 表名</li>
-</ol>
+<p><img src="http://i.imgur.com/L63jUg6.png" alt=""><br>Apacher解析漏洞（与IIS有所不同）：<br>①    ：假如有个1.php.rar文件内容为&lt;?php  phpinfo();  ?&gt;<br>那么打开1.php.rar文件时并不是下载，而是现在phpinfo文件。<br>②    ：Apache解析扩展名时从后面解析，直至遇到认识的扩展名为止。</p>
+<hr>
+<p>PHP CGI解析漏洞（Nginx服务器漏洞）：<br>   例如：当访问URL=www.baidu.com/1.jpg时显示的是一张图片，但是当加上/.php时就以Php形式去解析这张图片了。</p>
+<hr>
+<p>IIS 7.0/IIS 7.5/ Nginx <8.03畸形解析漏洞 在默认fast-cgi开启状况下,黑阔上传一个名字为mst.jpg，内容为：<?php="" fputs(fopen('shell.php','w'),'<?php="" eval($_post[cmd])?="">');?>的文件，然后访问mst.jpg/.php,在这个目录下就会生成一句话木马 shell.php。</8.03畸形解析漏洞></p>
+<hr>
+<p>在windows环境下：<br>xx.jpg[空格] 或xx.jpg. 这两类文件都是不允许存在的，若这样命名，windows会默认除去空格或点,黑客可以通过抓包，在文件名后加一个空格或者点绕过黑名单.若上传成功，空格和点都会被windows自动消除,这样也可以getshell。</p>
 
       
     </div>
@@ -328,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/21/解析漏洞/">解析漏洞总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-08, 17:17:21</p>
-        <p><span>最后更新:</span>2017-04-10, 11:18:37</p>
+        <p><span>发布时间:</span>2017-04-21, 08:53:30</p>
+        <p><span>最后更新:</span>2017-04-21, 12:54:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL手工注入之mysql/" title="SQL手工注入之mysql">http://yoursite.com/2017/04/08/SQL手工注入之mysql/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL手工注入之mysql/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/21/解析漏洞/" title="解析漏洞总结">http://yoursite.com/2017/04/21/解析漏洞/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/21/解析漏洞/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -347,17 +348,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/SQL手工注入之Oracle/">
-                    SQL手工注入之Oracle
+                <a href="/2017/04/18/Http参数污染/">
+                    HTTP参数污染
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/08/SQL注入之nmap/">
-                    SQL注入之nmap
-                </a>
-            </div>
         
     </nav>
 
@@ -367,7 +362,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
         
     </div>
     <style>
@@ -403,7 +398,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SQL手工注入之mysql　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"解析漏洞总结　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -423,7 +418,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/SQL手工注入之Oracle/" title="上一篇: SQL手工注入之Oracle">
+            <a href="/2017/04/18/Http参数污染/" title="上一篇: HTTP参数污染">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -431,9 +426,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/08/SQL注入之nmap/" title="下一篇: SQL注入之nmap">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
