@@ -3,10 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[burpsuit爆破后台]]></title>
+      <url>/2017/04/23/burpsuit%E7%88%86%E7%A0%B4%E5%90%8E%E5%8F%B0/</url>
+      <content type="html"><![CDATA[<p>此次测试条件：<br>1.后台没有token验证<br>2.验证码不点击这个则不刷新<br><a id="more"></a><br><img src="http://i.imgur.com/Rt473Oa.png" alt=""></p>
+<hr>
+<p>所以较简单，使用burpsuite即可，<br>1.抓包，并发送去Intrude<br><img src="http://i.imgur.com/pZcPKaC.png" alt=""></p>
+<p>2.设置Intrude<br><img src="http://i.imgur.com/Fsg5ubp.png" alt=""></p>
+<p>其中的attack type 设置如下：</p>
+<p>Sniper：对变量依次进行破解（依照变量数进行所有字典的组合）<br>Battering ram：对变量同时进行破解（密码和账号是同一个，直至轮完字典）<br>Pitchfork：每个变量对应一个字典（组合为最小字典的数量）<br>Cluster bomb：每个变量对应一个字典，并交集破解（A字典*B字典）</p>
+<hr>
+<p>3.设置Intruder的payloads属性：<br><img src="http://i.imgur.com/BXzUW0L.png" alt=""></p>
+<hr>
+<p>4.按Start attack 开始爆破:<br><img src="http://i.imgur.com/7vwKcko.png" alt=""></p>
+<p>选择Length不一样的则为爆破成功点。</p>
+<hr>
+<p>其中Intruder的options可以设置线程等很多东西。。</p>
+<p>因为较简单，所以使用burpsuit。如果需要爆破验证码，可以尝试<strong>PKAV</strong>工具</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[cookie 欺骗进后台]]></title>
       <url>/2017/04/21/Cookie%E6%AC%BA%E9%AA%97%E8%BF%9B%E5%90%8E%E5%8F%B0/</url>
       <content type="html"><![CDATA[<p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>###登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
 <hr>
 <p>phpecms1.3/admin/cms_check.php文件有一段代码</p>
 <pre><code class="bash">&lt;?php
@@ -15,7 +37,7 @@
         };
 ?&gt;
 </code></pre>
-<p><strong>这代码意思是如果cookie是admin_name 则跳转成功，如果是其它则非法登陆。</strong></p>
+<p><strong>这代码意思是如果cookie是admin_name 则跳转成功，如果不是则非法登陆。</strong></p>
 <hr>
 <p>/phpecms1.3/admin/cms_welcome.php文件：</p>
 <pre><code class="bash">&lt;?php
@@ -57,8 +79,8 @@ include(<span class="string">'cms_check.php'</span>);
 </code></pre>
 <p><strong>后台文件没有任何判断，直接包含进去</strong></p>
 <hr>
-<p>如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
-<p>刷新修改过的URL，成功进入后台<br><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></p>
+<p>###如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
+<p>###刷新修改过的URL，成功进入后台<br><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></p>
 ]]></content>
       
         
@@ -96,12 +118,12 @@ include(<span class="string">'cms_check.php'</span>);
       <url>/2017/04/18/Http%E5%8F%82%E6%95%B0%E6%B1%A1%E6%9F%93/</url>
       <content type="html"><![CDATA[<p>HTTP参数污染：我也不知道怎么解释。。语言水平不好。这种方法通常用来绕过WAF应用防火墙的检测。</p>
 <a id="more"></a>
-<p>PHP类型：<br><a href="http://127.0.0.1/test.php?id=7" target="_blank" rel="external">http://127.0.0.1/test.php?id=7</a> or 1=1 in (SQLi)<br>如果会出现“请停止攻击该网站”等提示。</p>
+<p>PHP类型：<br><code>http://127.0.0.1/test.php?id=7 or 1=1 in (SQLi)</code><br>如果会出现“请停止攻击该网站”等提示。</p>
 <p>这时我们可以尝试参数污染来绕过该WAF。<br>当我们输入：?id=7&amp;id=（sqli)时</p>
 <p>waf网络层会解析id=7， –&gt;  显示合法<br>PHP应用层会解析  id=(sqli) –&gt; 注入成功</p>
 <p>利用：把参数利用拼接符写在后面来绕过。</p>
 <hr>
-<p>asp类型:  ?id=1&amp;id=s&amp;id=e&amp;id=l&amp;id=e&amp;id=c&amp;id=t</p>
+<p>asp类型: <code>?id=1&amp;id=s&amp;id=e&amp;id=l&amp;id=e&amp;id=c&amp;id=t</code></p>
 <p>如果它接受到两个参数值，它会拼接两个相同参数的值，因此你可以将被过滤的关键词拆分到两个参数中进行攻击从而绕过WAF。</p>
 <p>如上面我写参数拼接在一起的就带有selec效果了。</p>
 ]]></content>
@@ -345,11 +367,12 @@ include(<span class="string">'cms_check.php'</span>);
       <title><![CDATA[CSRF]]></title>
       <url>/2017/04/10/CSRF/</url>
       <content type="html"><![CDATA[<p>CSRF（跨站请求伪造）：也被称为XSRF，感觉和CSS被称为XSS差不多。<br>CSRF与XSS区别：XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站（个人理解：是否需要直接获取用户权限。）</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>CSRF成功要领：1.  CMS开源（因为要知道网站页面的一点信息才能构造CSRF代码。）<br>2．无需验证码验证<br>3．无referer和token<br>   （token其实可以获取，referer用来防外链）<br>4．管理员正在后台或者网站储存着有效Cookie<br>5．…..</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>CSRF成功要领：<br>1.CMS开源（因为要知道网站页面的一点信息才能构造CSRF代码。）<br>2．无需验证码验证<br>3．无referer和token<br>   （token其实可以获取，referer用来防外链）<br>4．管理员正在后台或者网站储存着有效Cookie<br>5．…..</p>
 <hr>
-<p>1.查看该CMS源码，如我知道该源码为DWVA CMS，下载分析，发现修改管理员的地方没有Token验证，于是查看并构造代码：<br><img src="http://i.imgur.com/Nr1Ij0b.png" alt=""></p>
-<p>2.表单写入文本<br><img src="http://i.imgur.com/WshHC9e.png" alt=""></p>
-<p>3.修改action的值（#提交数据到本页，但如果是网站，应修改为网站的路径）<br> 添加value（要操作的数值）。<br>最终修改如下：<br><img src="http://i.imgur.com/FVCT7R2.png" alt=""><br>保存为html格式。<br>4.打开并按按钮，成功<br><img src="http://i.imgur.com/6PuQrij.png" alt=""><br>发现成功修改，。然后我们可以把这玩意用邮件发送给目标站点的管理员并用社会工程学让他打开了。。顺便叫他按一下按钮。。</p>
+<p>###1.查看该CMS源码，如我知道该源码为DWVA CMS，下载分析，发现修改管理员的地方没有Token验证，于是查看并构造代码：<br><img src="http://i.imgur.com/Nr1Ij0b.png" alt=""></p>
+<p>###2.表单写入文本<br><img src="http://i.imgur.com/WshHC9e.png" alt=""></p>
+<p>###3.修改action的值（#提交数据到本页，但如果是网站，应修改为网站的路径）<br> 添加value（要操作的数值）。<br>最终修改如下：<br><img src="http://i.imgur.com/FVCT7R2.png" alt=""><br>保存为html格式。</p>
+<p>###4.打开并按按钮，成功<br><img src="http://i.imgur.com/6PuQrij.png" alt=""><br>发现成功修改，。然后我们可以把这玩意用邮件发送给目标站点的管理员并用社会工程学让他打开了。。顺便叫他按一下按钮。。</p>
 <hr>
 <p>当然，还以当他打开时就自动提交，例如：添加JS机制。<br>添加JS后修改的代码如下：<br><img src="http://i.imgur.com/7A84RE2.png" alt=""><br><strong>其实这样是错误的。。因为没有执行”submit”按钮</strong></p>
 <p>想了好久想不通，找了个程序员大牛把代码修改了一下下，直接提交整个表单就得了，代码如下：<br><img src="http://i.imgur.com/b1hCUrx.png" alt=""><br>注： js提交表单时不会带上 submit 按钮的值(因为没有被点击) 所有浏览器<br>input 回车提交 w3c浏览器会带上submit按钮的值，ie6则不会带<br>（所以把提交按钮的类型从submit换成了password.）</p>
@@ -374,9 +397,9 @@ include(<span class="string">'cms_check.php'</span>);
 <hr>
 <p>XSS例子:<br><img src="http://i.imgur.com/IaYq4Ao.png" alt=""><br>ARRAY_KEY_EXISTS():判断函数，如果name变量有值&amp;&amp;（与）不为空，则输出 “  Hello+&amp;_GET[‘name’]  “。<br><strong>思路：无过滤，直接XSS代码可执行。</strong></p>
 <hr>
-<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():<br>判断是否存在&lt; script&gt;,存在则把&lt; script&gt;替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有&lt; script&gt;的Javascript语言去运行XSS代码，或者把&lt; script&gt;大小写。</strong></p>
+<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():<br>判断是否存在<code>&lt;script&gt;</code>,存在则把<code>&lt;script&gt;</code>替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有<code>&lt;script&gt;</code>的Javascript语言去运行XSS代码，或者把&lt; script&gt;大小写。</strong></p>
 <hr>
-<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这&lt; script&gt;这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
+<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这<code>&lt;script&gt;</code>这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
 <hr>
 <p><img src="http://i.imgur.com/4wY5s6k.png" alt=""><br>checkToken：用来检查session_token是否过期。<br>Htmlspecialchars()：把预定义字符（&amp;、”、&lt;、&gt;）转为HTML实体化的的函数（只有设置了：quotestyle 选项为ENT_QUOTES才会过滤单引号）。</p>
 <p>**思路：1.因为没有过滤单引号，所以可以用 ‘onmouseover=alert’(1)’语句来弹窗，但是然并卵，，</p>
