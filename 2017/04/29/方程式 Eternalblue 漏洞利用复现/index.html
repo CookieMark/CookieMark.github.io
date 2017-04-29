@@ -15,13 +15,13 @@
 
 
 
-<meta name="description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
+<meta name="description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="方程式 Eternalblue 漏洞利用复现">
 <meta property="og:url" content="http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
+<meta property="og:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0">
 <meta property="og:image" content="http://i.imgur.com/wD2LNdg.png">
 <meta property="og:image" content="http://i.imgur.com/6qrYJwq.png">
 <meta property="og:image" content="http://i.imgur.com/nu4YPtO.png">
@@ -30,10 +30,10 @@
 <meta property="og:image" content="http://i.imgur.com/G9AXXTu.png">
 <meta property="og:image" content="http://i.imgur.com/IbrCWwJ.png">
 <meta property="og:image" content="http://i.imgur.com/WxgakuR.png">
-<meta property="og:updated_time" content="2017-04-29T14:34:48.107Z">
+<meta property="og:updated_time" content="2017-04-29T16:22:34.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="方程式 Eternalblue 漏洞利用复现">
-<meta name="twitter:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
+<meta name="twitter:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0">
 <meta name="twitter:image" content="http://i.imgur.com/wD2LNdg.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -314,6 +314,7 @@
       
           
         <h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>1.开启了445端口即可。<br>2.大多数版本需要关闭防火墙。</p>
 <h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理:"></a>漏洞原理:</h2><p><a href="http://www.91ri.org/16946.html" target="_blank" rel="external">http://www.91ri.org/16946.html</a><br>(我看了半天愣是没看懂)<br>然后找了个比较简明的看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">首先SrvOs2FeaListToNt首先调用SrvOs2FeaListSizeToNt计算pNtFea的大小。这里注意了SrvOs2FeaListSizeToNt函数会修改原始的pOs2Fea中的Length大小,本来Length是一个DWORD, 代码还强制转换成了WORD,不能不让人联想一些事。然后以计算出来的Length来分配pNtFea.最后调用SrvOs2FeaToNt来实现转换。SrvOs2FeaToNt后面的判断就有问题了。这里还不止一个问题。 </div><div class="line">1. 转换完成后，增加pOs2FeaBody然后比较。正确的逻辑难道不应该是先判断再转换吗？ </div><div class="line">2. 由于SrvOs2FeaListSizeToNt中改变了pOs2Fea的length的值，这里使用变大后的值做比较，肯定会越界。</div></pre></td></tr></table></figure></p>
 <hr>
@@ -346,7 +347,7 @@
         <p><span>本文标题:</span><a href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/">方程式 Eternalblue 漏洞利用复现</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-29, 21:28:48</p>
-        <p><span>最后更新:</span>2017-04-29, 22:34:48</p>
+        <p><span>最后更新:</span>2017-04-30, 00:22:34</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/" title="方程式 Eternalblue 漏洞利用复现">http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
