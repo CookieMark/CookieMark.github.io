@@ -733,8 +733,8 @@ userDao.save(userdata);
     </entry>
     
     <entry>
-      <title><![CDATA[SQL注入之nmap]]></title>
-      <url>/2017/04/08/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Bnmap/</url>
+      <title><![CDATA[SQL注入之sqlmap工具使用]]></title>
+      <url>/2017/04/08/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Bsqlmap%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>–r    利用文本（接编码转换文本或HTTP协议包）</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>以下为Mysql数据注入：</p>
 <ol>

