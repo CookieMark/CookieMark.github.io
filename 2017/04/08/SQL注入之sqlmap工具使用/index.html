@@ -15,22 +15,22 @@
 
 
 
-<meta name="description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
+<meta name="description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）    　　　　　–dbs  查看所有数据库　　　　　–current-db  列出当前所用的数据库　　　　　–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）　　　　　–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）　　　　　–dump 获取字段内容">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入之sqlmap工具使用">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
+<meta property="og:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）    　　　　　–dbs  查看所有数据库　　　　　–current-db  列出当前所用的数据库　　　　　–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）　　　　　–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）　　　　　–dump 获取字段内容">
 <meta property="og:image" content="http://i.imgur.com/hXYJAAk.png">
 <meta property="og:image" content="http://i.imgur.com/qUdI66I.png">
 <meta property="og:image" content="http://i.imgur.com/GNePxTp.png">
 <meta property="og:image" content="http://i.imgur.com/r8WPdQL.png">
 <meta property="og:image" content="http://i.imgur.com/lmnaBaL.png">
-<meta property="og:updated_time" content="2017-04-30T01:53:23.497Z">
+<meta property="og:updated_time" content="2017-05-14T15:13:30.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入之sqlmap工具使用">
-<meta name="twitter:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）–dbs  查看所有数据库–current-db  列出当前所用的数据库–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）–r    利用">
+<meta name="twitter:description" content="NMAP的使用：  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）    　　　　　–dbs  查看所有数据库　　　　　–current-db  列出当前所用的数据库　　　　　–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）　　　　　–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）　　　　　–dump 获取字段内容">
 <meta name="twitter:image" content="http://i.imgur.com/hXYJAAk.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -310,7 +310,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>–dbs  查看所有数据库<br>–current-db  列出当前所用的数据库<br>–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>–r    利用文本（接编码转换文本或HTTP协议包）</p>
+        <p>NMAP的使用：<br>  常用命令：-u （后面接URL，判断注入，有注入则回显服务器信息）<br>    　　　　　–dbs  查看所有数据库<br>　　　　　–current-db  列出当前所用的数据库<br>　　　　　–table 获取数据库表 （接 –D使用;  因为要知道是哪个数据库的表）<br>　　　　　–columns 获取表中的字段 （接 –T，-D使用，因为要知道哪个表那个数据库）<br>　　　　　–dump 获取字段内容 （接-C,-T,-D使用，和上同理。。）<br>　　　　　–r    利用文本（接编码转换文本或HTTP协议包）</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>以下为Mysql数据注入：</p>
 <ol>
 <li><p>-u www.xxx.com/qqq.php?id=1  存在注入，则爆出(网页信息)↓<br><img src="http://i.imgur.com/hXYJAAk.png" alt=""></p>
@@ -327,7 +327,7 @@
 <hr>
 <p>Accessz注入：–table（直接猜表名）然后思路同理<br>因为Access没有内置的数据库，而且只有一只，所以直接跑表</p>
 <hr>
-<p>注：<br>其它命令：1.测试所有用户权限：–privileges   （接-U可指定用户）<br>         2.执行shell命令（需要知道物理路径且可写）：<br>–os-cmd=”cmd命令”<br>–os-shell<br>         3.post 提交：–data “post参数”  （可能会自动检测）<br>         4.显示详细参数：-v 0~6   （0~6代表信息等级，）<br>         5.cookies注入：–cookie –lever 3  （&gt;=2即可，3的话会检查User-agent和Referer）<br>         6.数据包注入：-r 要注入的文本   （文本的某一处加‘*’则选择在哪注入，不加则默认是头部注入，这方式适合伪静态注入）<br>         7.注入时使用编码：–tamper ‘py文本’ (适用黑名单绕过)<br>         8.。。。。。</p>
+<p>注：<br>其它命令：<br>1.测试所有用户权限：–privileges   （接-U可指定用户）<br>2.执行shell命令（需要知道物理路径且可写）：<br>　　–os-cmd=”cmd命令”<br>　　–os-shell<br>3.post 提交：–data “post参数”  （–forms可能会自动检测）<br>4.显示详细参数：-v 0~6   （0~6代表信息等级，）<br>5.cookies注入：–cookie –lever 3  （&gt;=2即可，3的话会检查User-agent和Referer）<br>6.数据包注入：-r 要注入的文本   （文本的某一处加‘*’则选择在哪注入，不加则默认是头部注入，这方式适合伪静态注入）<br>7.注入时使用编码：–tamper ‘py文本’ (适用黑名单绕过)　　　　　　　                 　　1.space2hash.py 2.base64encode.py 3.charencode.py<br>8.延时注入： –delay 1(时间,可随意)<br>　　　　　　 –safe-freq 1(次数,可随意)</p>
 <hr>
 <p>注入工具还有：穿山甲（pangolin） / Havij（小萝卜）。。。<br>            编写人不同，注入方法也不通，都试试吧，可能某一个得呢。。</p>
 
@@ -341,7 +341,7 @@
         <p><span>本文标题:</span><a href="/2017/04/08/SQL注入之sqlmap工具使用/">SQL注入之sqlmap工具使用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-04-08, 17:34:11</p>
-        <p><span>最后更新:</span>2017-04-30, 09:53:23</p>
+        <p><span>最后更新:</span>2017-05-14, 23:13:30</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/08/SQL注入之sqlmap工具使用/" title="SQL注入之sqlmap工具使用">http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/08/SQL注入之sqlmap工具使用/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -447,7 +447,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/">方程式 Eternalblue 漏洞利用复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/提权/">提权技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/23/burpsuit爆破后台/">burpsuit爆破后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Cookie欺骗进后台/">cookie 欺骗进后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/解析漏洞/">解析漏洞总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之sqlmap工具使用/">SQL注入之sqlmap工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/SQLMAP网页版命令生成器/">SQLMAP 网页版命令生成器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/">方程式 Eternalblue 漏洞利用复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/提权/">提权技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/23/burpsuit爆破后台/">burpsuit爆破后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Cookie欺骗进后台/">cookie 欺骗进后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/解析漏洞/">解析漏洞总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之sqlmap工具使用/">SQL注入之sqlmap工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
 
 
 
