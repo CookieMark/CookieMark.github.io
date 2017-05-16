@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+WAF2.0IP：    183.61.**.**…">
+<meta name="description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+MYSQL+WAF2.0IP：    183.61.**.**">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大佬要我改个名">
 <meta property="og:url" content="http://yoursite.com/2017/05/16/友情测试--tnpm/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+WAF2.0IP：    183.61.**.**…">
+<meta property="og:description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+MYSQL+WAF2.0IP：    183.61.**.**">
 <meta property="og:image" content="http://i.imgur.com/LGlt7id.png">
 <meta property="og:image" content="http://i.imgur.com/lXO0Vx8.png">
-<meta property="og:updated_time" content="2017-05-16T15:45:01.209Z">
+<meta property="og:updated_time" content="2017-05-16T15:56:08.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大佬要我改个名">
-<meta name="twitter:description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+WAF2.0IP：    183.61.**.**…">
+<meta name="twitter:description" content="title： 友情测试上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。  网站类型：IIS7.5+伪静态(PHP)+WINNT+MYSQL+WAF2.0IP：    183.61.**.**">
 <meta name="twitter:image" content="http://i.imgur.com/LGlt7id.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -292,12 +292,12 @@
         <hr>
 <h2 id="title：-友情测试"><a href="#title：-友情测试" class="headerlink" title="title： 友情测试"></a>title： 友情测试</h2><p>上课无聊，断开了教师机控制，插入U盘读取一波工具友情找了某个网站测试了一波性能。</p>
 <hr>
-<p>网站类型：<code>IIS7.5+伪静态(PHP)+WINNT+WAF2.0</code><br>IP：    <code>183.61.**.**</code><br>…<br><a id="more"></a><br><img src="http://i.imgur.com/LGlt7id.png" alt=""></p>
-<h2 id="过程0x1"><a href="#过程0x1" class="headerlink" title="过程0x1"></a>过程0x1</h2><p>注册：上传文件获取shell<br>搜索框：具有注入效应（后被发现注入失败。）<br>下载：越权下载文件</p>
-<p>伪注册了个邮箱：<br>选择了张PHP类型JPG图片马上传，<br>经过抓包修改后缀–&gt;失败，服务器端有验证后缀<br>修改mine和后缀–&gt;失败，服务器端双重验证<br>； –&gt;失败，把我分号后面的去掉了，然后再验证后缀名<br>00阶段–&gt;失败，我也不知道怎么就失败了。。忘了<br>传图片（内容是马）–&gt;失败，被WAF拦截了。<br>传图片马（马和图片融合，利用命令行）–&gt;当然也失败，，虽然知道结果依然是这样。。</p>
-<h2 id="过程0x2"><a href="#过程0x2" class="headerlink" title="过程0x2"></a>过程0x2</h2><p>最后下面：<br>上多几个过狗马（JPG），上到第3张，貌似成功了。读取到了图片，但是利用是个问题，，因为图片不可能解析，看了下以前的文章，发现博客有个IIS7.x（uginx也有此漏洞）的解析漏洞，<br>qq.jpg/.php（在图片URL后面加/.php）<br>成功使JPG运行了PHP代码</p>
+<p>网站类型：<code>IIS7.5+伪静态(PHP)+WINNT+MYSQL+WAF2.0</code><br>IP：    <code>183.61.**.**</code><br><a id="more"></a><br><img src="http://i.imgur.com/LGlt7id.png" alt=""></p>
+<h2 id="可利用点"><a href="#可利用点" class="headerlink" title="可利用点"></a>可利用点</h2><p>注册：上传文件获取shell<br>搜索框：具有注入效应（后被发现注入失败。）<br>下载：越权下载文件<br>商城：逻辑漏洞</p>
+<h2 id="过程0x1"><a href="#过程0x1" class="headerlink" title="过程0x1"></a>过程0x1</h2><p>伪注册了个邮箱：<br>选择了张PHP类型JPG图片马上传，<br>经过抓包修改后缀–&gt;失败，服务器端有验证后缀<br>修改mine和后缀–&gt;失败，服务器端双重验证<br>； –&gt;失败，把我分号后面的去掉了，然后再验证后缀名<br>00阶段–&gt;失败，我也不知道怎么就失败了。。忘了<br>传图片（内容是马）–&gt;失败，被WAF拦截了。<br>传图片马（马和图片融合，利用命令行）–&gt;当然也失败，，虽然知道结果依然是这样。。</p>
+<h2 id="过程0x2"><a href="#过程0x2" class="headerlink" title="过程0x2"></a>过程0x2</h2><p>最后下面：<br>上多几个过狗马（JPG），上到第3张，貌似成功了。<br>读取到了图片，但是利用是个问题，，因为图片不可能解析，<br>看了下以前的文章，发现博客有个IIS7.x（uginx也有此漏洞）的解析漏洞，<br>qq.jpg/.php（在图片URL后面加/.php）<br>成功使JPG运行了PHP代码</p>
 <p><img src="http://i.imgur.com/lXO0Vx8.png" alt=""></p>
-<h2 id="过程0x3"><a href="#过程0x3" class="headerlink" title="过程0x3"></a>过程0x3</h2><p>好了，明天有空再更新提权吧。。该睡觉了。（听说ISCC又出新题了，，干他娘的。）</p>
+<h2 id="过程0x3"><a href="#过程0x3" class="headerlink" title="过程0x3"></a>过程0x3</h2><p>明天有空再更新提权吧。该睡觉了。（听说ISCC又出新题了，，）</p>
 
       
     </div>
@@ -309,7 +309,7 @@
         <p><span>本文标题:</span><a href="/2017/05/16/友情测试--tnpm/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
         <p><span>发布时间:</span>2017-05-16, 23:41:46</p>
-        <p><span>最后更新:</span>2017-05-16, 23:45:01</p>
+        <p><span>最后更新:</span>2017-05-16, 23:56:08</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/05/16/友情测试--tnpm/" title="">http://yoursite.com/2017/05/16/友情测试--tnpm/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/16/友情测试--tnpm/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -339,7 +339,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title：-友情测试"><span class="toc-number">1.</span> <span class="toc-text">title： 友情测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x1"><span class="toc-number">2.</span> <span class="toc-text">过程0x1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x2"><span class="toc-number">3.</span> <span class="toc-text">过程0x2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x3"><span class="toc-number">4.</span> <span class="toc-text">过程0x3</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title：-友情测试"><span class="toc-number">1.</span> <span class="toc-text">title： 友情测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可利用点"><span class="toc-number">2.</span> <span class="toc-text">可利用点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x1"><span class="toc-number">3.</span> <span class="toc-text">过程0x1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x2"><span class="toc-number">4.</span> <span class="toc-text">过程0x2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程0x3"><span class="toc-number">5.</span> <span class="toc-text">过程0x3</span></a></li></ol>
         
     </div>
     <style>
