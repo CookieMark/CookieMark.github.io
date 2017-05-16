@@ -15,17 +15,15 @@
 
 
 
-<meta name="description" content="旁注攻击：同一台服务器上有多个网站。当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。">
-<meta name="keywords" content="Web安全">
-<meta property="og:type" content="article">
-<meta property="og:title" content="旁注攻击">
-<meta property="og:url" content="http://yoursite.com/2017/04/15/旁注攻击/index.html">
+<meta name="description" content="记录生活的点点滴滴">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大佬要我改个名">
+<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
 <meta property="og:site_name" content="大佬要我改个名">
-<meta property="og:description" content="旁注攻击：同一台服务器上有多个网站。当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。">
-<meta property="og:updated_time" content="2017-04-15T10:22:03.102Z">
+<meta property="og:description" content="记录生活的点点滴滴">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="旁注攻击">
-<meta name="twitter:description" content="旁注攻击：同一台服务器上有多个网站。当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。">
+<meta name="twitter:title" content="大佬要我改个名">
+<meta name="twitter:description" content="记录生活的点点滴滴">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>旁注攻击 | 大佬要我改个名</title>
+<title>Archives | 大佬要我改个名</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +65,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
-        isArchive: false,
+        isPost: false,
+        isArchive: true,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -268,181 +266,60 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-旁注攻击" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2017/04/15/旁注攻击/" class="article-date">
-      <time datetime="2017-04-15T09:42:25.351Z" itemprop="datePublished">2017-04-15</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2017/04/08/HTTP协议/" class="archive-article-date">
+      <time datetime="2017-04-08T04:38:10.917Z" itemprop="datePublished">04-08</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      旁注攻击
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/08/HTTP协议/">HTTP协议</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-archive">
+          
 
-        
+          
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li></ul>
     </div>
 
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>旁注攻击：同一台服务器上有多个网站。<br>当A网站攻不下时，发现还有B网站也是同一个服务器时就尝试去攻占B网站。如果得到B网站的服务器权限也就相当于得到A网站的服务器权限。<br><a id="more"></a></p>
-<p>过程：<br> IP逆向查询：查询A域名的真实IP，然后反查IP得出IP（服务器）拥有的其它网站。（但这并不代表这是服务器所有的网站，因为这些都是通过收录得到的）<br>注：注意查看是否使用了CDN</p>
-<p>得到其它网站后，就渗透其它的网站，直至得到此网站的权限，后提权XXOO。。。</p>
-<hr>
-<p>SQL跨库查询：垮库查询攻击<br>假设A,B网站的同为一个服务器，且皆使用同一种数据库，A数据库为ADB，B数据库为BDB。<br>如果B数据库在操作时可以对A数据库动刀，那么就称为跨库攻击。</p>
-<p>其实和SQL注入差不多，例如，B网站注入成功并爆出数据库，那应该也爆出A网站的数据库（因为同为一个数据库软件），如果B网站的权限可以下载A或者查看A数据库的信息，那么久垮库攻击成功</p>
-<hr>
-<p>目录越权：<br>假如B网站上传了一个Webshell，在读取B网站的同时，发现可以去A网站的目录读取A网站的信息，则称为目录越权。假设还有写入权限，即可往A网站写入Shell。<br>注：尽管只有读取权限，也可读取数据库信息，或者后台位置，或者利用代码审计进行攻击。</p>
-<hr>
-<p>C段查询：<a href="https://www.phpinfo.me/bing.php" target="_blank" rel="external">https://www.phpinfo.me/bing.php</a><br>子域名爆破：<a href="https://www.phpinfo.me/domain" target="_blank" rel="external">https://www.phpinfo.me/domain</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/15/旁注攻击/">旁注攻击</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Mark</a></p>
-        <p><span>发布时间:</span>2017-04-15, 17:42:25</p>
-        <p><span>最后更新:</span>2017-04-15, 18:22:03</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/15/旁注攻击/" title="旁注攻击">http://yoursite.com/2017/04/15/旁注攻击/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/15/旁注攻击/　　作者: Mark" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/15/文件包含漏洞/">
-                    文件包含漏洞
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/18/Http参数污染/">
-                    HTTP参数污染
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"旁注攻击　| 大佬要我改个名　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
     
-</div>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
 
-
-
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/04/15/文件包含漏洞/" title="上一篇: 文件包含漏洞">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/04/18/Http参数污染/" title="下一篇: HTTP参数污染">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/友情测试--tnpm/">友情测试--tnpm</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/SQLMAP网页版命令生成器/">SQLMAP 网页版命令生成器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/方程式 Eternalblue 漏洞利用复现/">方程式 Eternalblue 漏洞利用复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/提权/">提权技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/23/burpsuit爆破后台/">burpsuit爆破后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Cookie欺骗进后台/">cookie 欺骗进后台</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/解析漏洞/">解析漏洞总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Http参数污染/">HTTP参数污染</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/旁注攻击/">旁注攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/文件包含漏洞/">文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/社会工程学/">社会工程学</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/暴力破解/">暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/URL跳转与钓鱼/">URL跳转与钓鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/上传篇/">上传篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/逻辑错误漏洞/">逻辑错误漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/CSRF/">CSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/XSS/">XSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XPath篇/">代码注入之XPath篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/代码注入之XML篇/">代码注入之XML篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之sqlmap工具使用/">SQL注入之sqlmap工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mysql/">SQL手工注入之mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Oracle/">SQL手工注入之Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之Access/">SQL手工注入之Access</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL手工注入之mssql/">SQL手工注入之SQL Server（mssql）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SQL注入之类型简介/">SQL注入之类型简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息收集之CMS/">信息收集之CMS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测之真实IP查询/">信息收集之真实IP查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_端口篇/">信息探测之nmap的使用（端口）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/信息探测_谷歌语法/">信息探测之谷歌黑客语法的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/漏洞扫描之工具篇/">漏洞扫描之工具使用篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/HTTP协议/">HTTP协议</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
